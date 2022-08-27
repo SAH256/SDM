@@ -1,0 +1,30 @@
+
+# use for cpython files
+
+**/__pycache__/
+__pycache__/
+*.pyc
+
+#resources
+**/resources.py
+resources.py
+
+# **/Deps
+# Deps/
+
+
+# library files
+*.dll
+*.so
+*.lib
+*.a
+
+#graphic archive
+*.qrc
+
+
+#temp files
+*.prt*
+*.json
+
+
