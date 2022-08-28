@@ -73,30 +73,30 @@ The project uses both python libraries and c++ binding packages of libtorrent an
 
 ### Model rules
 
--- Follow OOP and create seperate files for any structures or important class.
--- Each feature must have seperate folder like : *Task*, *Scheduler* and ...
--- Put Model only helping functions in *Model/Util.py*
--- ....
+- Follow OOP and create seperate files for any structures or important class.
+- Each feature must have seperate folder like : *Task*, *Scheduler* and ...
+- Put Model only helping functions in *Model/Util.py*
+- ....
 
 
 ### UI rules
 SDM GUI has built by handwritten desing code. For MVC approach the project uses waterfall system. For any GUI components first make `XXXUI.py` for UI sections. Then create `XXXControl.py` for controlling UI and communicating with Model.
 
 
--- Use base control widgets that is in *UI/Base*
--- For transfering data between UI and Model add PyQt Signal/Slot system in Control file
--- Seperate *Main* UI components with *Torrent* special UI and *Base widgets*
--- In UI programming follow other UI files for sample
--- If depth of UI goes beyond two underscore (like *__button()*) then create independent widget and add it to component folder of current developing widgets.
--- ...
+- Use base control widgets that is in *UI/Base*
+- For transfering data between UI and Model add PyQt Signal/Slot system in Control file
+- Seperate *Main* UI components with *Torrent* special UI and *Base widgets*
+- In UI programming follow other UI files for sample
+- If depth of UI goes beyond two underscore (like `__button()`) then create independent widget and add it to component folder of current developing widgets.
+- ...
 
 
 ### Utility rules
 
--- Don't put any UI or Model code in utility, only helping functions
--- Put data structures data in *Utility/Structure*
--- Put OS specific funtions in *Utility/Actions*
--- Put helping functions in appropriate file
+- Don't put any UI or Model code in utility, only helping functions
+- Put data structures data in *Utility/Structure*
+- Put OS specific funtions in *Utility/Actions*
+- Put helping functions in appropriate file
 
 
 
