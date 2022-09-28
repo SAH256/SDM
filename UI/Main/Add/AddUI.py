@@ -45,7 +45,7 @@ class AddUI(Dialog):
         name = 'add'
         self.setObjectName(name)
 
-        self.__apply_style()
+        # self.__apply_style()
 
 
     def _header(self):
@@ -292,38 +292,38 @@ class AddUI(Dialog):
                 btnLayout.addStretch(1)
 
 
-    def __apply_style(self):
-        style = '''
-        #add {
-            background-color : white;
-        }
+    # def __apply_style(self):
+    #     style = '''
+    #     #add {
+    #         background-color : white;
+    #     }
 
-        #header {
-            font-family : Arial;
-            font-size : 16px;
-            font-weight : 600;
-            color : blue;
-        }
+    #     #header {
+    #         font-family : Arial;
+    #         font-size : 16px;
+    #         font-weight : 600;
+    #         color : blue;
+    #     }
 
-        #header[text="Torrent"] {
-            color : red;
-        }
+    #     #header[text="Torrent"] {
+    #         color : red;
+    #     }
 
-        #size {
-            font-size : 14px;
-            color : blue;
-        }
+    #     #size {
+    #         font-size : 14px;
+    #         color : blue;
+    #     }
 
 
-        #warning {
-            font-family : Arial;
-            font-size : 16px;
-            font-weight : 600;
-            color : red;
-        }
-        '''
+    #     #warning {
+    #         font-family : Arial;
+    #         font-size : 16px;
+    #         font-weight : 600;
+    #         color : red;
+    #     }
+    #     '''
 
-        self.setStyleSheet(style)
+    #     self.setStyleSheet(style)
 
 
 

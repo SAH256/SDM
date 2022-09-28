@@ -8,8 +8,8 @@ from UI.Base.Items.BaseItem import FilterItem
 
 class OptionItem(FilterItem):
     
-    def __init__(self, icon):
-        super().__init__()
+    def __init__(self, parent, icon):
+        super().__init__(parent)
 
         self.min_size = 32
         self.big_size = 36
@@ -20,10 +20,8 @@ class OptionItem(FilterItem):
         self.set_icon(pm)
 
 
-        name = 'option'
+        name = 'option-item'
         self.setObjectName(name)
-
-        self.__apply_style()
     
 
     def _effect(self):
@@ -65,27 +63,6 @@ class OptionItem(FilterItem):
         self.cache.insert(key, pixmap)
 
         return pixmap
-
-
-    def __apply_style(self):
-        style = '''
-        #option {
-            border-left : 3px solid transparent;
-        }
-
-        #option:hover {
-            background-color : #ddf;
-        }
-
-        #option[css-class="selected"] {
-            border-left-color : blue;
-        }
-        '''
-
-        self.setStyleSheet(style)
-        
-
-
 
 
 

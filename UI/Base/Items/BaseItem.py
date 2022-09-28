@@ -9,8 +9,8 @@ from Utility.Gui import iconFinder
 
 class BaseItem(QtWidgets.QWidget):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
@@ -73,8 +73,8 @@ class BaseItem(QtWidgets.QWidget):
 # Filter class for category and status items
 class FilterItem(BaseItem):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self._type = None
         self.data = None

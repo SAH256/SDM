@@ -46,7 +46,7 @@ class List(QListView):
         self.setContentsMargins(0, 0, 0, 0)
 
         self.__connect_slots()
-        self.__apply_style()
+        # self.__apply_style()
         self.__scroll()
     
     def __connect_slots(self):

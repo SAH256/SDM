@@ -5,7 +5,7 @@ import libtorrent as lt
 
 from Utility.Core import SDM, TORRENT, SETTING, CATEGORY, SECTIONS
 from Utility.Structure.Task.Torrent import TorrentOptions
-
+from Utility.Util import file_ops
 
 # Setting is incomplete yet and does not used in Model completely
 # in future updates maybe it will change...
@@ -82,6 +82,13 @@ class Interface:
     
     def lang_names(self):
         return self.LANG_PACKAGES
+    
+    def get_current_stylesheet(self):
+        file_name = f'{self.current_theme()}.css'
+        file_path = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER, file_name)
+        
+        return file_ops(file_path, binary = False)
+        
 
 
 

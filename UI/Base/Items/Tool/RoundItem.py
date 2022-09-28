@@ -11,19 +11,18 @@ from .ToolItem import ToolItem
 
 class RoundItem(ToolItem):
 
-    def __init__(self, icon_name):
-        super().__init__(icon_name)
+    def __init__(self, parent, icon_name):
+        super().__init__(parent, icon_name)
 
         self.entered = False
 
         w = 58
         self.setFixedSize(w, w)
 
-        name = 'item'
+        name = 'round-item'
         self.setObjectName(name)
 
         self._toggle_icon()
-        self.__apply_style()
         
         
 
@@ -40,7 +39,7 @@ class RoundItem(ToolItem):
         self.graphicsEffect().setBlurRadius(r)
         self._toggle_icon()
         self.setFocus()
-        self.__apply_style()
+        self.update()
 
 
     def _effect(self):
@@ -73,27 +72,7 @@ class RoundItem(ToolItem):
         self.set_icon(pixmap)
 
 
-
-    def __apply_style(self):
-        style = '''
-        #item {
-            background-color : white;
-            border : 2px solid lightgray;
-            border-radius : 29px;
-        }
-
-        #item:hover {
-            border : 2px solid #3263f3;
-        }
-
-        #item[css-class="selected"],
-        #item:focus {
-            border : 2px solid blue;
-            background-color : #eef;
-        }
-
-        '''
-
-        self.setStyleSheet(style)
-
-
+    def update(self):
+        self.style().polish(self)
+        self.style().unpolish(self)
+        super().update()

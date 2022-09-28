@@ -32,17 +32,15 @@ class Header(QtWidgets.QWidget):
         
         self.prop_name = 'css-class'
         
-        name = 'header'
+        name = 'popup-header'
         self.setObjectName(name)
-
-        self.__apply_style()
 
 
     def _title(self):
         layout = QtWidgets.QHBoxLayout()
         self.mainLayout.addLayout(layout)
         
-        name = 'title'
+        name = 'popup-header__title'
         self.title = QtWidgets.QLabel()
         self.title.setObjectName(name)
         
@@ -99,67 +97,5 @@ class Header(QtWidgets.QWidget):
 
         if child == self.closeBtn:
             self.close_requested.emit()
-
-
-
-
-
-    def __apply_style(self):
-        style = '''
-        #header {
-            background-color : #3b3b3b;
-            border-top-left-radius : 4px;
-            border-top-right-radius : 4px;
-        }
-        
-        #header[css-class = "confirm"] {
-            background-color : #4096ff;
-        }
-        
-        #header[css-class = "info"] {
-            background-color : #53ff30;
-        }
-        
-        #header[css-class = "warning"] {
-            background-color : #d8d800;
-        }
-        
-        #header[css-class = "danger"] {
-            background-color : #ff3433;
-            /* background-color : #fd0046; */
-        }
-        
-        #title {
-            font-family : Arial;
-            font-size : 16px;
-            /* font-weight : 600; */
-            color : white;
-        }
-
-        
-        '''
-        
-        self.setStyleSheet(style)
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

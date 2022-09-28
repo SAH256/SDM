@@ -14,8 +14,8 @@ class UIControl(MainUI):
 
     requested = pyqtSignal(str, int)
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
         self.__connect_slots()
 
 
@@ -63,7 +63,7 @@ class UIControl(MainUI):
     def add_left_tools(self, items):
 
         for file_name, tip, handler in items:
-            item = AnimItem(file_name)
+            item = AnimItem(self, file_name)
             item.triggered.connect(handler)
             item.setToolTip(tip)
             self.toolTab.add_item(item)
@@ -77,7 +77,7 @@ class UIControl(MainUI):
     def add_actions(self, actions):
 
         for [name, enable], [icon, action] in actions.items():
-            item = ToolItemControl(icon, action)
+            item = ToolItemControl(self, icon, action)
             item.setEnabled(enable)
             self.actionTab.add_item(item)
 
@@ -150,7 +150,7 @@ class UIControl(MainUI):
 
 
     def __create_menu(self, options):
-        menu = StyleMenu()
+        menu = StyleMenu(parent = self)
         actions = {}
 
         for option in options:

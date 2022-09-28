@@ -1,0 +1,564 @@
+
+QPushButton {
+    padding : 6px 10px;
+    border-radius : 4px;
+    border : 2px solid transparent;
+    outline : none;
+    background-color : #dbdbdb;
+    color : #333;
+    
+    font-family : Arial;
+    font-size : 14px;
+}
+
+QPushButton:disabled {
+    background-color : #c9c9c9;
+    color : #555;
+}
+
+QPushButton:hover {
+    background-color : #d2d2d2;
+}
+
+QPushButton:pressed {
+    background-color : #ccc;
+    color : #555;
+}
+
+QPushButton:menu-indicator {
+    width : 10px;
+    height : 100%;
+    subcontrol-position : right center;
+    subcontrol-origin : padding;
+    
+    image : url("assets/Icons/Default/Other/arrow_down_white.png");
+    padding : 2px 5px 2px 0px;
+}
+
+QPushButton[css-class = "confirm"] {
+    background-color : #4056ff;
+    color : white;
+}
+
+QPushButton[css-class = "confirm"]:disabled {
+    background-color : #2d53b5;
+}
+
+QPushButton[css-class = "confirm"]:pressed {
+    background-color : #4076ff;
+    color : #ddd;
+}
+
+
+
+QPushButton[css-class = "danger"] {
+    background-color : #ff3233;
+    color : white;
+}
+
+
+QPushButton[css-class = "danger"]:disabled {
+    background-color : #c42929;
+
+}
+
+QPushButton[css-class = "danger"]:pressed {
+    background-color : #ee3535;
+    color : #ddd;
+}
+
+
+QPushButton[css-class = "warning"] {
+    background-color : #d8d800;
+    color : white;
+}
+
+
+QPushButton[css-class = "warning"]:disabled {
+    background-color : #c8b800;
+
+}
+
+QPushButton[css-class = "warning"]:pressed {
+    background-color : #d8c800;
+    color : #ddd;
+}
+
+QPushButton[css-class = "icon"] {
+    padding : 10px;
+    border-radius : 12px;
+    background-color : transparent;
+}
+
+QPushButton[css-class = "icon"]:hover {
+    background-color : #ddd;
+}
+
+/* END OF BUTTON */
+
+
+/* CHECKBOX */
+
+QCheckBox::indicator{
+    border : 2px solid #4968f3;
+    width : 11px;
+    height : 11px;
+    border-radius : 3px;
+}
+
+
+QCheckBox::indicator::checked {
+    background-color : #4968f3;
+    image : url(assets/Icons/Default/Other/tick.svg);
+}
+
+QCheckBox::indicator::disabled {
+    border-color : #aaa;
+}
+
+QCheckBox::indicator::disabled::checked {
+    background-color : #aaa;
+}
+
+
+/* ----------- END OF CHECKBOX ---------------- */
+
+
+
+/* COMBOBOX */
+
+* QComboBox {
+    border : none;
+    background-color : #eee;
+    padding : 5px 10px;
+    /* min-width : 6em; */
+}
+
+QComboBox:on,
+QComboBox:editable {
+    border-bottom : 2px solid blue;
+
+    background-color : #fff;
+}
+
+QComboBox::drop-down {
+    width : 25px;
+    height : 25px;
+
+    border : none;
+
+    subcontrol-origin : padding;
+    subcontrol-position: top right;
+
+}
+/* 
+* {
+    background-color : white;
+} */
+
+QComboBox QAbstractItemView {
+
+    border : 1px solid gray;
+    background-color : #ddd;
+    outline : none;
+}
+
+QComboBox QAbstractItemView::item {
+    padding : 3px 5px;
+}
+
+
+QComboBox::down-arrow {
+    image : url(assets/Icons/Default/Other/arrow-closed.png);
+    width : 10px;
+    height : 10px;
+}
+
+QComboBox::down-arrow:on {
+    image : url(assets/Icons/Default/Other/arrow-open.png);
+    
+}
+
+/* ---------- END OF COMBOBOX */
+
+/* lINE EDIT */
+
+QLineEdit {
+    border : none;
+    padding : 5px;
+    background-color : #eee;
+}
+
+QLineEdit:disabled {
+    color : #333;
+    background-color : #ccc;
+}
+
+QLineEdit:disabled[text=""] {
+    border-bottom : 2px solid red;
+}
+
+QLineEdit:focus {
+    background-color : #fff;
+    border-bottom : 2px solid blue;
+}
+
+QLineEdit[echoMode = "2"] {
+     lineedit-password-character : 9679;
+}
+
+QLineEdit[cssClass="double"]:focus {
+    border-top : 2px solid blue;
+}
+
+QLineEdit[cssClass="error"] {
+    border-bottom: 2px solid red;
+}
+
+QLineEdit[cssClass="error"]:focus {
+    border-bottom : 1px solid red;
+}
+
+
+/* ---------- END OF LINE EDIT */
+
+
+/* TEXT EDIT */
+
+QTextEdit {
+    border : none;
+    padding : 5px;
+    background-color : #eee;
+}
+
+QTextEdit:disabled {
+    color : #333;
+    background-color : #ccc;
+}
+
+QTextEdit:disabled[text=""] {
+    border-bottom : 2px solid red;
+}
+
+QTextEdit:focus {
+    background-color : #fff;
+    border-bottom : 2px solid blue;
+}
+
+QTextEdit[css-class="error"] {
+    border-bottom: 2px solid red;
+}
+
+QTextEdit[css-class="error"]:focus {
+    border-bottom : 1px solid red;
+}
+
+
+/* END OF TEXT EDIT */
+
+/* line */
+
+#line {
+    border-color : lightgray;
+    border-style : solid;
+    border-radius : 1px;
+}
+
+#line[orientation="h"] {
+    border-bottom-width : 2px;
+}
+
+#line[orientation="v"] {
+    border-left-width : 2px;
+}
+
+/* end of line */
+
+/* MENU */
+
+QMenu {
+    background-color: #303030;
+    margin : 0px;
+    padding : 0px;
+}
+
+QMenu::item {
+    margin : 2px 0px;
+    padding: 4px 40px 4px 10px;
+    color : #eee;
+    font-size : 14px;
+}
+
+QMenu::item:disabled {
+    color : #888;
+}
+
+QMenu::item:enabled:selected {
+    background-color: #505050;
+}
+
+QMenu::item:enabled:pressed {
+    padding-left : 15px;
+}
+
+QMenu::separator {
+    height: 1px;
+    background: #ccc;
+    margin : 0xp 7px;
+}
+
+
+/* END OF MENU */
+
+
+/* ELIDE */
+
+#elide {
+    padding-right : 50px;
+}
+
+/* END OF ELIDE */
+
+
+
+/* SCROLLBAR */
+
+QScrollBar:horizontal {
+                        
+    height: 4px;
+    padding : 4px 2px;
+    margin: -20px 0px -10px 0px;
+    border-radius : 2px;
+}
+
+QScrollBar:vertical {
+    width : 4px;
+    padding : 2px 4px;
+    border-radius : 2px;
+    margin : 5px -5px 5px -5px;
+}
+
+QScrollBar::handle {
+    background-color: #aaa;
+}
+
+QScrollBar::handle:horizontal {
+    min-width: 200px;            
+}
+
+QScrollBar::handle:vertical {
+    min-height : 150px;
+    padding : 5px;
+}
+
+QScrollBar::handle:horizontal:hover,
+QScrollBar::handle:vertical:hover {
+    background-color : #bbbbbb;
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::add-line:vertical {
+    background-color : white;
+}
+
+QScrollBar::sub-line:horizontal,
+QScrollBar::sub-line:vertical {
+    background-color : white;
+}
+
+/* END OF SCROLLBAR */
+
+
+/* SLIDER */
+
+QSlider {
+    padding : 5px;
+}
+
+QSlider::groove:horizontal {
+                
+    height: 2px;
+    background: #999;
+    margin: 0;
+}
+
+            
+QSlider::handle:horizontal {
+    background-color : white;
+    border: 2px solid #4968f3;
+    width: 8px;
+    border-radius : 5px;
+    margin: -5px -1px;
+}
+
+QSlider::handle:horizontal:hover {
+    background-color : #4968f3;
+}
+
+QSlider::sub-page::horizontal {
+    background-color : #4968f3;
+    height : 1px;
+}
+
+#slider-title {
+    font-size : 13px;
+    color : #4968f3;
+}
+
+
+/* END OF SLIDER */
+
+
+/* SPINBOX */
+
+#spinbox {
+    background-color : white;
+}
+
+#spinbox-input {
+    text-align : center;
+}
+
+/* END OF SPINBOX */
+
+
+/* ------------ CART ITEM -------------- */
+
+#cart-item {
+    border-top : 3px solid transparent;
+}
+
+#cart-item:hover {
+    background-color : #ddf;
+}
+
+#cart-item[css-class="selected"] {
+    border-top-color : blue;
+
+    /* background-color : qlineargradient(x1 : 0.5, y1 : 0, x2 : 0.5, y2 : 1,
+                        stop : 0 #ddf,
+                        stop : 0.35 #ddf,
+                        stop : 1 #fff);
+    */
+}
+
+#cart-name {
+    color : darkcyan;
+    font-family : Arial;
+    font-size : 14px;
+    font-weight : 600;
+    padding : 0px 20px 0px 0px;
+}
+
+/* ------------ END OF CART ITEM -------------- */
+
+
+/* ------------- OPTION ITEM -------------- */
+
+#option-item {
+    border-left : 3px solid transparent;
+}
+
+#option-item:hover {
+    background-color : #ddf;
+}
+
+#option-item[css-class="selected"] {
+    border-left-color : blue;
+}
+
+/* ------------- END OF OPTION ITEM -------------- */
+
+
+/* ------------- ROUND ITEM -----------------*/
+
+#round-item {
+    background-color : white;
+    border : 2px solid lightgray;
+    border-radius : 29px;
+}
+
+#round-item:hover {
+    border : 2px solid #3263f3;
+}
+
+#round-item[css-class="selected"],
+#round-item:focus {
+    border : 2px solid blue;
+    background-color : #eef;
+}
+
+/* ------------- END OF ROUND ITEM -----------------*/
+
+
+/* ------------- TOOL ITEM --------------- */
+
+#tool-item {
+    background-color : transparent;
+}
+
+#tool-item QToolTip {
+    background-color : #444;
+    color : #fff;
+    padding : 3px 5px;
+    border-radius : 3px;
+    border : 1px solid #222;
+    opacity : 200;
+}
+
+/* ------------- END OF TOOL ITEM --------------- */
+
+
+/* Dialogs */
+
+QDialog {
+    background-color : white;
+}
+
+#popup-dialog {
+    background-color : transparent;
+}
+
+#popup-body {
+    background-color : white;
+    border-bottom-right-radius : 4px;
+    border-bottom-left-radius : 4px;
+}
+
+
+#popup-header {
+    background-color : #3b3b3b;
+    border-top-left-radius : 4px;
+    border-top-right-radius : 4px;
+}
+
+#popup-header[css-class = "confirm"] {
+    background-color : #4096ff;
+}
+
+#popup-header[css-class = "info"] {
+    background-color : #53ff30;
+}
+
+#popup-header[css-class = "warning"] {
+    background-color : #d8d800;
+}
+
+#popup-header[css-class = "danger"] {
+    background-color : #ff3433;
+    /* background-color : #fd0046; */
+}
+
+#popup-header__title {
+    font-family : Arial;
+    font-size : 16px;
+    /* font-weight : 600; */
+    color : white;
+}
+
+/* end of dialog */
+
+
+
+/* ################################ END OF BASE PART ##################################### */
+

@@ -22,7 +22,7 @@ class SpinBox(QtWidgets.QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         self.setAutoFillBackground(True)
 
-        name = 'Panel'
+        name = 'spinbox'
         self.setObjectName(name)
 
         p = QtWidgets.QSizePolicy()
@@ -41,8 +41,6 @@ class SpinBox(QtWidgets.QWidget):
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.mainLayout.setSpacing(0)
         self.mainLayout.addStretch(1)
-        self.__apply_style()
-
 
 
     def _up_btn(self):
@@ -60,8 +58,11 @@ class SpinBox(QtWidgets.QWidget):
     def _box(self):
         boxLayout = QtWidgets.QHBoxLayout()
         self.mainLayout.addLayout(boxLayout)
+        
+        name = 'spinbox-input'
 
         self.numBox = StyleInput()
+        self.numBox.setObjectName(name)
         self.numBox.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.numBox.setClearButtonEnabled(False)
         a = QtGui.QIntValidator(0, 9999)
@@ -82,18 +83,3 @@ class SpinBox(QtWidgets.QWidget):
         self.downBtn.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         
         downLayout.addWidget(self.downBtn)
-
-
-    def __apply_style(self):
-        style = '''
-            #Panel {
-                background-color : white;
-            }
-
-            QLineEdit {
-                text-align : center;
-            }
-        '''
-
-        self.setStyleSheet(style)
-

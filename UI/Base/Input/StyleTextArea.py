@@ -28,8 +28,6 @@ class TextArea(QtWidgets.QTextEdit):
         self.textChanged.connect(self.__adjust_size)
         self.__adjust_size()
 
-        self.__apply_style()
-
 
     def __adjust_size(self):
 
@@ -92,38 +90,3 @@ class TextArea(QtWidgets.QTextEdit):
     def _reset(self):
         self.clear()
 
-    def __apply_style(self):
-        style = '''
-        
-        QTextEdit {
-            border : none;
-            padding : 5px;
-            background-color : #eee;
-        }
-
-        QTextEdit:disabled {
-            color : #333;
-            background-color : #ccc;
-        }
-
-        QTextEdit:disabled[text=""] {
-            border-bottom : 2px solid red;
-        }
-
-        QTextEdit:focus {
-            background-color : #fff;
-            border-bottom : 2px solid blue;
-        }
-
-        QTextEdit[css-class="error"] {
-            border-bottom: 2px solid red;
-        }
-
-        QTextEdit[css-class="error"]:focus {
-            border-bottom : 1px solid red;
-        }
-
-        
-        '''
-
-        self.setStyleSheet(style)

@@ -12,8 +12,8 @@ class AnimItem(QtWidgets.QWidget):
 
     triggered = QtCore.pyqtSignal()
 
-    def __init__(self, file_name):
-        super().__init__()
+    def __init__(self, parent, file_name):
+        super().__init__(parent)
 
         self.mainLayout = QtWidgets.QVBoxLayout()
         self.setLayout(self.mainLayout)

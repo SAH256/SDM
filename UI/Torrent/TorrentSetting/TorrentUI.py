@@ -39,7 +39,7 @@ class TorrentUI(Dialog):
 
         self.__add_tabs()
 
-        self.__apply_style()
+        # self.__apply_style()
     
 
 
@@ -49,7 +49,7 @@ class TorrentUI(Dialog):
 
         _dir = QtWidgets.QBoxLayout.Direction
 
-        self.tab = InfiniteControl(_dir.TopToBottom)
+        self.tab = InfiniteControl(self, _dir.TopToBottom)
 
         tabLayout.addWidget(self.tab, 1, Qt.AlignmentFlag.AlignVCenter)
         tabLayout.addStretch(1)

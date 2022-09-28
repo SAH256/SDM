@@ -16,8 +16,8 @@ class View(QtWidgets.QListView):
     selection_changed = QtCore.pyqtSignal(list)
     menu_requested = QtCore.pyqtSignal(list)
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.__model = QtGui.QStandardItemModel()
             

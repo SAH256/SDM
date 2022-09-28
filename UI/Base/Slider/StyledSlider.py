@@ -21,15 +21,13 @@ class Slider(QtWidgets.QWidget):
 
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
-        self.__apply_style()
-
 
     def _labels(self, title):
         layout = QtWidgets.QHBoxLayout()
         self.mainLayout.addLayout(layout)
 
         labels = [
-            (None, title, 'title'),
+            (None, title, 'slider-title'),
             ('log', '', None),
             None
         ]
@@ -83,48 +81,5 @@ class Slider(QtWidgets.QWidget):
 
     def _reset(self):
         self.slider.setValue(self.default)
-        
-
-    def __apply_style(self):
-        style = '''
-
-        QSlider {
-            padding : 5px;
-        }
-
-        QSlider::groove:horizontal {
-                        
-            height: 2px;
-            background: #999;
-            margin: 0;
-        }
-
-                    
-        QSlider::handle:horizontal {
-            background-color : white;
-            border: 2px solid #4968f3;
-            width: 8px;
-            border-radius : 5px;
-            margin: -5px -1px;
-        }
-
-        QSlider::handle:horizontal:hover {
-            background-color : #4968f3;
-        }
-
-        QSlider::sub-page::horizontal {
-            background-color : #4968f3;
-            height : 1px;
-        }
-
-        #title {
-            font-size : 13px;
-            color : #4968f3;
-        }
-                    
-        '''
-
-        self.setStyleSheet(style)
-
 
 

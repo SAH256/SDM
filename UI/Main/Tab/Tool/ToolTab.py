@@ -5,7 +5,7 @@ from PyQt5.QtCore import Qt
 
 class ToolTab(QtWidgets.QWidget):
     
-    def __init__(self, direction):
+    def __init__(self, parent, direction):
         super().__init__()
 
         self.setAutoFillBackground(True)

@@ -32,7 +32,7 @@ class ListUI(QtWidgets.QWidget):
         name = 'list-panel'
         self.setObjectName(name)
 
-        self.__apply_style()
+        # self.__apply_style()
 
 
     def _ribbon(self):

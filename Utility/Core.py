@@ -290,6 +290,7 @@ class SDM:
 
         ASSETS_FOLDER = 'assets'
         ICON_FOLDER = 'Icons'
+        STYLES_FOLDER = 'Styles'
         DEPS_FOLDER = "Deps"
         PLUGINS_FOLDER = 'Plugins'
 

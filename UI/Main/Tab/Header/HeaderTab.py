@@ -7,8 +7,8 @@ from UI.Base.ScrollBar.ScrollBarUI import StyleScrollBar
 
 class HeaderTab(QtWidgets.QScrollArea):
     
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 

@@ -41,6 +41,7 @@ class MainWindow(QtWidgets.QMainWindow):
         title = 'Simple Download Manager'
         self.setWindowTitle(title)
 
+    def setup(self):
         self.__central_widget()
         self.__setup_categories()
         self.__setup_left_menu()
@@ -53,7 +54,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def __central_widget(self):
-        self.central_widget = UIControl()
+        self.central_widget = UIControl(self)
         self.setCentralWidget(self.central_widget)
 
         for info in self.client.get_all_info():

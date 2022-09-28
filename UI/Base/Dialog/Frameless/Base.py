@@ -35,11 +35,10 @@ class FrameLessUI(Dialog):
         self._header()
         self._body()
 
-        name = 'popup'
+        name = 'popup-dialog'
         self.setObjectName(name)
 
         self.__shadow()
-        self.__apply_style()
     
     
     def _header(self):
@@ -105,23 +104,6 @@ class FrameLessUI(Dialog):
     def mouseReleaseEvent(self, ev):
         super().mouseReleaseEvent(ev)
         self.offset = None
-
-
-
-    def __apply_style(self):
-        style = '''
-        #popup {
-            background-color : transparent;
-        }
-
-        '''
-        
-        self.setStyleSheet(style)
-
-
-
-
-
 
 
 

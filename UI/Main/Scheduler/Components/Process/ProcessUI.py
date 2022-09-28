@@ -39,7 +39,7 @@ class Process(QtWidgets.QScrollArea):
         name = 'widget'
         wid.setObjectName(name)
 
-        self.__apply_style()
+        # self.__apply_style()
 
 
     def _process(self):

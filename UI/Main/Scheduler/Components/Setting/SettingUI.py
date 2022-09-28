@@ -26,7 +26,7 @@ class SettingUI(QtWidgets.QWidget):
 
         self.mainLayout.addStretch(1)
 
-        self.__apply_style()
+        # self.__apply_style()
 
 
     def _input(self):

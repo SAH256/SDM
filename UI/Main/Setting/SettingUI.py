@@ -40,7 +40,7 @@ class SettingUI(Dialog):
         name = 'panel'
         self.setObjectName(name)
 
-        self.__apply_style()
+        # self.__apply_style()
     
 
     def _tab(self):
@@ -49,7 +49,7 @@ class SettingUI(Dialog):
         
         _dir = QtWidgets.QBoxLayout.Direction
 
-        self.tab = InfiniteControl(_dir.TopToBottom, False)
+        self.tab = InfiniteControl(self, _dir.TopToBottom, False)
         
         layout.addWidget(self.tab, 1, Qt.AlignmentFlag.AlignVCenter)
 

@@ -43,7 +43,7 @@ class GroupControl(GroupUI):
 
 
     def __manage_queue_menu(self):
-        menu = StyleMenu()
+        menu = StyleMenu(parent = self)
         menu.triggered.connect(self.__add_handler)
 
         for name in self.queue_list:

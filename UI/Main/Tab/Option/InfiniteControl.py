@@ -13,8 +13,8 @@ class InfiniteControl(OptionTab):
 
     item_changed = QtCore.pyqtSignal(int)
     
-    def __init__(self, p_dir, line = True):
-        super().__init__(p_dir)
+    def __init__(self, parent, p_dir, line = True):
+        super().__init__(parent, p_dir)
 
         self.need_line = line
 
@@ -28,7 +28,7 @@ class InfiniteControl(OptionTab):
         self.setAutoFillBackground(True)
 
         self.mainLayout.setContentsMargins(5, 5, 5, 5)
-        self.__apply_style()
+
 
 
     def add_item(self, data, tip = ''):
@@ -38,10 +38,10 @@ class InfiniteControl(OptionTab):
 
 
     def __get_item(self, icon_name):
-        item = RoundItem(icon_name)
+        item = RoundItem(self, icon_name)
 
         if len(self.items) and self.need_line:
-            line = Line(2, 'lightgray', False)
+            line = Line(False)
             self.mainLayout.addWidget(line, 0, Qt.AlignmentFlag.AlignCenter)
 
         if not self.selected:

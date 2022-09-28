@@ -18,7 +18,7 @@ class About(AboutUI):
         self.setWindowTitle(title)
 
         self.__connect_slots()
-        self.__apply_style()
+        # self.__apply_style()
         self.__setup()
     
 

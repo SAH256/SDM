@@ -8,8 +8,8 @@ from ..BaseItem import BaseItem
 
 class ToolItem(BaseItem):
 
-    def __init__(self, icon_name):
-        super().__init__()
+    def __init__(self, parent, icon_name):
+        super().__init__(parent)
 
         self.base_icon = icon_name
 
@@ -21,6 +21,9 @@ class ToolItem(BaseItem):
 
         layout = self.mainLayout.itemAt(0)
         layout.setContentsMargins(0, 0, 0, 0)
+
+        name = 'tool-item'
+        self.setObjectName(name)
         
 
     def _effect(self):

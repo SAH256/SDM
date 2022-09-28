@@ -18,8 +18,8 @@ class Dir:
 # Main window central widget -- UI class
 class MainUI(QtWidgets.QWidget):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.windowLayout = QtWidgets.QBoxLayout(Dir.TopToBottom)
         self.setLayout(self.windowLayout)
@@ -38,7 +38,7 @@ class MainUI(QtWidgets.QWidget):
         self.leftLayout = QtWidgets.QVBoxLayout()
         self.mainLayout.addLayout(self.leftLayout)
 
-        self.toolBar = ToolBar()
+        self.toolBar = ToolBar(self)
         self.leftLayout.addWidget(self.toolBar)
 
         self.__category()
@@ -47,12 +47,12 @@ class MainUI(QtWidgets.QWidget):
 
 
     def __category(self):
-        self.categoryTab = OptionTab(Dir.TopToBottom)
+        self.categoryTab = OptionTab(self, Dir.TopToBottom)
         self.toolBar.add_action(self.categoryTab)
 
 
     def __tool(self):
-        self.toolTab = ToolControl(Dir.TopToBottom)
+        self.toolTab = ToolControl(self, Dir.TopToBottom)
         self.toolBar.add_action(self.toolTab)
 
 
@@ -68,7 +68,7 @@ class MainUI(QtWidgets.QWidget):
         headLayout = QtWidgets.QHBoxLayout()
         self.conLayout.addLayout(headLayout)
 
-        self.headerTab = HeaderControl()
+        self.headerTab = HeaderControl(self)
         headLayout.addWidget(self.headerTab)
 
 
@@ -76,7 +76,7 @@ class MainUI(QtWidgets.QWidget):
         listLayout = QtWidgets.QHBoxLayout()
         self.conLayout.addLayout(listLayout, 1)
 
-        self.taskList = View()
+        self.taskList = View(self)
 
         listLayout.addWidget(self.taskList, 1)
 
@@ -85,7 +85,7 @@ class MainUI(QtWidgets.QWidget):
         rightLayout = QtWidgets.QVBoxLayout()
         self.mainLayout.addLayout(rightLayout)
 
-        self.btnBar = ToolBar()
+        self.btnBar = ToolBar(self)
         rightLayout.addWidget(self.btnBar)
 
         self.btnBar.add_space(1)
@@ -94,7 +94,7 @@ class MainUI(QtWidgets.QWidget):
 
 
     def __action(self):
-        self.actionTab = ToolControl(Dir.TopToBottom)
+        self.actionTab = ToolControl(self, Dir.TopToBottom)
 
         self.btnBar.add_action(self.actionTab)
 

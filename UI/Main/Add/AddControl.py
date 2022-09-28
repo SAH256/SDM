@@ -79,7 +79,7 @@ class AddLink(AddUI):
 
     # create menu and add queue name as option
     def __setup_menu(self):
-        menu = StyleMenu()
+        menu = StyleMenu(parent=self)
         menu.triggered.connect(self.__queue_handler)
 
         for queue in self.queues:

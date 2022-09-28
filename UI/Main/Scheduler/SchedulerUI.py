@@ -41,7 +41,7 @@ class SchedulerUI(Dialog):
         name = 'panel'
         self.setObjectName(name)
 
-        self.__apply_style()
+        # self.__apply_style()
 
 
     def _list(self):
@@ -84,7 +84,7 @@ class SchedulerUI(Dialog):
 
         _dir = QtWidgets.QBoxLayout.Direction
 
-        self.tab = InfiniteControl(_dir.LeftToRight, False)
+        self.tab = InfiniteControl(self, _dir.LeftToRight, False)
 
         layout.addWidget(self.tab, 1, Qt.AlignmentFlag.AlignCenter)
 

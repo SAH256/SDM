@@ -44,7 +44,7 @@ class HeaderControl(HeaderTab):
 
 
     def __get_item(self, icon, name, _type, data):
-        item = CartItem(icon, name)
+        item = CartItem(self, icon, name)
         item.set_type(_type)
         item.set_data(data)
 

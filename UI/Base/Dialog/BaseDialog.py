@@ -9,7 +9,7 @@ from PyQt5.QtCore import Qt
 class Dialog(QDialog):
 
     def __init__(self, parent, icon_name = None):
-        super().__init__()
+        super().__init__(parent)
 
         flags = self.windowFlags()
         flags ^= Qt.WindowType.WindowContextHelpButtonHint

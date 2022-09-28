@@ -20,7 +20,7 @@ class Base(QtWidgets.QWidget):
         name = 'panel'
         self.setObjectName(name)
 
-        self.__apply_style()
+        # self.__apply_style()
 
 
     def _add_shadow(self):

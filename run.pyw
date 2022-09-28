@@ -55,6 +55,7 @@ class Application(QApplication):
 
     def __setup_ui(self):
         self.ui = MainWindow(self.client, self.setting)
+        self.ui.setup()
         self.ui.user_exited.connect(self.__exit_handler)
 
 
@@ -65,9 +66,20 @@ class Application(QApplication):
     def __perform_checks(self):
         check_essential_folders()
 
+
+    # will expand later
+    def __check_style(self):
+        style = self.setting.get_interface().get_current_stylesheet()
+        self.ui.setStyleSheet(style)
+        
+
     
     def exec(self):
         while not self.__user_exit:
+            # change Interface options
+            
+            self.__check_style()
+
             self.ui.show()
             super().exec()
 

@@ -17,10 +17,12 @@ class Elide(QtWidgets.QLabel):
 
         p = self.sizePolicy()
         p.setHorizontalPolicy(p.Policy.Minimum)
-        # p.setVerticalPolicy()
+
         self.setSizePolicy(p)
 
-        self.__apply_style()
+        name = 'elide'
+        self.setObjectName(name)
+        
     
     def elideMode(self):
         return self._elideMode
@@ -30,14 +32,6 @@ class Elide(QtWidgets.QLabel):
             self._elideMode = mode
             self.update()
     
-    def __apply_style(self):
-        style = '''
-        QLabel {
-            padding-right : 50px;
-        }
-        '''
-
-        self.setStyleSheet(style)
 
     def paintEvent(self, ev):
 

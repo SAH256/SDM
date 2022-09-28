@@ -54,7 +54,7 @@ class View(QtWidgets.QTreeView):
         name = 'table'
         self.setObjectName(name)
 
-        self.__apply_style()
+        # self.__apply_style()
 
 
     def create_row(self, info):

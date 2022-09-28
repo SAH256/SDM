@@ -13,7 +13,7 @@ from UI.Base.Label.ElideLabel import Elide
 class TaskItem(BaseItem):
 
     def __init__(self):
-        super().__init__()
+        super().__init__(None)
 
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
         
@@ -27,7 +27,10 @@ class TaskItem(BaseItem):
 
         self._info()
 
-        self.__set_style()
+        name = 'task-item'
+        self.setObjectName(name)
+        
+        self.__apply_style()
 
 
     def _info(self):
@@ -45,9 +48,9 @@ class TaskItem(BaseItem):
         self.infoLayout.addLayout(nameLayout, 2)
         
         data = [
-            ('nameLabel', 'name', Elide),
+            ('nameLabel', 'task-name', Elide),
             None,
-            ('status', 'status', QtWidgets.QLabel),
+            ('status', 'task-status', QtWidgets.QLabel),
         ]
 
         for item in data:
@@ -114,36 +117,27 @@ class TaskItem(BaseItem):
         self.remained_time.setVisible(self.expanded)
 
 
-    def __set_style(self):
+
+    def __apply_style(self):
         style = '''
-
-        #item {
-            background-color : white;
-        }
-
-        QLabel {
+        #task-item QLabel {
             color : #455;
         }
 
 
-        #name {
+        #task-name {
             font-family : Arial;
             font-size : 15px;
             font-weight : 600;
             color : #e52c2c;
         }
 
-        
-        #name[css-class="resume"] {
+
+        #task-name[css-class="resume"] {
             color : #23af27;
         }
-        
 
         '''
-
+        
         self.setStyleSheet(style)
-
-
-
-
 

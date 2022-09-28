@@ -9,8 +9,8 @@ class OptionTab(QtWidgets.QWidget):
 
     item_changed = QtCore.pyqtSignal(list)
     
-    def __init__(self, direction):
-        super().__init__()
+    def __init__(self, parent, direction):
+        super().__init__(parent)
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
@@ -34,7 +34,7 @@ class OptionTab(QtWidgets.QWidget):
 
 
     def __get_item(self, icon):
-        item = OptionItem(icon)
+        item = OptionItem(self, icon)
 
         if not self.selected:
             item.set_select(True)

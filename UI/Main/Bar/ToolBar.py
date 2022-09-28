@@ -6,8 +6,8 @@ from PyQt5.QtCore import Qt
 # Toolbar container for category or action items
 class ToolBar(QtWidgets.QWidget):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.mainLayout = QtWidgets.QVBoxLayout()
         self.setLayout(self.mainLayout)
