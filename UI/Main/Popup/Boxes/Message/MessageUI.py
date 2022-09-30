@@ -15,15 +15,16 @@ class Message(FrameLessUI):
         self._label()
         self.mainLayout.addStretch(1)
         self._buttons()
-
-        self.__style()
     
 
     def _label(self):
         layout = QtWidgets.QVBoxLayout()
         self.mainLayout.addLayout(layout)
 
+        name = 'popup-message'
+
         self.info_label = QtWidgets.QLabel()
+        self.info_label.setObjectName(name)
 
         layout.addWidget(self.info_label)
 
@@ -49,30 +50,3 @@ class Message(FrameLessUI):
 
         self.info_label.setText(text)
     
-
-    def __style(self):
-        style = '''
-        #info {
-            font-family : Arial;
-            font-size : 14px;
-            font-weight : 600;
-            color : #444;
-        }
-        '''
-
-        self.info_label.setStyleSheet(style)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

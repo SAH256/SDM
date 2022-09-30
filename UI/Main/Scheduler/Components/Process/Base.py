@@ -17,10 +17,8 @@ class Base(QtWidgets.QWidget):
         self._title()
         self._content()
 
-        name = 'panel'
+        name = 'process-container'
         self.setObjectName(name)
-
-        # self.__apply_style()
 
 
     def _add_shadow(self):
@@ -40,7 +38,7 @@ class Base(QtWidgets.QWidget):
         self.title = QtWidgets.QLabel()
         layout.addWidget(self.title)
 
-        name = 'title'
+        name = 'container-title'
         self.title.setObjectName(name)
 
 
@@ -53,28 +51,4 @@ class Base(QtWidgets.QWidget):
     def set_title(self, txt):
         if txt and isinstance(txt, str):
             self.title.setText(txt)
-
-
-    def __apply_style(self):
-        style = '''
-        #panel {
-            background-color : white;
-        }
-
-        #title {
-            font-family : Arial;
-            font-size : 16px;
-            font-weight : 600;
-            color : darkcyan;
-        }
-
-        #danger {
-            color : red;
-            font-size : 14px;
-            font-weight : 600;
-            text-align : center;
-        }
-        '''
-
-        self.setStyleSheet(style)
 

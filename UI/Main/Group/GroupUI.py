@@ -39,10 +39,8 @@ class GroupUI(Dialog):
 
         self.mainLayout.addStretch()
 
-        name = 'dialog'
+        name = 'group-dialog'
         self.setObjectName(name)
-
-        self.__apply_style()
 
 
     def _header(self):
@@ -61,7 +59,7 @@ class GroupUI(Dialog):
         self.headerLayout.addLayout(layout)
 
         text = 'Group Download'
-        name = 'header'
+        name = 'dialog-header'
 
         label = QtWidgets.QLabel(text)
         label.setObjectName(name)
@@ -194,31 +192,3 @@ class GroupUI(Dialog):
 
                 btnLayout.addWidget(wid)
                 setattr(self, item[0], wid)
-
-
-    def __apply_style(self):
-        style = '''
-        #dialog {
-            background-color : white;
-        }
-
-        #header {
-            color : blue;
-            font-family : Arial;
-            font-size : 18px;
-            font-weight : 600;
-        }
-
-        QToolTip {
-            border: 2px solid blue;
-            background-color : #333;
-            color : white;
-            padding: 5px;
-            border-radius: 3px;
-            opacity: 200;
-        }
-        '''
-
-        self.setStyleSheet(style)
-
-

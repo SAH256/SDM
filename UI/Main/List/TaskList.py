@@ -20,12 +20,13 @@ class View(QtWidgets.QListView):
         super().__init__(parent)
 
         self.__model = QtGui.QStandardItemModel()
-            
         self.proxy = FilterModel(self.__model)
+            
 
         self.setModel(self.proxy)
-
+        self.setSelectionMode(self.SelectionMode.ExtendedSelection)
         self.setEditTriggers(self.EditTrigger.NoEditTriggers)
+        self.selectionModel().selectionChanged.connect(self.__selection_handler)
 
         widget = TaskItemControl()
         d = ItemDel(widget)
@@ -33,17 +34,11 @@ class View(QtWidgets.QListView):
 
         self.items = {}
 
-        name = 'view'
+        name = 'task-list'
         self.setObjectName(name)
-
-        self.setSelectionMode(self.SelectionMode.ExtendedSelection)
-
-        self.selectionModel().selectionChanged.connect(self.__selection_handler)
 
         self.__scroll()
         self.__timer()
-
-        self.__apply_style()
 
 
     def add_task(self, info):
@@ -153,36 +148,4 @@ class View(QtWidgets.QListView):
             pos = ev.globalPos()
 
             self.menu_requested.emit([info, pos])
-
-
-    def __apply_style(self):
-        style = '''
-
-        #view {
-            outline : none;
-            border : none;
-            background-color: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,
-              stop: 0 white,
-              stop: 0.5 #ddd,
-              stop: 1 white);
-        }
-
-        #view::item {
-            margin : 3px 5px;
-            padding : 25px 10px;
-            background-color : white;
-            border-radius : 3px;
-        }
-
-        #view::item:hover {
-            background-color : #c2d7fc;
-        }
-
-        #view::item:selected {
-            background-color : #cbebff;
-            border : 2px solid blue;
-        }
-        '''
-
-        self.setStyleSheet(style)
 

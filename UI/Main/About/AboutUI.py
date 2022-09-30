@@ -24,6 +24,9 @@ class AboutUI(Dialog):
         self._info()
         self._attributions()
         self._buttons()
+        
+        name = 'about-dialog'
+        self.setObjectName(name)
 
 
     def _image(self):
@@ -32,8 +35,6 @@ class AboutUI(Dialog):
 
         self.logo_place = QtWidgets.QLabel()
         layout.addWidget(self.logo_place, 1, Qt.AlignmentFlag.AlignCenter)
-
-
 
 
     def _info(self):
@@ -60,8 +61,10 @@ class AboutUI(Dialog):
         scroll.setWidgetResizable(True)
         layout.addWidget(scroll)
 
+        name = 'attr-label'
 
         self.attr_box = QtWidgets.QLabel()
+        self.attr_box.setObjectName(name)
         self.attr_box.setWordWrap(True)
         self.attr_box.setTextInteractionFlags(Qt.TextInteractionFlag.LinksAccessibleByMouse)
         self.attr_box.setOpenExternalLinks(True)

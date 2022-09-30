@@ -14,10 +14,8 @@ class BaseWidget(QtWidgets.QWidget):
 
         self.__layout(box, vertical)
 
-        name = 'widget'
+        name = 'torrent-base-widget'
         self.setObjectName(name)
-
-        self.__apply_style()
 
 
     def __layout(self, box, vertical):
@@ -33,17 +31,6 @@ class BaseWidget(QtWidgets.QWidget):
         
         self.mainLayout = layout
         self.setLayout(self.mainLayout)
-
-
-
-    def __apply_style(self):
-        style = '''
-        #widget {
-            background-color : white;
-        }
-        '''
-
-        self.setStyleSheet(style)
 
 
 
@@ -78,11 +65,10 @@ class Scroll(QtWidgets.QScrollArea):
         self.info_data = None
         self.paused = True
 
-        name = 'scroll_area'
+        name = 'torrent-scroll_area'
         self.setObjectName(name)
 
         self.__scroll_bar()
-        self.__apply_style()
 
 
     def _widget(self, box, vertical):
@@ -110,16 +96,7 @@ class Scroll(QtWidgets.QScrollArea):
 
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
-    
 
-    def __apply_style(self):
-        style = '''
-        #scroll_area {
-            background-color : white;
-        }
-        '''
-
-        self.setStyleSheet(style)
 
 
 def create_icon_label(icon_name, size = 15):

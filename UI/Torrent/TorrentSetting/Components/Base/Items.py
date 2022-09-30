@@ -44,22 +44,23 @@ class ScrollItem(BaseItem):
 
         if copy:
             self._setup_menu()
-
-        self.__apply_style()
+        
+        name = 'torrent-scroll-item'
+        self.setObjectName(name)
 
 
     def _create_labels(self, text_1, text_2):
         cell = [
-            ('name', text_1),
-            ('state', text_2)
+            ('name', 'scroll-item-name', text_1),
+            ('state', 'scroll-item-state', text_2)
         ]
 
         for item in cell:
-            wid = QtWidgets.QLabel(item[1])
+            wid = QtWidgets.QLabel(item[2])
             wid.setWordWrap(True)
             wid.setTextInteractionFlags(Qt.TextInteractionFlag.LinksAccessibleByMouse)
             wid.setOpenExternalLinks(True)
-            wid.setObjectName(item[0])
+            wid.setObjectName(item[1])
 
             self.mainLayout.addWidget(wid)
 
@@ -105,60 +106,6 @@ class ScrollItem(BaseItem):
         
         self.update()
 
-    def __apply_style(self):
-
-        style = self.styleSheet() + """
-
-            QLabel {
-                font-family : Arial;
-            }
-
-            #name {
-                color : darkcyan;
-                font-size : 14px;
-                font-weight : 600;
-                margin-top : 5px;
-                margin-bottom : 5px;
-            }
-
-            #name[css-class="Bold"] {
-                font-size : 20px;
-                font-weight : 800;
-            }
-
-            #state {
-                font-size : 12px;
-                padding-left : 4px;
-                color : #444;
-            }
-
-
-            #state[css-class="Bold"] {
-                font-size : 14px;
-                font-weight : 600;
-            }
-
-
-            #name[text="DHT"],
-            #name[text="LSD"],
-            #name[text="PeX"] {
-                color : #4342ff;
-            }
-            """  + f"""
-
-            #name[css-class='{self.tracker_value}'] {{
-                color : #3a66e5;
-            }}
-
-            #state[css-class='{self.tracker_value}'] {{
-                color : #2b2b2b;
-            }}
-
-        """
-
-        self.setStyleSheet(style)
-
-
     
     def set_name(self, text):
         self.name.setText(text)
@@ -196,7 +143,9 @@ class PeerScrollItem(BaseItem):
 
         self._info_labels()
         self._create_monitors()
-        self._set_styles()
+        
+        name = 'peer-scroll-item'
+        self.setObjectName(name)
 
 
 
@@ -280,39 +229,6 @@ class PeerScrollItem(BaseItem):
     def _reset(self):
         for wid in self.widgets.values():
             wid.setText('')
-
-
-
-    def _set_styles(self):
-        style = f"""
-
-            QLabel {{
-                font-family : Arial;
-                font-size : 12px;
-            }}
-
-            #client {{
-                font-size : 16px;
-                font-weight : bold;
-                color : #222;
-            }}
-
-            #client[{self.prop_name}='{TORRENT.SEEDER}'] {{
-                color : #10df1e;
-            }}
-
-            #client[{self.prop_name}='{TORRENT.LEECHER}'] {{
-                color : #ef2938;
-            }}
-
-            #progress {{
-                color : #2b2b2b;
-                font-size : 13px;
-            }}
-
-        """
-
-        self.setStyleSheet(style)
 
 
 

@@ -20,9 +20,11 @@ class HeaderTab(QtWidgets.QScrollArea):
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.mainLayout.setSpacing(0)
 
+        name = 'tab-widget'
+
         self.wid = QtWidgets.QWidget()
+        self.wid.setObjectName(name)
         self.wid.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        self.wid.setObjectName('widget')
         self.wid.setLayout(self.mainLayout)
 
         self.setWidget(self.wid)
@@ -38,10 +40,8 @@ class HeaderTab(QtWidgets.QScrollArea):
         self._scroll()
         self._cart()
 
-        name = 'container'
+        name = 'header-tab'
         self.setObjectName(name)
-
-        self.__apply_style()
 
 
     def _cart(self):
@@ -56,19 +56,6 @@ class HeaderTab(QtWidgets.QScrollArea):
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
-
-    def __apply_style(self):
-        style = '''
-        #container {
-            border : none;
-        }
-
-        #widget {
-            background-color : white;
-        }
-        '''
-
-        self.setStyleSheet(style)
 
 
 

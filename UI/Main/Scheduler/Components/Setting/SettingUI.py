@@ -25,8 +25,9 @@ class SettingUI(QtWidgets.QWidget):
         self._checks()
 
         self.mainLayout.addStretch(1)
-
-        # self.__apply_style()
+        
+        name = 'queue-setting'
+        self.setObjectName(name)
 
 
     def _input(self):
@@ -36,7 +37,7 @@ class SettingUI(QtWidgets.QWidget):
 
         txt = 'Name'
         label = QtWidgets.QLabel(txt)
-        label.setObjectName(txt)
+        # label.setObjectName(txt)
 
         self.name = StyleInput()
         self.name.setReadOnly(True)
@@ -101,24 +102,6 @@ class SettingUI(QtWidgets.QWidget):
             temp.addWidget(wid)
 
             setattr(self, item[0], wid)
-
-
-    def __apply_style(self):
-        style = '''
-
-        QLabel {
-            font-size : 12px;
-            color : #333;
-        }
-
-        #Name {
-            font-size : 14px;
-            font-weight : 900;
-            color : #2339f3;
-        }
-        '''
-
-        self.setStyleSheet(style)
 
 
 

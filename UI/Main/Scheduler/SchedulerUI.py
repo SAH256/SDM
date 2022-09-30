@@ -38,11 +38,6 @@ class SchedulerUI(Dialog):
         self._content()
         self.__add_tabs()
 
-        name = 'panel'
-        self.setObjectName(name)
-
-        # self.__apply_style()
-
 
     def _list(self):
         layout = QtWidgets.QVBoxLayout()
@@ -130,17 +125,6 @@ class SchedulerUI(Dialog):
 
             setattr(self, item[0], index)
             setattr(self, name, wid)
-
-
-    def __apply_style(self):
-        style = '''
-        #panel {
-            background-color : white;
-        }
-        '''
-
-        self.setStyleSheet(style)
-
 
 
 

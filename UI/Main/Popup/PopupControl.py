@@ -8,7 +8,7 @@ from .Boxes.TextArea.TextAreaUI import TextEntry
 from Utility.Core import POPUP_TYPE
 
 
-# Popup initalizing machanism based on type
+# Popup initIalizing mechanism based on type
 
 
 POPUP_DIALOGS = {

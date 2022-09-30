@@ -17,8 +17,9 @@ class AuthUI(QtWidgets.QGroupBox) :
 
         self._label()
         self._inputs()
-
-        self.__apply_style()
+        
+        name = 'auth-box'
+        self.setObjectName(name)
 
 
     def _label(self):
@@ -52,43 +53,6 @@ class AuthUI(QtWidgets.QGroupBox) :
             inputLayout.addRow(p, wid)
 
             setattr(self, name, wid)
-
-
-    def __apply_style(self):
-        style = '''
-        QGroupBox {
-            border: 1px solid lightgray;
-            padding : 20px  2px 5px 2px;
-            border-radius: 2px;
-        }
-
-        QGroupBox::title {
-            subcontrol-origin: margin;
-            subcontrol-position: top left; /* position at the top center */
-            padding: 0 3px;
-        }
-
-        QGroupBox::indicator{
-            border : 2px solid #4968f3;
-            width : 11px;
-            height : 11px;
-            border-radius : 3px;
-        }
-
-        QGroupBox::indicator::checked {
-            background-color : #4968f3;
-            image : url(assets/Icons/Blue/Other/tick.svg);
-        }
-
-
-        QGroupBox::indicator::disabled {
-            border-color : #aaa;
-        }
-        '''
-
-        self.setStyleSheet(style)
-
-
 
 
 

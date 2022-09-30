@@ -19,8 +19,6 @@ class FileUI(BasePanel):
         self._content()
         self._footer()
 
-        self.__apply_style()
-
 
     def _header(self):
         self.headerLayout = QtWidgets.QHBoxLayout()
@@ -37,7 +35,7 @@ class FileUI(BasePanel):
         self.headerLayout.addLayout(labelLayout)
 
         labels = [
-            ('info', 'Change priority for important files'),
+            ('file-message', 'Change priority for important files'),
         ]
 
         for item in labels:
@@ -89,7 +87,7 @@ class FileUI(BasePanel):
         infoLayout = QtWidgets.QHBoxLayout()
         self.footerlayout.addLayout(infoLayout)
 
-        name = 'msg'
+        name = 'file-info'
         message = "No File Selected"
         self.infoLabel = QtWidgets.QLabel(message)
         self.infoLabel.setObjectName(name)
@@ -113,22 +111,4 @@ class FileUI(BasePanel):
                 btnLayout.addWidget(wid)
 
                 setattr(self, item[0], wid)
-
-
-    def __apply_style(self):
-        style = '''
-
-        #info {
-            /** font-family : Arial; **/
-            font-size : 14px;
-            font-weight : bold;
-            color : #333;
-        }
-
-        #msg {
-            color : #444;
-        }
-        '''
-
-        self.setStyleSheet(style)
 

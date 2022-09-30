@@ -37,10 +37,6 @@ class SettingUI(Dialog):
 
         self.__add_tabs()
 
-        name = 'panel'
-        self.setObjectName(name)
-
-        # self.__apply_style()
     
 
     def _tab(self):
@@ -113,27 +109,4 @@ class SettingUI(Dialog):
 
             setattr(self, name, wid)
             # setattr(self, item[0], index)
-
-
-    def __apply_style(self):
-        style = '''
-
-        #panel {
-            background-color : white;
-        }
-
-        #label {
-            font-family : Arial;
-            font-size : 20px;
-            font-weight : 900;
-            color : #4523fe;
-        }
-
-        '''
-
-        self.setStyleSheet(style)
-
-
-
-
 

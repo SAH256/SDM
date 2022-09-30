@@ -343,11 +343,11 @@ QScrollBar::handle {
 }
 
 QScrollBar::handle:horizontal {
-    min-width: 200px;            
+    min-width: 25px;            
 }
 
 QScrollBar::handle:vertical {
-    min-height : 150px;
+    min-height : 25px;
     padding : 5px;
 }
 
@@ -497,7 +497,7 @@ QSlider::sub-page::horizontal {
     background-color : transparent;
 }
 
-#tool-item QToolTip {
+QToolTip {
     background-color : #444;
     color : #fff;
     padding : 3px 5px;
@@ -561,4 +561,592 @@ QDialog {
 
 
 /* ################################ END OF BASE PART ##################################### */
+
+/* ABOUT DIALOG */
+
+#about-dialog QLabel,
+#attr-label {
+    background-color : white;
+}
+
+#about-dialog QLabel {
+    font-family : Arial;
+    font-size : 14px;
+    font-weight : 600;
+    color : #444;
+}
+
+#app-info {
+    font-size : 16px;
+    color : blue;
+}
+
+
+/* END OF ABOUT DIALOG */
+
+/* ADD DIALOG */
+
+#dialog-header {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 600;
+    color : blue;
+}
+
+#dialog-header[text="Torrent"] {
+    color : red;
+}
+
+#size-box {
+    font-size : 14px;
+    color : blue;
+}
+
+
+#error-box {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 600;
+    color : red;
+}
+
+/* END OF ADD DIALOG */
+
+/* TOOLBAR */
+
+#toolbar {
+    background-color : white;
+}
+
+/* END OF TOOLBAR */
+
+/* BATCH DIALOG */
+
+
+#tip-icon {
+    padding : 2px 4px;
+    border-radius : 2px;
+}
+
+#sample-box {
+    padding : 5px;
+    color : #444;
+    border : 1px solid lightgray;
+    border-radius : 4px;
+}
+
+/* END OF BATCH DIALOG */
+
+/* AUTH BOX */
+
+#auth-box {
+    border: 1px solid lightgray;
+    padding : 20px  2px 5px 2px;
+    border-radius: 2px;
+}
+
+#auth-box::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left; /* position at the top center */
+    padding: 0 3px;
+}
+
+#auth-box::indicator{
+    border : 2px solid #4968f3;
+    width : 11px;
+    height : 11px;
+    border-radius : 3px;
+}
+
+#auth-box::indicator::checked {
+    background-color : #4968f3;
+    image : url(assets/Icons/Blue/Other/tick.svg);
+}
+
+
+#auth-box::indicator::disabled {
+    border-color : #aaa;
+}
+
+/* END OF AUTH BOX */
+
+/* SAVE BOX */
+
+#save-box QLabel {
+    color : #555;
+}
+
+#danger-state {
+    color : #f97056;
+}
+
+#ok-state {
+    color : green;
+}
+
+/* END OF SAVE BOX */
+
+/* GROUP DIALOG */
+
+#group-dialog #dialog-header {
+    font-size : 18px;
+}
+
+/* END OF GROUP DIALOG */
+
+/* TASK LIST */
+
+#task-list {
+    outline : none;
+    border : none;
+    background-color: transparent;
+}
+
+#task-list::item {
+    margin : 3px 5px;
+    padding : 25px 10px;
+    background-color : white;
+    border-radius : 3px;
+}
+
+#task-list::item:hover {
+    background-color : #c2d7fc;
+}
+
+#task-list::item:selected {
+    background-color : #cbebff;
+    border : 2px solid blue;
+}
+
+/* END OF TASK LIST */
+
+/* GROUP LIST */
+
+#group-list {
+    font-family : Arial;
+    font-size : 13px;
+    outline : 0;
+    border : none;
+}
+
+#group-list::item {
+    border-right : 1px solid #ddd;
+    border-bottom : 1px solid #ddd
+}
+
+#group-list::item:hover {
+    background: #a7c3ff;
+    border-top : 1px solid #1452f4;
+    border-bottom : 1px solid #1452f4;
+}
+
+#group-list::item:selected {
+    background-color : #1452f4;
+    border-right-color : white;
+    color : white;
+
+}
+
+#group-list::item:hover:selected {
+    color : white;
+    border-radius : 2px;
+}
+
+#group-list QHeaderView::section {
+
+    background-color : white;
+
+    border : 2px solid blue;
+    border-left : none;
+    border-right : none;
+    border-top : none;
+
+    border-right : 1px solid #bbb;
+
+    padding-left: 5px;
+    font-weight : 600;
+}
+
+/* END OF GROUP LIST */
+
+
+/* SCHEDULER DIALOG */
+
+/* END OF SCHEDULER DIALOG */
+
+
+/* SCHEDULER FILE TABLE */
+
+#queue-task-table {
+    outline : none;
+    border : none;
+}
+
+#queue-task-table::item {
+    border-right : 1px solid #ddd;
+    border-bottom : 1px solid #ddd;
+    font-size : 12px;
+}
+
+#queue-task-table::item:selected {
+    background-color : #1452f4;
+    border-right-color : white;
+    color : white;
+}
+
+#queue-task-table::item:hover:selected {
+    color : white;
+    border-radius : 2px;
+}
+
+#queue-task-table QHeaderView::section {
+    /* background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #616161, stop: 0.5 #505050,
+                                      stop: 0.6 #434343, stop:1 #656565); */
+    color: white;
+    padding-left: 4px;
+    border: 1px solid #6c6c6c;
+    font-weight : 600;
+}
+
+/* END OF SCHEDULER TABLE */
+
+/* SCHEDULER QUEUE  */
+
+#list-header {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 900;
+
+    color : #444;
+}
+
+/* END OF SCHEDULER QUEUE */
+
+/* SCHEDULER QUEUE LIST */
+
+#queue-list {
+    border : none;
+    outline : none;
+
+    font-family : Arial;
+    font-size : 12px;
+    font-weight : 900;
+}
+
+#queue-list::item {
+    padding : 7px 5px;
+    width : 100px;
+    color : #666;
+    outline : none;
+    border-radius : 17px;
+}
+
+#queue-list::item:hover {
+    background-color : #ddd;
+    color : #444;
+}
+
+#queue-list::item:selected {
+    /** background-color : #75b2ff; **/
+    background-color : #5552ff;
+    color : white;
+    font-size : 10px;
+    margin : 0;
+}
+
+/* END OF SCHEDULER QUEUE LIST */
+
+/* SCHEDULER PROCESS */
+
+#process-area {
+    border : none;
+    background-color : transparent;
+}
+
+#process-widget {
+    background-color : transparent;
+}
+
+/* END OF SCHEDULER PROCESS */
+
+/* SCHEDULER PROCESS CONTAINER */
+
+#process-container {
+    background-color : white;
+}
+
+#container-title {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 600;
+    color : darkcyan;
+}
+
+#danger-msg {
+    color : red;
+    font-size : 14px;
+    font-weight : 600;
+    text-align : center;
+}
+
+/* END OF SCHEDULER PROCESS CONTAINER */
+
+/* SCHEDULER SETTING */
+
+#queue-setting QLabel {
+    font-size : 12px;
+    color : #333;
+}
+
+#queue-setting QLabel[text = 'Name'] {
+    font-size : 14px;
+    font-weight : 900;
+    color : #2339f3;
+}
+
+/* END OF SCHEDULER SETTING */
+
+/* APP SETTING */
+
+/* END OF APP SETTING */
+
+/* HEADER TAB */
+
+#header-tab {
+    border : none;
+}
+
+#tab-widget {
+    background-color : white;
+}
+
+/* END OF HEADER TAB */
+
+/* INFINITE TAB */
+
+#infinite-tab {
+    background-color: transparent;
+}
+
+
+/* END OF INFINITE TAB */
+
+/* Tool tab */
+
+#tool-tab {
+    background-color: transparent;
+}
+
+/* end of tool tab */
+
+
+/* ADD TORRENT */
+
+/* END OF ADD TORRENT */
+
+
+/* TORRENT DIALOG */
+
+/* END OF TORRENT DIALOG */
+
+/* TORRENT BASE ITEM UI */
+
+#torrent-base-widget,
+#torrent-scroll-item,
+#peer-scroll-item {
+    background-color : white;
+}
+
+/* END OF TORRENT BASE ITEM UI*/
+
+/* TORRENT SCROLL */
+
+#torrent-scroll_area {
+    background-color : white;
+}
+
+/* END OF TORRENT SCROLL */
+
+/* SCROLL ITEM */
+
+#torrent-scroll-item QLabel {
+    font-family : Arial;
+}
+
+#scroll-item-name {
+    color : darkcyan;
+    font-size : 14px;
+    font-weight : 600;
+    margin-top : 5px;
+    margin-bottom : 5px;
+}
+
+#scroll-item-name[css-class="Bold"] {
+    font-size : 20px;
+    font-weight : 800;
+}
+
+#scroll-item-state {
+    font-size : 12px;
+    padding-left : 4px;
+    color : #444;
+}
+
+
+#scroll-item-state[css-class="Bold"] {
+    font-size : 14px;
+    font-weight : 600;
+}
+
+
+#scroll-item-name[text="DHT"],
+#scroll-item-name[text="LSD"],
+#scroll-item-name[text="PeX"] {
+    color : #4342ff;
+}
+
+
+#name[css-class='tracker'] {
+    color : #3a66e5;
+}
+
+#scroll-item-state[css-class='tracker'] {
+    color : #2b2b2b;
+}
+
+/* END OF SCROLL ITEM */
+
+/* PEER SCROLL ITEM */
+
+#peer-scroll-item QLabel {
+    font-family : Arial;
+    font-size : 12px;
+}
+
+#client {
+    font-size : 16px;
+    font-weight : bold;
+    color : #222;
+}
+
+#client[css-class = 'seeder'] {
+    color : #10df1e;
+}
+
+#client[css-class = 'leecher'] {
+    color : #ef2938;
+}
+
+#progress {
+    color : #2b2b2b;
+    font-size : 13px;
+}
+
+
+/* END OF PEER SCROLL ITEM */
+
+
+/* TORRENT FILE UI */
+
+#file-message {
+    /** font-family : Arial; **/
+    font-size : 14px;
+    font-weight : bold;
+    color : #333;
+}
+
+#file-info {
+    color : #444;
+}
+
+/* END OF TORRENT UI */
+
+/* TORRENT FILE TREE */
+
+#file-tree {
+    outline : 0;
+    border : none;
+}
+
+#file-tree::item {
+    border-right : 1px solid #ddd;
+    border-bottom : 1px solid #ddd
+    
+}
+
+#file-tree::item:hover {
+    background: #a7c3ff;
+    border-top : 1px solid #1452f4;
+    border-bottom : 1px solid #1452f4;
+    
+}
+
+
+#file-tree::item:selected {
+    background-color : #1452f4;
+    border-right-color : white;
+    color : white;
+                    
+}
+
+#file-tree::item:hover:selected {
+    color : white;
+    border-radius : 2px;
+}
+
+#file-tree QHeaderView::section {
+
+    background-color : white;
+
+    border : 2px solid blue;
+    border-left : none;
+    border-right : none;
+    border-top : none;
+
+    border-right : 1px solid #bbb;
+    
+    padding-left: 5px;
+    font-weight : 600;
+}
+
+
+/* END OF TORRENT FILE TREE */
+
+/* CONFIRM POPUP */
+
+#popup-message {
+    font-family : Arial;
+    font-size : 14px;
+    font-weight : 600;
+    color : #444;
+}
+
+/* END OF CONFIRM POPUP */
+
+/* DELETE POPUP */
+
+#delete-message {
+    font-size : 16px;
+    color : red;
+}
+
+#name-scroll {
+    background-color : white;
+    color : #555;
+
+    font-size : 12px;
+
+}
+
+/* END OF DELETE POPUP */
+
+/* DUPLICATE POPUP */
+
+/* END OF DUPLICATE POPUP */
+
+/* MESSAGE POPUP */
+
+/* END OF MESSAGE POPUP */
+
 

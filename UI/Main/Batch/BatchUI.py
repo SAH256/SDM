@@ -20,25 +20,23 @@ class BatchUI(Dialog):
     def __init__(self, parent):
         super().__init__(parent, ICONS.DIALOGS.BATCH)
         
+        w, h = 500, 300
+        name = 'batch-dialog'
         title = "New Batch Download"
-        self.setWindowTitle(title)
         
-        name = 'Panel'
+        self.setWindowTitle(title)
         self.setObjectName(name)
-
+        self.resize(w, h)
+        
         self.mainLayout = QtWidgets.QVBoxLayout()
         self.setLayout(self.mainLayout)
+
 
         self._header()
         self._content()
         self.mainLayout.addStretch()
         self._buttons()
         
-        w, h = 500, 300
-        self.resize(w, h)
-
-
-        self.__apply_style()
 
 
     def _header(self):
@@ -56,7 +54,7 @@ class BatchUI(Dialog):
         self.headLayout.addLayout(layout)
 
         text = 'Batch Download'
-        name = 'header'
+        name = 'dialog-header'
 
         label = QtWidgets.QLabel(text)
         label.setObjectName(name)
@@ -71,13 +69,13 @@ class BatchUI(Dialog):
         icon_name = ICONS.OTHER.INFO
         s = 12
 
-        object_name = 'icon'
+        name = 'tip-icon'
         text  = "<p>Add group of sequential file names like img001.jpg, img002.jpg, etc.<br>" + \
                 "<b>Use the asterisk(*) wildcard</b> for the file name pattern.<br><br> For Example: http://www.ProGet.com/picture/img*.jpg </p>"
 
 
         label = QtWidgets.QLabel()
-        label.setObjectName(object_name)
+        label.setObjectName(name)
 
         label.setPixmap(QIcon(icon_name).pixmap(s, s))
         label.setToolTip(text)
@@ -122,7 +120,7 @@ class BatchUI(Dialog):
         layout = QtWidgets.QHBoxLayout()
         self.conLayout.addLayout(layout)
 
-        name = 'box'
+        name = 'sample-box'
         self.empty_text = 'No wildcard (*) character in URL'
 
         self.sample_label = QtWidgets.QLabel(self.empty_text)
@@ -185,39 +183,5 @@ class BatchUI(Dialog):
                 setattr(self, item[0], wid)
             else:
                 btnLayout.addStretch(1)
-
-
-    def __apply_style(self):
-        style = '''
-        #Panel {
-            background-color : white;
-        }
-
-        #header {
-            color : blue;
-            font-family : Arial;
-            font-size : 16px;
-            font-weight : 600;
-        }
-
-        #icon {
-            padding : 2px 4px;
-            border-radius : 2px;
-        }
-
-        #icon QToolTip {
-            background-color : red;
-            color : gray;
-        }
-
-        #box {
-            padding : 5px;
-            color : #444;
-            border : 1px solid lightgray;
-            border-radius : 4px;
-        }
-        '''
-
-        self.setStyleSheet(style)
 
 

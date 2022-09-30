@@ -24,8 +24,6 @@ class Delete(FrameLessUI):
         self._buttons()
 
         self.__connect_slots()
-        self.__style()
-
 
 
     def __connect_slots(self):
@@ -83,7 +81,7 @@ class Delete(FrameLessUI):
         self.infoLayout.addLayout(layout)
 
         text = 'Are you sure you want to delete selected file(s)?'
-        name = 'message'
+        name = 'delete-message'
 
         self.message = QtWidgets.QLabel(text)
         self.message.setObjectName(name)
@@ -100,7 +98,7 @@ class Delete(FrameLessUI):
         scroll.setWidgetResizable(True)
         layout.addWidget(scroll)
 
-        name = 'scroll'
+        name = 'name-scroll'
 
         self.scroll_label = QtWidgets.QLabel()
         self.scroll_label.setWordWrap(True)
@@ -171,31 +169,4 @@ class Delete(FrameLessUI):
         super().exec()
 
         return self.result_data
-
-
-
-    def __style(self):
-        message_style = '''
-        #message {
-            font-size : 16px;
-            color : red;
-        }
-        '''
-
-        scroll_style = '''
-        #scroll {
-            background-color : white;
-            color : #555;
-
-            font-size : 12px;
-
-        }
-        '''
-
-        self.message.setStyleSheet(message_style)
-        self.scroll_label.setStyleSheet(scroll_style)
-
-
-
-
 

@@ -29,10 +29,6 @@ class ListUI(QtWidgets.QWidget):
 
         self.mainLayout.addStretch(1)
 
-        name = 'list-panel'
-        self.setObjectName(name)
-
-        # self.__apply_style()
 
 
     def _ribbon(self):
@@ -41,7 +37,10 @@ class ListUI(QtWidgets.QWidget):
         self.mainLayout.addLayout(layout)
 
         txt = 'Queues'
+        name = 'list-header'
+        
         label = QtWidgets.QLabel(txt)
+        label.setObjectName(name)
         label.setFixedHeight(30)
 
         layout.addWidget(label)
@@ -95,19 +94,6 @@ class ListUI(QtWidgets.QWidget):
         self.addBtn.setVisible(s)
         self.removeBtn.setVisible(s)
 
-
-    def __apply_style(self):
-        style = '''
-        QLabel {
-            font-family : Arial;
-            font-size : 16px;
-            font-weight : 900;
-
-            color : #444;
-        }
-        '''
-
-        self.setStyleSheet(style)
 
 
 

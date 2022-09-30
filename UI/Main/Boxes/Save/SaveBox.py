@@ -10,8 +10,8 @@ from Utility.Core import ICONS
 # Save path selector widget -- UI class
 class SavePath(QtWidgets.QWidget):
 
-    OK = 'ok'
-    DANGER = 'danger'
+    OK = 'ok-state'
+    DANGER = 'danger-state'
     
     def __init__(self):
         super().__init__()
@@ -26,8 +26,9 @@ class SavePath(QtWidgets.QWidget):
 
         self._info()
         self._path()
-
-        self.__set_style()
+        
+        name = 'save-box'
+        self.setObjectName(name)
 
 
     def _info(self):
@@ -97,22 +98,4 @@ class SavePath(QtWidgets.QWidget):
         self.browseBtn = StyleButton(ICONS.OTHER.BROWSE_1, '')
 
         btnLayout.addWidget(self.browseBtn)
-
-
-    def __set_style(self):
-        style = '''
-            QLabel {
-                color : #555;
-            }
-
-            #danger {
-                color : #f97056;
-            }
-
-            #ok {
-                color : green;
-            }
-        '''
-
-        self.setStyleSheet(style)
 

@@ -15,19 +15,23 @@ class InfiniteControl(OptionTab):
     
     def __init__(self, parent, p_dir, line = True):
         super().__init__(parent, p_dir)
-
-        self.need_line = line
-
+        
         s = 3
         if not line:
             s = 10
 
+        self.mainLayout.setContentsMargins(5, 5, 5, 5)
         self.mainLayout.setSpacing(s)
+        
+        self.need_line = line
 
-        self.setObjectName('panel')
+
         self.setAutoFillBackground(True)
 
-        self.mainLayout.setContentsMargins(5, 5, 5, 5)
+        name = 'infinite-tab'
+        self.setObjectName(name)
+        
+
 
 
 
@@ -80,12 +84,5 @@ class InfiniteControl(OptionTab):
         self.item_changed.emit(self.items.index(item))
 
 
-    def __apply_style(self):
-        style = '''
-            #panel {
-                background-color : white;
-            }
-        '''
 
-        self.setStyleSheet(style)
 

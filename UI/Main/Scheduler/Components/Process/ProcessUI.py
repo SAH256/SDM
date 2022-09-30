@@ -33,13 +33,11 @@ class Process(QtWidgets.QScrollArea):
 
         self.data = None
 
-        name = 'area'
+        name = 'process-area'
         self.setObjectName(name)
 
-        name = 'widget'
+        name = 'process-widget'
         wid.setObjectName(name)
-
-        # self.__apply_style()
 
 
     def _process(self):
@@ -83,17 +81,4 @@ class Process(QtWidgets.QScrollArea):
                 self.data.post_process = temp_post
 
 
-    def __apply_style(self):
-        style = '''
-        #area {
-            border : none;
-            background-color : transparent;
-        }
-
-        #widget {
-            background-color : transparent;
-        }
-        '''
-
-        self.setStyleSheet(style)
 

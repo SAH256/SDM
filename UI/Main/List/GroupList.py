@@ -45,8 +45,10 @@ class View(QTreeView):
 
         self.items = {}
 
+        name = 'group-list'
+        self.setObjectName(name)
+
         self.__scroll()
-        self.__apply_style()
 
 
     def __scroll(self):
@@ -157,52 +159,4 @@ class View(QTreeView):
         return items_data
 
 
-    def __apply_style(self):
-        
-        style = '''
-            QTreeView {
-                font-family : Arial;
-                font-size : 13px;
-                outline : 0;
-                border : none;
-            }
 
-            QTreeView::item {
-                border-right : 1px solid #ddd;
-                border-bottom : 1px solid #ddd
-            }
-
-            QTreeView::item:hover {
-                background: #a7c3ff;
-                border-top : 1px solid #1452f4;
-                border-bottom : 1px solid #1452f4;
-            }
-
-            QTreeView::item:selected {
-                background-color : #1452f4;
-                border-right-color : white;
-                color : white;
-
-            }
-
-            QTreeView::item:hover:selected {
-                color : white;
-                border-radius : 2px;
-            }
-
-            QHeaderView::section {
-
-                background-color : white;
-
-                border : 2px solid blue;
-                border-left : none;
-                border-right : none;
-                border-top : none;
-
-                border-right : 1px solid #bbb;
-
-                padding-left: 5px;
-                font-weight : 600;
-            }
-        '''
-        self.setStyleSheet(style)

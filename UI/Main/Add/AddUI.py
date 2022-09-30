@@ -42,10 +42,8 @@ class AddUI(Dialog):
         self.mainLayout.addStretch(1)
         self._btn()
 
-        name = 'add'
+        name = 'add-dialog'
         self.setObjectName(name)
-
-        # self.__apply_style()
 
 
     def _header(self):
@@ -61,7 +59,7 @@ class AddUI(Dialog):
         layout = QtWidgets.QHBoxLayout()
         self.headLayout.addLayout(layout)
 
-        name = 'header'
+        name = 'dialog-header'
 
         labels = [
             (None, 'Download'),
@@ -118,7 +116,7 @@ class AddUI(Dialog):
         layout.setContentsMargins(0, 5, 0, 5)
         self.conLayout.addLayout(layout)
 
-        name = 'warning'
+        name = 'error-box'
         self.error_label = QtWidgets.QLabel(name)
         self.error_label.setVisible(False)
         self.error_label.setObjectName(name)
@@ -161,17 +159,19 @@ class AddUI(Dialog):
         layout = QtWidgets.QHBoxLayout()
         layout.setContentsMargins(5, 5, 5, 10)
         self.conLayout.addLayout(layout)
-
+        
         labels = [
-            (None, 'Size : ', 'size'),
-            ('size_label', '', 'size'),
+            (None, 'Size : '),
+            ('size_label', ''),
             None
         ]
+        
+        name = 'size-box'
 
         for item in labels:
             if item:
                 wid = QtWidgets.QLabel(item[1])
-                wid.setObjectName(item[2])
+                wid.setObjectName(name)
 
                 layout.addWidget(wid)
 
@@ -290,43 +290,5 @@ class AddUI(Dialog):
             
             else:
                 btnLayout.addStretch(1)
-
-
-    # def __apply_style(self):
-    #     style = '''
-    #     #add {
-    #         background-color : white;
-    #     }
-
-    #     #header {
-    #         font-family : Arial;
-    #         font-size : 16px;
-    #         font-weight : 600;
-    #         color : blue;
-    #     }
-
-    #     #header[text="Torrent"] {
-    #         color : red;
-    #     }
-
-    #     #size {
-    #         font-size : 14px;
-    #         color : blue;
-    #     }
-
-
-    #     #warning {
-    #         font-family : Arial;
-    #         font-size : 16px;
-    #         font-weight : 600;
-    #         color : red;
-    #     }
-    #     '''
-
-    #     self.setStyleSheet(style)
-
-
-
-
 
 

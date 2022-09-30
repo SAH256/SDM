@@ -25,8 +25,6 @@ class Duplicate(FrameLessUI):
         self.mainLayout.addStretch(1)
         self._buttons()
 
-        self.__style()
-
     
     def __setup(self):
         self.options.currentIndexChanged.connect(self.__option_handler)
@@ -43,7 +41,7 @@ class Duplicate(FrameLessUI):
         self.mainLayout.addLayout(layout)
 
         text = 'What should we do?'
-        name = 'info'
+        name = 'popup-message'
 
         self.info_label = QtWidgets.QLabel(text)
         self.info_label.setObjectName(name)
@@ -68,11 +66,8 @@ class Duplicate(FrameLessUI):
 
         for _id, txt in buttons:
             self.options.addItem(txt, _id)
-    
-        
-        
 
-    
+
     def _buttons(self):
         layout = QtWidgets.QHBoxLayout()
         self.mainLayout.addLayout(layout)
@@ -106,19 +101,4 @@ class Duplicate(FrameLessUI):
         super().exec()
 
         return self.duplicate_option
-
-
-    def __style(self):
-        style = '''
-        #info {
-            font-family : Arial;
-            font-size : 14px;
-            font-weight : 600;
-            color : #444;
-
-        }
-        '''
-
-        self.info_label.setStyleSheet(style)
-
 

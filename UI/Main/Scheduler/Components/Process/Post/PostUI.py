@@ -92,10 +92,11 @@ class PostUI(Base):
         self.conLayout.addLayout(layout)
 
         msg = 'Need Administrator privilege'
+        name = 'danger-msg'
 
         self.msgLabel = QtWidgets.QLabel(msg)
+        self.msgLabel.setObjectName(name)
         self.msgLabel.setVisible(False)
-        self.msgLabel.setObjectName('danger')
 
         layout.addWidget(self.msgLabel)
 

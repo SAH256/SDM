@@ -39,9 +39,6 @@ class TorrentUI(Dialog):
 
         self.__add_tabs()
 
-        # self.__apply_style()
-    
-
 
     def _tab(self):
         tabLayout = QtWidgets.QHBoxLayout()
@@ -129,18 +126,4 @@ class TorrentUI(Dialog):
             self.options[index] = wid
 
             setattr(self, name, wid)
-
-
-
-    def __apply_style(self):
-        style = '''
-        QDialog {
-            background-color : white;
-        }
-        '''
-
-        self.setStyleSheet(style)
-
-
-
 

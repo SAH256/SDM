@@ -51,10 +51,8 @@ class View(QtWidgets.QTreeView):
         self.setSelectionBehavior(self.SelectionBehavior.SelectRows)
         self.setEditTriggers(self.EditTrigger.NoEditTriggers)
 
-        name = 'table'
+        name = 'queue-task-table'
         self.setObjectName(name)
-
-        # self.__apply_style()
 
 
     def create_row(self, info):
@@ -228,40 +226,4 @@ class View(QtWidgets.QTreeView):
         return self.__model.rowCount()
 
 
-    def __apply_style(self):
-        style = '''
-        #table {
-            outline : none;
-            border : none;
-        }
-
-        #table::item {
-            border-right : 1px solid #ddd;
-            border-bottom : 1px solid #ddd;
-            font-size : 12px;
-        }
-
-        #table::item:selected {
-            background-color : #1452f4;
-            border-right-color : white;
-            color : white;
-        }
-
-        #table::item:hover:selected {
-            color : white;
-            border-radius : 2px;
-        }
-
-        QHeaderView::section {
-            background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-                                              stop:0 #616161, stop: 0.5 #505050,
-                                              stop: 0.6 #434343, stop:1 #656565);
-            color: white;
-            padding-left: 4px;
-            border: 1px solid #6c6c6c;
-            font-weight : 600;
-        }
-        '''
-
-        self.setStyleSheet(style)
 

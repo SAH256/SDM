@@ -22,8 +22,6 @@ class Confirm(FrameLessUI):
         self.mainLayout.addStretch(1)
         self._buttons()
 
-        self.__style()
-
 
     def __setup(self):
         self.cancelBtn.clicked.connect(self.close)
@@ -37,7 +35,7 @@ class Confirm(FrameLessUI):
         self.mainLayout.addLayout(layout)
 
         text = 'Are You Sure?'
-        name = 'info'
+        name = 'popup-message'
 
         self.info_label = QtWidgets.QLabel(text)
         self.info_label.setObjectName(name)
@@ -78,22 +76,4 @@ class Confirm(FrameLessUI):
         super().exec()
 
         return self.is_confirmed
-
-
-
-    def __style(self):
-        style = '''
-        #info {
-            font-family : Arial;
-            font-size : 14px;
-            font-weight : 600;
-            color : #444;
-        }
-        '''
-
-        self.info_label.setStyleSheet(style)
-
-
-
-
 

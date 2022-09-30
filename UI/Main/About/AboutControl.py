@@ -18,7 +18,6 @@ class About(AboutUI):
         self.setWindowTitle(title)
 
         self.__connect_slots()
-        # self.__apply_style()
         self.__setup()
     
 
@@ -55,7 +54,7 @@ class About(AboutUI):
             ('Openssl', SDM.INFO.OPENSSL_VERSION),
         ]
 
-        name = 'info'
+        name = 'app-info'
 
         for entry in data:
             text = entry[0] + ' : '
@@ -76,36 +75,5 @@ class About(AboutUI):
     def __github_handler(self):
         if SDM.INFO.PROJECT_LINK:
             wb.open(SDM.INFO.PROJECT_LINK)
-
-
-    def __apply_style(self):
-        style = '''
-
-            QDialog {
-                background-color : white;
-            }
-
-            QScrollArea {
-                background-color : white;
-            }
-
-
-            QLabel {
-                background-color : white;
-                font-family : Arial;
-                font-size : 14px;
-                font-weight : 600;
-                color : #444;
-            }
-
-            #info {
-                font-size : 16px;
-                color : blue;
-            }
-        '''
-
-        self.setStyleSheet(style)
-
-
 
 

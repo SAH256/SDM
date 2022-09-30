@@ -33,6 +33,8 @@ class List(QListView):
         self.__model = QtGui.QStandardItemModel()
         self.setModel(self.__model)
 
+        self.setContentsMargins(0, 0, 0, 0)
+
         self.ONE_TIME = QtGui.QIcon(ICONS.OTHER.ONE_TIME)
         self.PERIODIC = QtGui.QIcon(ICONS.OTHER.PERIODIC)
 
@@ -40,13 +42,10 @@ class List(QListView):
         self.setAcceptDrops(True)
         self.setDropIndicatorShown(True)
 
-        name = 'list'
+        name = 'queue-list'
         self.setObjectName(name)
 
-        self.setContentsMargins(0, 0, 0, 0)
-
         self.__connect_slots()
-        # self.__apply_style()
         self.__scroll()
     
     def __connect_slots(self):
@@ -170,38 +169,5 @@ class List(QListView):
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
 
-    def __apply_style(self):
-        style = '''
-        #list {
-            border : none;
-            outline : none;
 
-            font-family : Arial;
-            font-size : 12px;
-            font-weight : 900;
-        }
-
-        #list::item {
-            padding : 7px 5px;
-            width : 100px;
-            color : #666;
-            outline : none;
-            border-radius : 17px;
-        }
-
-        #list::item:hover {
-            background-color : #ddd;
-            color : #444;
-        }
-
-        #list::item:selected {
-            /** background-color : #75b2ff; **/
-            background-color : #5552ff;
-            color : white;
-            font-size : 10px;
-            margin : 0;
-        }
-        '''
-
-        self.setStyleSheet(style)
 

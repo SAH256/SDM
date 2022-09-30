@@ -17,7 +17,6 @@ class AddMagnetUI(Dialog):
     def __init__(self, parent):
         super().__init__(parent, ICONS.DIALOGS.MAGNET)
 
-
         title = "Add Magnet/Torrent"
         self.setWindowTitle(title)
         
@@ -31,11 +30,6 @@ class AddMagnetUI(Dialog):
         self._input()
         self.mainLayout.addStretch()
         self._buttons()
-
-        name = 'panel'
-        self.setObjectName(name)
-
-        self.__apply_style()
 
 
     def _input(self):
@@ -74,16 +68,3 @@ class AddMagnetUI(Dialog):
             
             else:
                 btnLayout.addStretch(1)
-
-        
-    
-    def __apply_style(self):
-        style = '''
-        #panel {
-            background-color : white;
-        }
-        '''
-
-        self.setStyleSheet(style)
-
-
