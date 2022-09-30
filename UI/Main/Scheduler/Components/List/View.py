@@ -1,9 +1,7 @@
 
 from PyQt5 import QtGui
-from PyQt5.QtWidgets import QListView
+from PyQt5.QtWidgets import QListView, QScrollBar
 from PyQt5.QtCore import Qt, pyqtSignal
-
-from UI.Base.ScrollBar.ScrollBarUI import StyleScrollBar
 
 from Utility.Core import ICONS
 
@@ -53,7 +51,7 @@ class List(QListView):
 
 
     def __scroll(self):
-        sc = StyleScrollBar(Qt.Orientation.Vertical)
+        sc = QScrollBar(Qt.Orientation.Vertical)
         self.setVerticalScrollBar(sc)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 

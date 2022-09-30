@@ -3,8 +3,6 @@ import datetime as dt
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt, pyqtSignal
 
-from UI.Base.Menu.StyledMenu import StyleMenu
-
 from Utility.Structure.Task.Http import MultiRequest, LinkGenerator, HttpOption
 from Utility.Util import sizeChanger, create_id, split_file_name
 from Utility.URL import find_filename
@@ -43,7 +41,7 @@ class GroupControl(GroupUI):
 
 
     def __manage_queue_menu(self):
-        menu = StyleMenu(parent = self)
+        menu = QtWidgets.QMenu(parent = self)
         menu.triggered.connect(self.__add_handler)
 
         for name in self.queue_list:

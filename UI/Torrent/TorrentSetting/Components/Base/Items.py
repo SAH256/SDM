@@ -1,9 +1,6 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
-
-from UI.Base.Menu.StyledMenu import StyleMenu
-
 from Utility.Core import TORRENT, ICONS
 from Utility.Util import sizeChanger
 
@@ -69,7 +66,7 @@ class ScrollItem(BaseItem):
 
 
     def _setup_menu(self):
-        self.MENU = StyleMenu()
+        self.MENU = QtWidgets.QMenu()
 
         name = 'Copy'
         action = self.MENU.addAction(name)

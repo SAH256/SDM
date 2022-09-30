@@ -1,8 +1,6 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
-from UI.Base.ScrollBar.ScrollBarUI import StyleScrollBar
-
 
 
 class HeaderTab(QtWidgets.QScrollArea):
@@ -50,7 +48,7 @@ class HeaderTab(QtWidgets.QScrollArea):
 
 
     def _scroll(self):
-        sc = StyleScrollBar(Qt.Orientation.Horizontal)
+        sc = QtWidgets.QScrollBar(Qt.Orientation.Horizontal)
         self.setHorizontalScrollBar(sc)
 
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)

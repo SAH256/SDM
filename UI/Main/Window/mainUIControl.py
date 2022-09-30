@@ -1,8 +1,9 @@
+from PyQt5.QtWidgets import QMenu
 from PyQt5.QtCore import pyqtSignal
 
 from UI.Base.Items.Tool.ItemControl import ToolItemControl
 from UI.Base.Items.Tool.AnimItem import AnimItem
-from UI.Base.Menu.StyledMenu import StyleMenu
+
 
 from Utility.Core import CATEGORY, ACTIONS, FILTER, STATES, LINK_TYPE
 
@@ -150,7 +151,7 @@ class UIControl(MainUI):
 
 
     def __create_menu(self, options):
-        menu = StyleMenu(parent = self)
+        menu = QMenu(parent = self)
         actions = {}
 
         for option in options:

@@ -1,8 +1,6 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt, QPoint, pyqtSignal
 
-from UI.Base.Menu.StyledMenu import StyleMenu
-
 from UI.Main.Add.AddControl import AddLink
 from UI.Main.About.AboutControl import About
 from UI.Main.Batch.BatchControl import BatchControl
@@ -126,7 +124,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def __queue_menu(self):
-        self.queue_menu = StyleMenu()
+        self.queue_menu = QtWidgets.QMenu(parent = self)
         self.queue_menu.triggered.connect(self.__queue_handler)
         self.__populate_menu()
         self.__manage_queue_header()
@@ -150,7 +148,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __start_queue_handler(self):
         point = self.central_widget.startBtn.mapToGlobal(QPoint(0, 0))
-        width = 190
+        width = 195
         point.setX(point.x() - width)
         self.__populate_menu()
 
@@ -159,7 +157,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __stop_queue_handler(self):
         point = self.central_widget.stopBtn.mapToGlobal(QPoint(0, 0))
-        width = 190
+        width = 195
         point.setX(point.x() - width)
         self.__populate_menu(False)
 

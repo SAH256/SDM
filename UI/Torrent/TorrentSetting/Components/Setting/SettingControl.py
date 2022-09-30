@@ -1,6 +1,5 @@
+from PyQt5.QtWidgets import QMenu
 from PyQt5.QtCore import pyqtSignal
-
-from UI.Base.Menu.StyledMenu import StyleMenu
 
 from Utility.Core import TORRENT, ACTIONS
 
@@ -30,7 +29,7 @@ class Setting(SettingUI):
 
 
     def __setup_force(self):
-        menu = StyleMenu()
+        menu = QMenu(parent = self)
         menu.triggered.connect(self.__force_handler)
         options = [TORRENT.REANNOUNCE, TORRENT.RECHECK]
 

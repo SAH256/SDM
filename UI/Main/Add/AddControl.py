@@ -1,7 +1,7 @@
 import datetime as dt
 import os
 
-from PyQt5 import QtCore
+from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtCore import Qt
 
 from Utility.Core import ADD_STATE, HTTP, LINK_TYPE, CATEGORY, SETTING, ERRORS, TASK_TYPE, TASK_OPTIONS
@@ -11,8 +11,6 @@ from Utility.Structure.Task.Http import HttpOption
 from Utility.Structure.Task.Base import Request
 from Utility.Gui import findCategory
 from Utility.URL import url_type
-
-from UI.Base.Menu.StyledMenu import StyleMenu
 
 from .AddUI import AddUI
 
@@ -79,7 +77,7 @@ class AddLink(AddUI):
 
     # create menu and add queue name as option
     def __setup_menu(self):
-        menu = StyleMenu(parent=self)
+        menu = QtWidgets.QMenu(parent = self)
         menu.triggered.connect(self.__queue_handler)
 
         for queue in self.queues:

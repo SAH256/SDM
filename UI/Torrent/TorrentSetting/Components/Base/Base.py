@@ -1,8 +1,6 @@
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
-from UI.Base.ScrollBar.ScrollBarUI import StyleScrollBar
-
 
 
 class BaseWidget(QtWidgets.QWidget):
@@ -79,7 +77,7 @@ class Scroll(QtWidgets.QScrollArea):
 
     def __scroll_bar(self):
 
-        sc = StyleScrollBar(Qt.Orientation.Vertical)
+        sc = QtWidgets.QScrollBar(Qt.Orientation.Vertical)
         self.setVerticalScrollBar(sc)
 
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)

@@ -1,10 +1,7 @@
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt
 
-from UI.Base.Menu.StyledMenu import StyleMenu
-
 from UI.Base.Items.Task.TaskItemControl import TaskItemControl
-from UI.Base.ScrollBar.ScrollBarUI import StyleScrollBar
 
 from .Models import FilterModel
 from .Util import ItemDel, MItem
@@ -52,8 +49,10 @@ class View(QtWidgets.QListView):
 
 
     def __scroll(self):
-        sc = StyleScrollBar(Qt.Orientation.Vertical)
+        sc = QtWidgets.QScrollBar(Qt.Orientation.Vertical)
         self.setVerticalScrollBar(sc)
+        
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
 
     def __timer(self):
@@ -148,4 +147,15 @@ class View(QtWidgets.QListView):
             pos = ev.globalPos()
 
             self.menu_requested.emit([info, pos])
+
+
+    def enterEvent(self, ev):
+        super().enterEvent(ev)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+
+
+    def leaveEvent(self, ev):
+        super().leaveEvent(ev)        
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+
 

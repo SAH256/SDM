@@ -1,3 +1,11 @@
+/* 
+    Light StyleSheet
+    Author : SAH256
+
+*/
+
+
+/* Button widget */
 
 QPushButton {
     padding : 6px 10px;
@@ -94,10 +102,9 @@ QPushButton[css-class = "icon"]:hover {
     background-color : #ddd;
 }
 
-/* END OF BUTTON */
 
 
-/* CHECKBOX */
+/* CheckBox widget */
 
 QCheckBox::indicator{
     border : 2px solid #4968f3;
@@ -121,11 +128,7 @@ QCheckBox::indicator::disabled::checked {
 }
 
 
-/* ----------- END OF CHECKBOX ---------------- */
-
-
-
-/* COMBOBOX */
+/* ComboBox widget */
 
 * QComboBox {
     border : none;
@@ -149,19 +152,15 @@ QComboBox::drop-down {
 
     subcontrol-origin : padding;
     subcontrol-position: top right;
-
 }
-/* 
-* {
-    background-color : white;
-} */
+
 
 QComboBox QAbstractItemView {
-
     border : 1px solid gray;
     background-color : #ddd;
     outline : none;
 }
+
 
 QComboBox QAbstractItemView::item {
     padding : 3px 5px;
@@ -179,9 +178,9 @@ QComboBox::down-arrow:on {
     
 }
 
-/* ---------- END OF COMBOBOX */
 
-/* lINE EDIT */
+
+/* LineEdit widget */
 
 QLineEdit {
     border : none;
@@ -220,10 +219,8 @@ QLineEdit[cssClass="error"]:focus {
 }
 
 
-/* ---------- END OF LINE EDIT */
 
-
-/* TEXT EDIT */
+/* TextEdit widget */
 
 QTextEdit {
     border : none;
@@ -254,9 +251,8 @@ QTextEdit[css-class="error"]:focus {
 }
 
 
-/* END OF TEXT EDIT */
 
-/* line */
+/* line custom widget */
 
 #line {
     border-color : lightgray;
@@ -272,9 +268,9 @@ QTextEdit[css-class="error"]:focus {
     border-left-width : 2px;
 }
 
-/* end of line */
 
-/* MENU */
+
+/* Menu widget */
 
 QMenu {
     background-color: #303030;
@@ -308,23 +304,17 @@ QMenu::separator {
 }
 
 
-/* END OF MENU */
-
-
-/* ELIDE */
+/* Elide Label custom widget */
 
 #elide {
     padding-right : 50px;
 }
 
-/* END OF ELIDE */
 
 
-
-/* SCROLLBAR */
+/* ScrollBar widget */
 
 QScrollBar:horizontal {
-                        
     height: 4px;
     padding : 4px 2px;
     margin: -20px 0px -10px 0px;
@@ -332,7 +322,7 @@ QScrollBar:horizontal {
 }
 
 QScrollBar:vertical {
-    width : 4px;
+    width : 7px;
     padding : 2px 4px;
     border-radius : 2px;
     margin : 5px -5px 5px -5px;
@@ -343,7 +333,7 @@ QScrollBar::handle {
 }
 
 QScrollBar::handle:horizontal {
-    min-width: 25px;            
+    min-width: 25px;  
 }
 
 QScrollBar::handle:vertical {
@@ -366,10 +356,9 @@ QScrollBar::sub-line:vertical {
     background-color : white;
 }
 
-/* END OF SCROLLBAR */
 
 
-/* SLIDER */
+/* Slider widget */
 
 QSlider {
     padding : 5px;
@@ -406,10 +395,7 @@ QSlider::sub-page::horizontal {
 }
 
 
-/* END OF SLIDER */
-
-
-/* SPINBOX */
+/* SpinBox custom widget */
 
 #spinbox {
     background-color : white;
@@ -419,10 +405,9 @@ QSlider::sub-page::horizontal {
     text-align : center;
 }
 
-/* END OF SPINBOX */
 
 
-/* ------------ CART ITEM -------------- */
+/* CartItem custom widget */
 
 #cart-item {
     border-top : 3px solid transparent;
@@ -450,10 +435,9 @@ QSlider::sub-page::horizontal {
     padding : 0px 20px 0px 0px;
 }
 
-/* ------------ END OF CART ITEM -------------- */
 
 
-/* ------------- OPTION ITEM -------------- */
+/* OptionItem custom widget  */
 
 #option-item {
     border-left : 3px solid transparent;
@@ -467,10 +451,9 @@ QSlider::sub-page::horizontal {
     border-left-color : blue;
 }
 
-/* ------------- END OF OPTION ITEM -------------- */
 
 
-/* ------------- ROUND ITEM -----------------*/
+/* RoundItem custom widget */
 
 #round-item {
     background-color : white;
@@ -488,10 +471,9 @@ QSlider::sub-page::horizontal {
     background-color : #eef;
 }
 
-/* ------------- END OF ROUND ITEM -----------------*/
 
 
-/* ------------- TOOL ITEM --------------- */
+/* ToolItem custom widget */
 
 #tool-item {
     background-color : transparent;
@@ -506,10 +488,9 @@ QToolTip {
     opacity : 200;
 }
 
-/* ------------- END OF TOOL ITEM --------------- */
 
 
-/* Dialogs */
+/* Dialog widget */
 
 QDialog {
     background-color : white;
@@ -556,11 +537,10 @@ QDialog {
     color : white;
 }
 
-/* end of dialog */
-
 
 
 /* ################################ END OF BASE PART ##################################### */
+
 
 /* ABOUT DIALOG */
 
@@ -582,7 +562,6 @@ QDialog {
 }
 
 
-/* END OF ABOUT DIALOG */
 
 /* ADD DIALOG */
 
@@ -610,7 +589,7 @@ QDialog {
     color : red;
 }
 
-/* END OF ADD DIALOG */
+
 
 /* TOOLBAR */
 
@@ -618,10 +597,9 @@ QDialog {
     background-color : white;
 }
 
-/* END OF TOOLBAR */
+
 
 /* BATCH DIALOG */
-
 
 #tip-icon {
     padding : 2px 4px;
@@ -635,7 +613,7 @@ QDialog {
     border-radius : 4px;
 }
 
-/* END OF BATCH DIALOG */
+
 
 /* AUTH BOX */
 
@@ -668,7 +646,7 @@ QDialog {
     border-color : #aaa;
 }
 
-/* END OF AUTH BOX */
+
 
 /* SAVE BOX */
 
@@ -684,7 +662,7 @@ QDialog {
     color : green;
 }
 
-/* END OF SAVE BOX */
+
 
 /* GROUP DIALOG */
 
@@ -692,7 +670,7 @@ QDialog {
     font-size : 18px;
 }
 
-/* END OF GROUP DIALOG */
+
 
 /* TASK LIST */
 
@@ -718,7 +696,7 @@ QDialog {
     border : 2px solid blue;
 }
 
-/* END OF TASK LIST */
+
 
 /* GROUP LIST */
 
@@ -744,8 +722,8 @@ QDialog {
     background-color : #1452f4;
     border-right-color : white;
     color : white;
-
 }
+
 
 #group-list::item:hover:selected {
     color : white;
@@ -767,12 +745,6 @@ QDialog {
     font-weight : 600;
 }
 
-/* END OF GROUP LIST */
-
-
-/* SCHEDULER DIALOG */
-
-/* END OF SCHEDULER DIALOG */
 
 
 /* SCHEDULER FILE TABLE */
@@ -809,7 +781,7 @@ QDialog {
     font-weight : 600;
 }
 
-/* END OF SCHEDULER TABLE */
+
 
 /* SCHEDULER QUEUE  */
 
@@ -821,7 +793,7 @@ QDialog {
     color : #444;
 }
 
-/* END OF SCHEDULER QUEUE */
+
 
 /* SCHEDULER QUEUE LIST */
 
@@ -855,7 +827,7 @@ QDialog {
     margin : 0;
 }
 
-/* END OF SCHEDULER QUEUE LIST */
+
 
 /* SCHEDULER PROCESS */
 
@@ -868,7 +840,7 @@ QDialog {
     background-color : transparent;
 }
 
-/* END OF SCHEDULER PROCESS */
+
 
 /* SCHEDULER PROCESS CONTAINER */
 
@@ -890,7 +862,7 @@ QDialog {
     text-align : center;
 }
 
-/* END OF SCHEDULER PROCESS CONTAINER */
+
 
 /* SCHEDULER SETTING */
 
@@ -905,11 +877,7 @@ QDialog {
     color : #2339f3;
 }
 
-/* END OF SCHEDULER SETTING */
 
-/* APP SETTING */
-
-/* END OF APP SETTING */
 
 /* HEADER TAB */
 
@@ -921,7 +889,7 @@ QDialog {
     background-color : white;
 }
 
-/* END OF HEADER TAB */
+
 
 /* INFINITE TAB */
 
@@ -930,7 +898,6 @@ QDialog {
 }
 
 
-/* END OF INFINITE TAB */
 
 /* Tool tab */
 
@@ -938,17 +905,7 @@ QDialog {
     background-color: transparent;
 }
 
-/* end of tool tab */
 
-
-/* ADD TORRENT */
-
-/* END OF ADD TORRENT */
-
-
-/* TORRENT DIALOG */
-
-/* END OF TORRENT DIALOG */
 
 /* TORRENT BASE ITEM UI */
 
@@ -958,7 +915,7 @@ QDialog {
     background-color : white;
 }
 
-/* END OF TORRENT BASE ITEM UI*/
+
 
 /* TORRENT SCROLL */
 
@@ -966,7 +923,7 @@ QDialog {
     background-color : white;
 }
 
-/* END OF TORRENT SCROLL */
+
 
 /* SCROLL ITEM */
 
@@ -975,7 +932,7 @@ QDialog {
 }
 
 #scroll-item-name {
-    color : darkcyan;
+    color : #3a66e5;
     font-size : 14px;
     font-weight : 600;
     margin-top : 5px;
@@ -1007,15 +964,15 @@ QDialog {
 }
 
 
-#name[css-class='tracker'] {
+/* #scroll-item-name[css-class='tracker'] {
     color : #3a66e5;
-}
+} */
 
 #scroll-item-state[css-class='tracker'] {
     color : #2b2b2b;
 }
 
-/* END OF SCROLL ITEM */
+
 
 /* PEER SCROLL ITEM */
 
@@ -1044,8 +1001,6 @@ QDialog {
 }
 
 
-/* END OF PEER SCROLL ITEM */
-
 
 /* TORRENT FILE UI */
 
@@ -1060,7 +1015,7 @@ QDialog {
     color : #444;
 }
 
-/* END OF TORRENT UI */
+
 
 /* TORRENT FILE TREE */
 
@@ -1072,14 +1027,13 @@ QDialog {
 #file-tree::item {
     border-right : 1px solid #ddd;
     border-bottom : 1px solid #ddd
-    
 }
+    
 
 #file-tree::item:hover {
     background: #a7c3ff;
     border-top : 1px solid #1452f4;
     border-bottom : 1px solid #1452f4;
-    
 }
 
 
@@ -1087,8 +1041,8 @@ QDialog {
     background-color : #1452f4;
     border-right-color : white;
     color : white;
-                    
 }
+
 
 #file-tree::item:hover:selected {
     color : white;
@@ -1111,7 +1065,6 @@ QDialog {
 }
 
 
-/* END OF TORRENT FILE TREE */
 
 /* CONFIRM POPUP */
 
@@ -1122,7 +1075,6 @@ QDialog {
     color : #444;
 }
 
-/* END OF CONFIRM POPUP */
 
 /* DELETE POPUP */
 
@@ -1138,15 +1090,5 @@ QDialog {
     font-size : 12px;
 
 }
-
-/* END OF DELETE POPUP */
-
-/* DUPLICATE POPUP */
-
-/* END OF DUPLICATE POPUP */
-
-/* MESSAGE POPUP */
-
-/* END OF MESSAGE POPUP */
 
 

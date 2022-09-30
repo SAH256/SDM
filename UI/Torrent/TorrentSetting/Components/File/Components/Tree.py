@@ -3,8 +3,6 @@ import time
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt
 
-from UI.Base.ScrollBar.ScrollBarUI import StyleScrollBar
-
 from Utility.Structure.Task.Base import File
 from Utility.Core import PRIORITY
 from Utility.Util import sizeChanger
@@ -69,10 +67,10 @@ class View(QtWidgets.QTreeView):
 
 
     def __scroll_bar(self):
-        sc = StyleScrollBar(Qt.Orientation.Vertical)
+        sc = QtWidgets.QScrollBar(Qt.Orientation.Vertical)
         self.setVerticalScrollBar(sc)
 
-        sc = StyleScrollBar(Qt.Orientation.Horizontal)
+        sc = QtWidgets.QScrollBar(Qt.Orientation.Horizontal)
         self.setHorizontalScrollBar(sc)
 
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)

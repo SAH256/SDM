@@ -1,9 +1,7 @@
 
-from PyQt5.QtWidgets import QTreeView
+from PyQt5.QtWidgets import QTreeView, QScrollBar
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from PyQt5.QtCore import Qt, pyqtSignal
-
-from UI.Base.ScrollBar.ScrollBarUI import StyleScrollBar
 
 from Utility.Util import sizeChanger, split_file_name
 from Utility.Gui import iconFinder, findCategory
@@ -52,7 +50,7 @@ class View(QTreeView):
 
 
     def __scroll(self):
-        sc = StyleScrollBar(Qt.Orientation.Vertical)
+        sc = QScrollBar(Qt.Orientation.Vertical)
         self.setVerticalScrollBar(sc)
 
 
