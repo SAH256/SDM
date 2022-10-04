@@ -12,8 +12,8 @@ class OptionTab(QtWidgets.QWidget):
     def __init__(self, parent, direction):
         super().__init__(parent)
 
-        # self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
-        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
+        # self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         
 
         self.mainLayout = QtWidgets.QBoxLayout(direction)

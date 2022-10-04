@@ -12,8 +12,8 @@ from UI.Base.Label.ElideLabel import Elide
 
 class TaskItem(BaseItem):
 
-    def __init__(self):
-        super().__init__(None)
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
         

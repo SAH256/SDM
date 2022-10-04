@@ -25,7 +25,7 @@ class View(QtWidgets.QListView):
         self.setEditTriggers(self.EditTrigger.NoEditTriggers)
         self.selectionModel().selectionChanged.connect(self.__selection_handler)
 
-        widget = TaskItemControl()
+        widget = TaskItemControl(None)
         d = ItemDel(widget)
         self.setItemDelegate(d)
 
@@ -52,7 +52,7 @@ class View(QtWidgets.QListView):
         sc = QtWidgets.QScrollBar(Qt.Orientation.Vertical)
         self.setVerticalScrollBar(sc)
         
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
 
 
     def __timer(self):
@@ -151,11 +151,11 @@ class View(QtWidgets.QListView):
 
     def enterEvent(self, ev):
         super().enterEvent(ev)
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
 
 
     def leaveEvent(self, ev):
-        super().leaveEvent(ev)        
+        super().leaveEvent(ev)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
 

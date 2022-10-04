@@ -53,8 +53,10 @@ class CartItem(FilterItem):
         return pixmap
 
 
-
-
+    def update(self):
+        self.style().unpolish(self.name)
+        self.style().polish(self.name)
+        super().update()
 
 
 

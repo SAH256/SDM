@@ -78,7 +78,7 @@ class UIControl(MainUI):
     def add_actions(self, actions):
 
         for [name, enable], [icon, action] in actions.items():
-            item = ToolItemControl(self, icon, action)
+            item = ToolItemControl(self.actionTab, icon, action)
             item.setEnabled(enable)
             self.actionTab.add_item(item)
 

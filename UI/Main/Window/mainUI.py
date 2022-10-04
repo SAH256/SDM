@@ -21,22 +21,44 @@ class MainUI(QtWidgets.QWidget):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.windowLayout = QtWidgets.QBoxLayout(Dir.TopToBottom)
-        self.setLayout(self.windowLayout)
+        self.mainLayout = QtWidgets.QBoxLayout(Dir.TopToBottom)
+        self.setLayout(self.mainLayout)
 
-        self.mainLayout = QtWidgets.QBoxLayout(Dir.LeftToRight)
-        self.windowLayout.addLayout(self.mainLayout)
-
-        self._left_menu()
+        self._top()
         self._content()
-        self._right_menu()
 
-        self.windowLayout.setContentsMargins(5, 5, 5, 5)
+        self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
 
-    def _left_menu(self):
+    def _top(self):
+        self.topLayout = QtWidgets.QVBoxLayout()
+        self.topLayout.setContentsMargins(0, 0, 0, 0)
+        self.mainLayout.addLayout(self.topLayout)
+        
+        self.__header()
+
+
+    def __header(self):
+        headLayout = QtWidgets.QHBoxLayout()
+        self.topLayout.addLayout(headLayout)
+
+        self.headerTab = HeaderControl(self)
+        headLayout.addWidget(self.headerTab)
+
+
+    def _content(self):
+        self.conLayout = QtWidgets.QBoxLayout(Dir.LeftToRight)
+        self.conLayout.setContentsMargins(2, 5, 2, 5)
+        self.mainLayout.addLayout(self.conLayout)
+
+        self.__left_bar()
+        self.__list()
+        self.__right_bar()
+
+
+    def __left_bar(self):
         self.leftLayout = QtWidgets.QVBoxLayout()
-        self.mainLayout.addLayout(self.leftLayout)
+        self.conLayout.addLayout(self.leftLayout)
 
         self.toolBar = ToolBar(self)
         self.leftLayout.addWidget(self.toolBar)
@@ -56,36 +78,22 @@ class MainUI(QtWidgets.QWidget):
         self.toolBar.add_action(self.toolTab)
 
 
-    def _content(self):
-        self.conLayout = QtWidgets.QBoxLayout(Dir.TopToBottom)
-        self.mainLayout.addLayout(self.conLayout)
-
-        self.__header()
-        self.__list()
-
-
-    def __header(self):
-        headLayout = QtWidgets.QHBoxLayout()
-        self.conLayout.addLayout(headLayout)
-
-        self.headerTab = HeaderControl(self)
-        headLayout.addWidget(self.headerTab)
-
-
     def __list(self):
         listLayout = QtWidgets.QHBoxLayout()
-        self.conLayout.addLayout(listLayout, 1)
+        self.conLayout.addLayout(listLayout)
 
         self.taskList = View(self)
 
-        listLayout.addWidget(self.taskList, 1)
+        listLayout.addStretch(1)
+        listLayout.addWidget(self.taskList, 6)
+        listLayout.addStretch(1)
 
 
-    def _right_menu(self):
+    def __right_bar(self):
         rightLayout = QtWidgets.QVBoxLayout()
-        self.mainLayout.addLayout(rightLayout)
+        self.conLayout.addLayout(rightLayout)
 
-        self.btnBar = ToolBar(self)
+        self.btnBar = ToolBar(self, False)
         rightLayout.addWidget(self.btnBar)
 
         self.btnBar.add_space(1)

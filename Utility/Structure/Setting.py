@@ -1,6 +1,7 @@
 import os
 
 from PyQt5.QtCore import QDir
+from scss import Compiler
 import libtorrent as lt
 
 from Utility.Core import SDM, TORRENT, SETTING, CATEGORY, SECTIONS
@@ -39,11 +40,11 @@ class Network:
 
 class Interface:
     CURRENT_PACKAGE = 'Default'
-    CURRENT_THEME = 'Light'
+    CURRENT_THEME = 'Default'
     CURRENT_LANG = 'English'
 
     ICON_PACKAGES = ['Default']
-    THEME_PACKAGES = ['Light']
+    THEME_PACKAGES = ['Default']
     LANG_PACKAGES = ['English']
 
 
@@ -84,10 +85,10 @@ class Interface:
         return self.LANG_PACKAGES
     
     def get_current_stylesheet(self):
-        file_name = f'{self.current_theme()}.css'
+        file_name = f'{self.current_theme()}.scss'
         file_path = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER, file_name)
         
-        return file_ops(file_path, binary = False)
+        return Compiler().compile(file_path)
         
 
 

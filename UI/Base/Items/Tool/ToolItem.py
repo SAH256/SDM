@@ -17,19 +17,12 @@ class ToolItem(BaseItem):
         self._hover = '-hover.png'
         self._size = 32
 
-        self._effect()
-
         layout = self.mainLayout.itemAt(0)
         layout.setContentsMargins(0, 0, 0, 0)
 
         name = 'tool-item'
         self.setObjectName(name)
         
-
-    def _effect(self):
-        e = QtWidgets.QGraphicsOpacityEffect()
-        e.setOpacity(1)
-        self.iconPlace.setGraphicsEffect(e)
 
 
     def _toggle_icon(self, normal = True):
@@ -69,7 +62,7 @@ class ToolItem(BaseItem):
             d = 0.4
             
         self._toggle_icon(s)
-        self.set_opacity(d)
+        # self.set_opacity(d)
 
     def setEnabled(self, s):
         super().setEnabled(s)
@@ -81,10 +74,10 @@ class ToolItem(BaseItem):
         if self.entered:
             self._toggle_icon(not s)
 
-        self.set_opacity(d)
+        # self.set_opacity(d)
 
-    def set_opacity(self, value):
-        self.iconPlace.graphicsEffect().setOpacity(value)
+    # def set_opacity(self, value):
+    #     self.iconPlace.graphicsEffect().setOpacity(value)
 
     def enterEvent(self, ev):
         super().enterEvent(ev)

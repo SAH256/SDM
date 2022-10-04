@@ -6,9 +6,10 @@ from PyQt5.QtCore import Qt
 class ToolTab(QtWidgets.QWidget):
     
     def __init__(self, parent, direction):
-        super().__init__()
+        super().__init__(parent)
         
-        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        # self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
 
 
         self.mainLayout = QtWidgets.QBoxLayout(direction)

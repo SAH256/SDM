@@ -23,6 +23,7 @@ class RoundItem(ToolItem):
         self.setObjectName(name)
 
         self._toggle_icon()
+        self._effect()
         
         
 

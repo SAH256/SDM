@@ -12,8 +12,8 @@ from .TaskItem import TaskItem
 
 class TaskItemControl(TaskItem):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.info = None
 

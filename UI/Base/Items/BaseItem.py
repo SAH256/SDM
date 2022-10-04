@@ -10,7 +10,7 @@ from Utility.Gui import iconFinder
 class BaseItem(QtWidgets.QWidget):
 
     def __init__(self, parent):
-        super().__init__(parent)
+        super().__init__(parent = parent)
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
@@ -38,7 +38,7 @@ class BaseItem(QtWidgets.QWidget):
         name = 'lkm.lskjdlkjl'
         icon = iconFinder(name)
 
-        self.iconPlace = QtWidgets.QLabel()
+        self.iconPlace = QtWidgets.QLabel(self)
         self.iconPlace.setPixmap(icon.pixmap(32, 32))
         layout.addWidget(self.iconPlace)
 
@@ -64,10 +64,10 @@ class BaseItem(QtWidgets.QWidget):
     def set_hover(self, s):
         self.hover = s
 
-    def _update(self):
+    def update(self):
         self.style().unpolish(self)
         self.style().polish(self)
-        self.update()
+        super().update()
 
 
 # Filter class for category and status items
@@ -91,5 +91,5 @@ class FilterItem(BaseItem):
             value = self.select_value
         
         self.setProperty(self.css_prop, value)
-        self._update()
+        self.update()
 

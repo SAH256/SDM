@@ -40,6 +40,8 @@ class HeaderTab(QtWidgets.QScrollArea):
 
         name = 'header-tab'
         self.setObjectName(name)
+        
+        self.__shadow()
 
 
     def _cart(self):
@@ -55,5 +57,10 @@ class HeaderTab(QtWidgets.QScrollArea):
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
 
-
+    def __shadow(self):
+        e = QtWidgets.QGraphicsDropShadowEffect()
+        e.setBlurRadius(10)
+        e.setOffset(0, 3)
+        e.setColor(Qt.GlobalColor.gray)
+        self.setGraphicsEffect(e)
 

@@ -9,6 +9,7 @@ class Slider(QtWidgets.QWidget):
         super().__init__()
 
         self.mainLayout = QtWidgets.QVBoxLayout()
+        self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(self.mainLayout)
 
         self.default = value
@@ -17,9 +18,8 @@ class Slider(QtWidgets.QWidget):
         self._log_func = log_func
 
         self._labels(title)
-        self._slider()
+        self._slider()        
 
-        self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
 
     def _labels(self, title):

@@ -14,45 +14,33 @@ class OptionItem(FilterItem):
         self.min_size = 32
         self.big_size = 36
 
-        self._effect()
+        name = 'option-item'
+        self.setObjectName(name)
 
         pm = self.get_pixmap(self.path_name + icon)
         self.set_icon(pm)
-
-
-        name = 'option-item'
-        self.setObjectName(name)
+        
+        self.set_select(False)
     
-
-    def _effect(self):
-        e = QtWidgets.QGraphicsOpacityEffect()
-        e.setOpacity(0.5)
-        self.iconPlace.setGraphicsEffect(e)
-
-
 
     def set_select(self, state):
         super().set_select(state)
 
-        op = 1
-
-        if not state:
-            op = 0.5
-            
-        self.iconPlace.graphicsEffect().setOpacity(op)
+        self.iconPlace.setEnabled(state)
 
 
     def enterEvent(self, ev):
         super().enterEvent(ev)
         
-        if self.isEnabled():
-            self.iconPlace.graphicsEffect().setOpacity(1)
+        self.iconPlace.setEnabled(True)
 
     def leaveEvent(self, ev):
         super().leaveEvent(ev)
         
-        if not self.selected:
-            self.iconPlace.graphicsEffect().setOpacity(0.5)
+        if self.selected:
+            return
+
+        self.iconPlace.setEnabled(False)
 
 
     def get_pixmap(self, key):
