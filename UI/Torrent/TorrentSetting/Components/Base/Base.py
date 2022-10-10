@@ -5,8 +5,8 @@ from PyQt5.QtCore import Qt
 
 class BaseWidget(QtWidgets.QWidget):
 
-    def __init__(self, box = True, vertical = False):
-        super().__init__()
+    def __init__(self, parent, box = True, vertical = False):
+        super().__init__(parent)
         
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
@@ -34,8 +34,8 @@ class BaseWidget(QtWidgets.QWidget):
 
 class BasePanel(BaseWidget):
     
-    def __init__(self, box, vertical = False):
-        super().__init__(box, vertical)
+    def __init__(self, parent, box, vertical = False):
+        super().__init__(parent, box, vertical)
 
         self.info_data = None
         self.paused = True
@@ -51,8 +51,8 @@ class BasePanel(BaseWidget):
 
 class Scroll(QtWidgets.QScrollArea):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.setFrameShape(self.Shape.NoFrame)
 
@@ -70,7 +70,7 @@ class Scroll(QtWidgets.QScrollArea):
 
 
     def _widget(self, box, vertical):
-        widget = BaseWidget(box, vertical)
+        widget = BaseWidget(self, box, vertical)
         self.mainLayout = widget.layout()
         self.setWidget(widget)
     

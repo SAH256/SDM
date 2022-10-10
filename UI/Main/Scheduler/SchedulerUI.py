@@ -29,7 +29,7 @@ class SchedulerUI(Dialog):
         self.mainLayout = QtWidgets.QHBoxLayout()
         self.setLayout(self.mainLayout)
 
-        self.mainLayout.setContentsMargins(5, 5, 5, 10)
+        self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
         w, h = 850, 600
         self.resize(w, h)
@@ -51,6 +51,7 @@ class SchedulerUI(Dialog):
 
     def _content(self):
         self.conLayout = QtWidgets.QVBoxLayout()
+        self.conLayout.setContentsMargins(5, 5, 5, 5)
         self.mainLayout.addLayout(self.conLayout, 6)
         self.mainLayout.setStretchFactor(self.conLayout, 6)
 

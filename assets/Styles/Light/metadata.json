@@ -1,0 +1,13 @@
+{
+    
+    "TITLEBAR-SHADOW" : "#444",
+    "HEADER-SHADOW" : "#aaa",
+    "TOOLBAR-SHADOW" : "#aaa",
+    "CONTAINER-SHADOW" : "#c0c0c0",
+    "ITEM-NORMAL-SHADOW" : "#ccc",
+    "ITEM-HOVER-SHADOW" : "#999",
+    "PROGRESS" : "#e0e0e0",
+    "ERROR" : "#ffc9c9",
+    "COMPLETE" : "#b8f7b8",
+    "LINK" : "#3636fc"
+}

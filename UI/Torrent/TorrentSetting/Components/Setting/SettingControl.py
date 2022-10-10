@@ -11,8 +11,8 @@ class Setting(SettingUI):
 
     requested = pyqtSignal(int)
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.__connect_slots()
         self.__enable_controls(False)

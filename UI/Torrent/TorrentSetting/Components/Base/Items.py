@@ -1,8 +1,9 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
-from Utility.Core import TORRENT, ICONS
+from Utility.Core import TORRENT, ICONS, SELECTORS
 from Utility.Util import sizeChanger
+from Utility.Structure.Setting import Interface
 
 from .Base import BaseWidget, create_icon_label
 
@@ -11,8 +12,8 @@ from .Base import BaseWidget, create_icon_label
 # Base item for all items that is using in torrent setting
 class BaseItem(BaseWidget):
 
-    def __init__(self, shadow = False):
-        super().__init__(False, True)
+    def __init__(self, parent, shadow = False):
+        super().__init__(parent, False, True)
 
         if shadow:
             self.__shadow()
@@ -22,7 +23,7 @@ class BaseItem(BaseWidget):
         shadow = QtWidgets.QGraphicsDropShadowEffect()
         shadow.setBlurRadius(10)
         shadow.setOffset(0, 0)
-        shadow.setColor(Qt.GlobalColor.lightGray)
+        shadow.setColor(QtGui.QColor(Interface.COLORS.get('CONTAINER-SHADOW')))
             
         self.setGraphicsEffect(shadow)
 
@@ -30,19 +31,15 @@ class BaseItem(BaseWidget):
 # items that is using in status, detail and trackers
 class ScrollItem(BaseItem):
     
-    def __init__(self, first = '', second = '', copy = False, shadow = True):
-        super().__init__(shadow)
-
-        self.class_prop = 'css-class'
-        self.bold_value = 'Bold'
-        self.tracker_value = "tracker"
+    def __init__(self, parent, first = '', second = '', copy = False, shadow = True):
+        super().__init__(parent, shadow)
 
         self._create_labels(first, second)
 
         if copy:
             self._setup_menu()
         
-        name = 'torrent-scroll-item'
+        name = 'scroll-item'
         self.setObjectName(name)
 
 
@@ -66,7 +63,7 @@ class ScrollItem(BaseItem):
 
 
     def _setup_menu(self):
-        self.MENU = QtWidgets.QMenu()
+        self.MENU = QtWidgets.QMenu(parent = self)
 
         name = 'Copy'
         action = self.MENU.addAction(name)
@@ -85,10 +82,10 @@ class ScrollItem(BaseItem):
     def set_bold(self, state):
         name = ''
         if state:
-            name = self.bold_value
+            name = SELECTORS.VALUE.BOLD
         
-        self.name.setProperty(self.class_prop, name)
-        self.state.setProperty(self.class_prop, name)
+        self.name.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
+        self.state.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
 
         
         self.update()
@@ -96,10 +93,10 @@ class ScrollItem(BaseItem):
     def set_tracker(self, state):
         name = ''
         if state:
-            name = self.tracker_value
+            name = SELECTORS.VALUE.TRACKER
         
-        self.name.setProperty(self.class_prop, name)
-        self.state.setProperty(self.class_prop, name)
+        self.name.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
+        self.state.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
         
         self.update()
 
@@ -131,10 +128,8 @@ class ScrollItem(BaseItem):
 # items that is using in peer section
 class PeerScrollItem(BaseItem):
     
-    def __init__(self):
-        super().__init__(True)
-
-        self.prop_name = 'css-class'
+    def __init__(self, parent):
+        super().__init__(parent, True)
 
         self.widgets = {}
 
@@ -218,7 +213,9 @@ class PeerScrollItem(BaseItem):
                     wid.setText(value)
 
             is_seed = data[TORRENT.PEER.SEED]
-            self.widgets[TORRENT.PEER.CLIENT].setProperty(self.prop_name, TORRENT.SEEDER if is_seed else TORRENT.LEECHER)
+            value = SELECTORS.VALUE.SEEDER if is_seed else SELECTORS.VALUE.LEECHER
+
+            self.widgets[TORRENT.PEER.CLIENT].setProperty(SELECTORS.PROPERTY.CSS_CLASS, value)
             
             self.update()
         

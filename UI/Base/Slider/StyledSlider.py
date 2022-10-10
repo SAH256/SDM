@@ -28,12 +28,13 @@ class Slider(QtWidgets.QWidget):
 
         labels = [
             (None, title, 'slider-title'),
-            ('log', '', None),
-            None
+            1,
+            ('log', '', 'log-text'),
+            2
         ]
 
         for item in labels:
-            if item:
+            if type(item) == tuple:
                 wid = QtWidgets.QLabel(item[1])
 
                 layout.addWidget(wid)
@@ -45,7 +46,7 @@ class Slider(QtWidgets.QWidget):
                     setattr(self, item[0], wid)
 
             else:
-                layout.addStretch()
+                layout.addStretch(item)
 
 
     def _slider(self):

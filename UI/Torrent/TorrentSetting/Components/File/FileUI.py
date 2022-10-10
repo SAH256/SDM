@@ -12,8 +12,8 @@ from .Components.Tree import View
 # Widget for displaying Files in a torrent -- UI class
 class FileUI(BasePanel):
 
-    def __init__(self):
-        super().__init__(False, True)
+    def __init__(self, parent):
+        super().__init__(parent, False, True)
 
         self._header()
         self._content()

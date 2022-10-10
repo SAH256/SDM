@@ -638,6 +638,24 @@ class SECTIONS:
 
 
 class SELECTORS:
+    class PROPERTY:
+        CSS_CLASS = 'css-class'
+        ORIENTATION = 'orientation'
+        STATES = 'state'
+
+    class VALUE:
+        ICON = 'icon'
+        DOUBLE = 'double'
+        SELECTED = 'selected'
+        RESUME = 'resume'
+        VERTICAL = 'vertical'
+        HORIZONTAL = 'horizontal'
+        BOLD = 'bold'
+        TRACKER = 'tracker'
+        SEEDER = 'seeder'
+        LEECHER = 'leecher'
+        
+
     class STATES:
         CONFIRM = 'confirm'
         DANGER = 'danger'

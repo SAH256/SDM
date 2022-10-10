@@ -54,15 +54,19 @@ class About(AboutUI):
             ('Openssl', SDM.INFO.OPENSSL_VERSION),
         ]
 
-        name = 'app-info'
+        text_name = 'info-text'
+        data_name = 'info-data'
 
         for entry in data:
-            text = entry[0] + ' : '
+            text = QtWidgets.QLabel(entry[0] + ' : ')
             label = QtWidgets.QLabel(entry[1])
-            label.setObjectName(name)
+            
+            text.setObjectName(text_name)
+            label.setObjectName(data_name)
 
             self.infoLayout.addRow(text, label)
 
+        self.update()
 
     def __setup_attr(self):
         file_name = 'attr.txt'

@@ -10,8 +10,8 @@ from Utility.Core import TORRENT
 # Widget for displaying torrent tracker data
 class TrackersOption(BasePanel):
     
-    def __init__(self):
-        super().__init__(False, True)
+    def __init__(self, parent):
+        super().__init__(parent, False, True)
 
         self.stats = {}
         self.widgets = {}
@@ -33,13 +33,13 @@ class TrackersOption(BasePanel):
             TORRENT.TRACKER.STATS.PEX : 'PeX'
         }
 
-        text = "Not Working"
+        default_text = "Not Working"
         c = 0
         w, h = 150, 120
         
         for name, txt in panels.items():
     
-            wid = ScrollItem(txt, text)
+            wid = ScrollItem(self, txt, default_text)
             wid.set_align(Qt.AlignmentFlag.AlignHCenter)
             wid.set_bold(True)
 
@@ -58,7 +58,7 @@ class TrackersOption(BasePanel):
 
         self.mainLayout.setStretchFactor(listLayout, 1)
 
-        scroll = Scroll()
+        scroll = Scroll(self)
         scroll._widget(False, True)
 
 
@@ -151,7 +151,7 @@ class TrackersOption(BasePanel):
             item = self.__stash.pop()
             item.setVisible(True)
         else:
-            item = ScrollItem()
+            item = ScrollItem(self)
             item.set_tracker(True)
             self.__add_child(item)
 

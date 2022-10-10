@@ -1,6 +1,9 @@
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
+from Utility.Structure.Setting import Interface
+from Utility.Core import SELECTORS
+
 from ..BaseItem import BaseItem
 from .ToolItem import ToolItem
 
@@ -28,15 +31,15 @@ class RoundItem(ToolItem):
         
 
     def set_select(self, state):
-        super().set_select(state)
+        super().set_selected(state)
 
         name = ''
         r = 10
         if state:
             r = 0
-            name = self.select_value
+            name = SELECTORS.VALUE.SELECTED
 
-        self.setProperty(self.css_prop, name)
+        self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
         self.graphicsEffect().setBlurRadius(r)
         self._toggle_icon()
         self.setFocus()
@@ -45,19 +48,19 @@ class RoundItem(ToolItem):
 
     def _effect(self):
         e = QtWidgets.QGraphicsDropShadowEffect()
-        e.setColor(Qt.GlobalColor.gray)
+        e.setColor(QtGui.QColor(Interface.COLORS.get('ITEM-NORMAL-SHADOW')))
         e.setBlurRadius(10)
         e.setOffset(0, 0)
         self.setGraphicsEffect(e)
 
     def enterEvent(self, ev):
         self.entered = True
-        self.graphicsEffect().setColor(Qt.GlobalColor.blue)
+        self.graphicsEffect().setColor(QtGui.QColor(Interface.COLORS.get('ITEM-HOVER-SHADOW')))
         self._toggle_icon()
 
     def leaveEvent(self, ev):
         self.entered = False
-        self.graphicsEffect().setColor(Qt.GlobalColor.gray)
+        self.graphicsEffect().setColor(QtGui.QColor(Interface.COLORS.get('ITEM-NORMAL-SHADOW')))
         self._toggle_icon()
 
 
@@ -74,6 +77,6 @@ class RoundItem(ToolItem):
 
 
     def update(self):
-        self.style().polish(self)
         self.style().unpolish(self)
+        self.style().polish(self)
         super().update()

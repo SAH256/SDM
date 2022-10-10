@@ -90,12 +90,7 @@ class SaveControl(SavePath):
     def __change_color(self, name):
         for wid in self._widgets:
             wid.setObjectName(name)
-            self.__update(wid)
-
-
-    def __update(self, wid):
-        self.style().unpolish(wid)
-        self.style().polish(wid)
+            self.update(wid)
 
 
     def __reset_widgets(self):
@@ -104,5 +99,5 @@ class SaveControl(SavePath):
         for wid in self._widgets:
             wid.setText(text)
             wid.setObjectName('')
-            self.__update(wid)
+            self.update(wid)
 

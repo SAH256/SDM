@@ -1,7 +1,7 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
-
+from Utility.Structure.Setting import Interface
 
 class HeaderTab(QtWidgets.QScrollArea):
     
@@ -61,6 +61,6 @@ class HeaderTab(QtWidgets.QScrollArea):
         e = QtWidgets.QGraphicsDropShadowEffect()
         e.setBlurRadius(10)
         e.setOffset(0, 3)
-        e.setColor(Qt.GlobalColor.gray)
+        e.setColor(QtGui.QColor(Interface.COLORS.get('HEADER-SHADOW')))
         self.setGraphicsEffect(e)
 

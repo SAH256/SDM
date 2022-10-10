@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
 from Utility.Gui import iconFinder
-
+from Utility.Core import SELECTORS
 
 # Base class of all GUI Items that is using.
 
@@ -26,9 +26,6 @@ class BaseItem(QtWidgets.QWidget):
         self.selected = False
         self.hovered = False
 
-        self.select_value = 'selected'
-        self.css_prop = 'css-class'
-
 
     def _icon(self):
         layout = QtWidgets.QHBoxLayout()
@@ -51,14 +48,7 @@ class BaseItem(QtWidgets.QWidget):
     def get_pixmap(self):
         pass
 
-
-    def set_type(self, _type):
-        self._type = _type
-
-    def set_data(self, data):
-        self.data = data
-
-    def set_select(self, s):
+    def set_selected(self, s):
         self.selected = s
 
     def set_hover(self, s):
@@ -83,13 +73,19 @@ class FilterItem(BaseItem):
         layout.setContentsMargins(0, 0, 0, 0)
 
 
-    def set_select(self, s):
-        super().set_select(s)
+    def set_selected(self, s):
+        super().set_selected(s)
 
         value = ''
         if s:
-            value = self.select_value
+            value = SELECTORS.VALUE.SELECTED
         
-        self.setProperty(self.css_prop, value)
+        self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, value)
         self.update()
+    
+    def set_type(self, _type):
+        self._type = _type
+
+    def set_data(self, data):
+        self.data = data
 

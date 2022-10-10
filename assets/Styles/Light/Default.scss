@@ -1,0 +1,990 @@
+/* 
+    Dark StyleSheet
+    Author : SAH256
+*/
+
+@import "vars";
+
+
+* QLabel {
+    color : $on-background;
+}
+
+
+
+/* Button widget */
+QPushButton {
+    padding : 6px 10px;
+    border-radius : 4px;
+    border : 2px solid transparent;
+    outline : none;
+    background-color : $secondary-color;
+    color : $on-secondary;
+
+    font-family : Arial;
+    font-size : 14px;
+    // font-weight : 600;
+
+    &:disabled {
+        background-color : #e2e2e2;
+        color : #a0a0a0;
+    }
+
+    &:hover {
+        background-color : #ccc;
+    }
+
+    &:focus {
+        background-color: transparent;
+        border-color: #bbb;
+        // color: #bbb;
+    }
+
+    &:pressed {
+        background-color : #c0c0c0;
+        border : none;
+    }
+
+    &:menu-indicator {
+        width : 10px;
+        height : 100%;
+        subcontrol-position : right center;
+        subcontrol-origin : padding;
+
+        image : url("assets/Icons/Default/Other/arrow_down_white.png");
+        padding : 2px 5px 2px 0px;
+    }
+
+    &[css-class = "confirm"] {
+        background-color : $accent-color;
+        color : $on-accent;
+
+        &:disabled {
+            background-color : #e2e2e2;
+            color : #a0a0a0;
+        }
+
+        &:focus {
+            background-color: transparent;
+            border-color: $accent-color;
+            color : $accent-color;
+        }
+
+        &:pressed {
+            background-color : #118be9;
+            border : none;
+            color : #444;
+        }
+    }
+
+    &[css-class = "danger"] {
+        background-color : $error-color;
+        color : $on-error;
+
+        &:disabled {
+            background-color : #e2e2e2;
+            color : #a0a0a0;
+        }
+
+        &:focus {
+            background-color: transparent;
+            border-color: $error-color;
+            color : $error-color;
+        }
+
+        &:pressed {
+            background-color : transparent;
+            color : $error-color;
+            border : none;
+        }
+    }
+
+    &[css-class = "warning"] {
+        background-color : #d8d800;
+        color : $on-surface;
+
+        &:disabled {
+            background-color : #c8b800;
+        }
+
+        &:pressed {
+            background-color : #d8c800;
+            color : #ddd;
+        }
+    }
+
+    &[css-class = "icon"] {
+        padding : 10px;
+        border-radius : 12px;
+        background-color : transparent;
+
+        &:hover {
+            background-color : $secondary-color;
+        }
+    }
+}
+
+
+/* CheckBox widget */
+QCheckBox {
+    color : $on-background;
+    outline : none;
+
+    &:focus {
+        color : $accent-color;
+    }
+
+    &::indicator {
+        border : 2px solid $accent-color;
+        width : 11px;
+        height : 11px;
+        border-radius : 3px;
+
+        &::checked {
+            background-color : $accent-color;
+            image : url(assets/Icons/Default/Other/tick.svg);
+        }
+
+        &::disabled {
+            border-color : #ccc;
+
+            &::checked {
+                background-color : #ccc;
+            }
+        }
+    }
+}
+
+
+/* ComboBox widget */
+#combo-box {
+    border : none;
+    background-color : #e4e4e4;
+    color : $on-secondary;
+    padding : 5px 10px;
+
+    &:on,
+    &:editable {
+        background-color : #f4f4f4;
+        border-bottom : 2px solid $accent-color;
+    }
+
+    &::drop-down {
+        width : 25px;
+        height : 25px;
+        border : none;
+    
+        subcontrol-origin : padding;
+        subcontrol-position: top right;
+    }
+
+    &::down-arrow {
+        image : url(assets/Icons/Default/Other/arrow-closed.png);
+        width : 10px;
+        height : 10px;
+    }
+
+    &::down-arrow:on {
+        image : url(assets/Icons/Default/Other/arrow-open.png);
+    }
+
+    & QAbstractItemView {
+        border : none;
+        background-color : #e4e4e4;
+        outline : none;
+
+        &::item {
+            padding : 3px 5px;
+            color : $on-secondary;
+
+            &:hover,
+            &:focus {
+                background-color : #d3d3d3;
+            } 
+        }
+    }
+}
+
+
+/* Line/Text-Edit widget */
+QLineEdit, QTextEdit {
+    border : none;
+    padding : 5px;
+    background-color : #e4e4e4;
+    color : #333;
+
+    &:disabled {
+        background-color : #c4c4c4;
+        color : #666;
+
+        // &[text=""] {
+        //     border-bottom : 2px solid $error-color;
+        // }
+    }
+
+    &[readOnly='false']:focus {
+        background-color : #f4f4f4;
+        border-bottom : 2px solid $accent-color;
+    }
+
+    &[echoMode = "2"] {
+         lineedit-password-character : 9679;
+    }
+
+    &[css-class="error"] {
+        border-bottom: 2px solid $error-color;
+
+        &:focus {
+            border-bottom : 1px solid $error-color;
+        }
+    }
+}
+
+QLineEdit[css-class="double"]:focus {
+    border-top : 2px solid $accent-color;
+}
+
+
+/* line custom widget */
+#line {
+    border-color : #ddd;
+    border-style : solid;
+    border-radius : 1px;
+
+    &[orientation="horizontal"] {
+        border-bottom-width : 2px;
+    }
+
+    &[orientation="vertical"] {
+        border-left-width : 2px;
+    }
+}
+
+
+/* MenuBar & Menu widget */
+QMenuBar {
+    background-color: $primary-color;
+    color : $on-primary;
+
+    &::item:selected {
+        background-color: lighten($primary-color, 5);
+    }
+}
+
+
+QMenu {
+    background-color: #222;
+    margin : 0px;
+    padding : 0px;
+
+    &::item {
+        margin : 2px 0px;
+        padding: 4px 60px 4px 10px;
+        color : #fff;
+        font-size : 13px;
+
+        &:disabled {
+            color : #5e5e5e;
+        }
+
+        &:enabled {
+            &:selected {
+                background-color: #333;
+            }
+
+            &:pressed {
+                padding-left : 15px;
+            }
+        }
+    }
+
+    &::separator {
+        height: 1px;
+        background: #303030;
+        margin : 0xp 7px;
+    }
+}
+
+
+/* Elide Label custom widget */
+#elide {
+    padding-right : 50px;
+}
+
+
+/* ScrollBar widget */
+QScrollBar {
+
+    &:horizontal {
+        height: 4px;
+        padding : 4px 2px;
+        margin: -20px 0px -10px 0px;
+        border-radius : 2px;
+    }
+
+    &:vertical {
+        width : 7px;
+        padding : 2px 4px;
+        border-radius : 2px;
+        margin : 5px -5px 5px -5px;
+        background-color : #ccc;
+    }
+
+    &::handle {
+        background-color : #aaa;
+
+        &:horizontal {
+            min-width: 25px;  
+        }
+
+        &:vertical {
+            min-height : 25px;
+            padding : 5px;
+        }
+
+        &:horizontal:hover,
+        &:vertical:hover {
+            background-color: #888;
+        }
+    }
+
+    &::add-line:horizontal,
+    &::add-line:vertical {
+        background-color : $background-color;
+    }
+    
+    &::sub-line:horizontal,
+    &::sub-line:vertical {
+        background-color : $background-color;
+    }
+
+    &::add-page:horizontal,
+    &::add-page:vertical,
+    &::sub-page:horizontal,
+    &::sub-page:vertical {
+        background-color: none;
+    }
+}
+
+
+/* Slider widget */
+QSlider {
+    padding : 5px;
+
+    &::groove:horizontal {                    
+        height: 2px;
+        background-color : #ccc;
+        margin: 0;
+    }
+
+    &::handle:horizontal {
+        background-color : #fff;
+        border: 2px solid $accent-color;
+        width: 8px;
+        border-radius : 5px;
+        margin: -5px -1px;
+
+        &:horizontal:hover {
+            background-color : $accent-color;
+        }
+    }
+
+    &::sub-page::horizontal {
+        background-color : $accent-color;
+        height : 1px;
+    }
+}
+
+
+#slider-title {
+    font-size : 14px;
+}
+
+#log-text {
+    font-size : 12px;
+    color : #666;
+}
+
+
+/* SpinBox custom widget */
+#spinbox {
+    background-color : transparent;
+}
+
+#spinbox-input {
+    text-align : center;
+}
+
+
+/* CartItem custom widget */
+#cart-name {
+    color : $secondary-color;
+    font-family : Arial;
+    font-size : 14px;
+    font-weight : 600;
+    padding : 0px 20px 0px 0px;
+}
+
+#cart-item {
+    border-bottom : 4px solid transparent;
+
+    &:hover {
+        background-color : lighten($primary-color, 5);
+    }
+
+    &[css-class="selected"] {
+        border-bottom-color : $on-primary;
+
+        & #cart-name {
+            color : $on-primary;
+        }
+    }
+}
+
+
+/* OptionItem custom widget  */
+#option-item {
+    border-left : 3px solid transparent;
+
+    &:hover {
+        background-color : $secondary-color;
+    }
+
+    &[css-class="selected"] {
+        border-left-color : $accent-color;
+    }
+}
+
+
+/* RoundItem custom widget */
+#round-item {
+    background-color : $background-color;
+    border : 2px solid #ccc;
+    border-radius : 29px;
+
+    &:hover {
+        border-color : $accent-color;
+    }
+
+    &:focus,
+    &[css-class="selected"] {
+        border : 2px solid $accent-color;
+        background-color : #e4e4e4;
+    }
+}
+
+
+/* ToolItem custom widget */
+#tool-item {
+    background-color : transparent;
+}
+
+
+/* Task Item */
+#task-item {
+    background-color : transparent;
+    border-left : 3px solid $negative-color;
+    border-radius : 3px;
+
+    &[css-class="resume"] {
+        border-color : $positive-color;
+    }
+}
+
+#task-name {
+    font-family : Arial;
+    font-size : 15px;
+    font-weight : 600;
+}
+
+#simple-text, #task-status {
+    color : #555;
+}
+
+
+/* ToolTip widget */
+QToolTip {
+    background-color : #404040;
+    color : #eee;
+    padding : 3px 5px;
+    border-radius : 3px;
+    opacity : 200;
+}
+
+
+/* MainWindow & Dialog widget */
+QMainWindow {
+    background-color: $background-color;
+    color : $on-background;
+}
+
+QDialog {
+    background-color : $background-color;
+    color : $on-background;
+}
+
+#popup-dialog {
+    background-color : transparent;
+}
+
+#popup-body {
+    background-color : $background-color;
+    border-bottom-right-radius : 4px;
+    border-bottom-left-radius : 4px;
+}
+
+#popup-header {
+    background-color : #555;
+    border-top-left-radius : 4px;
+    border-top-right-radius : 4px;
+
+    &[css-class = "confirm"] {
+        background-color : $accent-color;
+    }
+
+    &[css-class = "info"] {
+        background-color : #53ff30;
+    }
+
+    &[css-class = "warning"] {
+        background-color : #d8d800;
+    }
+
+    &[css-class = "danger"] {
+        background-color : $error-color;
+    }
+
+    &__title {
+        font-family : Arial;
+        font-size : 16px;
+        /* font-weight : 600; */
+        color : $on-primary;
+    }
+}
+
+
+/* ABOUT DIALOG */
+
+#attr-label {
+    background-color : $background-color;
+}
+
+#info-text, #info-data {
+    font-family : Arial;
+    font-size : 14px;
+    font-weight : 600;
+}
+
+#info-data {
+    color : $accent-color;
+}
+
+/* ADD DIALOG */
+
+#dialog-header {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 600;
+    color : $accent-color;
+
+    &[text="Torrent"] {
+        color : $error-color;
+    }
+}
+
+
+#size-box {
+    font-size : 14px;
+    color : $on-background;
+}
+
+
+#error-box {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 600;
+    color : $error-color;
+}
+
+
+/* TOOLBAR */
+
+#toolbar {
+    background-color : $surface-color;
+}
+
+
+/* BATCH DIALOG */
+
+#tip-icon {
+    padding : 2px 4px;
+    border-radius : 2px;
+}
+
+#sample-box {
+    padding : 5px;
+    color : $on-background;
+    border : 1px solid #ccc;
+    border-radius : 4px;
+}
+
+
+/* AUTH BOX */
+
+QGroupBox {
+    border: 1px solid #ccc;
+    padding : 20px  2px 5px 2px;
+    border-radius: 2px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left; /* position at the top center */
+    padding: 0 3px;
+    color : $on-background;
+}
+
+QGroupBox::indicator{
+    border : 2px solid $accent-color;
+    width : 11px;
+    height : 11px;
+    border-radius : 3px;
+}
+
+QGroupBox::indicator::checked {
+    background-color : $accent-color;
+    image : url(assets/Icons/Default/Other/tick.svg);
+}
+
+QGroupBox QLabel {
+    color : $on-background;
+}
+
+
+/* SAVE BOX */
+
+#danger-state {
+    color : $negative-color;
+}
+
+#ok-state {
+    color : $positive-color;
+}
+
+
+/* Torrent Box */
+
+#torrent-info {
+    font-size : 14px;
+}
+
+
+/* GROUP DIALOG */
+
+#group-dialog #dialog-header {
+    font-size : 18px;
+}
+
+
+/* TASK LIST */
+
+#task-list {
+    outline : none;
+    border : none;
+    background-color: transparent;
+
+    &::item {
+        margin : 3px 5px;
+        padding : 25px 10px;
+        background-color : $surface-color;
+        border-radius : 3px;
+        border : 1px solid #d8d8d8;
+
+        &:hover {
+            background-color : #e0e0e0;
+        }
+    
+        &:selected {
+            background-color : #cfcfcf;
+            border : 2px solid #cfcfcf;
+            border-left : none;
+        }
+    }
+}
+
+
+/* GROUP LIST */
+
+QTreeView {
+    font-family : Arial;
+    font-size : 13px;
+    outline : 0;
+    border : none;
+    background-color: transparent;
+
+    &::item {
+        border-right : 1px solid #ddd;
+        border-bottom : 1px solid #ddd;
+        color : $on-background;
+
+        &:hover {
+            background-color: #eee;
+        }
+
+        &:selected {
+            background-color : #ddd;
+            border-right-color : #eee;
+            border-bottom-color : #eee;
+            // color : $on-background;
+
+            // &:hover {
+            //     color : $on-background;
+            // }
+        }        
+    }
+
+    & QHeaderView::section {
+        background-color : $primary-color;
+        color : $on-primary;
+
+        border : 1px solid transparent;
+        border-right-color : $background-color;
+
+        padding-left: 5px;
+        font-weight : 600;
+    }
+}
+
+
+/* SCHEDULER QUEUE  */
+
+#list-header {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 900;
+}
+
+
+/* SCHEDULER QUEUE LIST */
+
+#queue-list {
+    border : none;
+    outline : none;
+    background-color: transparent;
+    font-family : Arial;
+    font-size : 12px;
+    font-weight : 900;
+
+    &::item {
+        padding : 7px 5px;
+        width : 100px;
+        color : $on-background;
+        outline : none;
+        border-radius : 17px;
+
+        &:hover {
+            background-color : #ddd;
+            // color : $background-color;
+        }
+        
+        &:selected {
+            background-color : $primary-color;
+            color : $on-primary;
+            font-size : 10px;
+            margin : 0;
+        }
+    }
+
+    &-container {
+        background-color : #f4f4f4;
+    }
+}
+
+
+/* SCHEDULER PROCESS */
+
+#process-area {
+    border : none;
+    background-color : transparent;
+}
+
+#process-widget {
+    background-color : transparent;
+}
+
+
+/* SCHEDULER PROCESS CONTAINER */
+
+#process-container {
+    background-color : $surface-color;
+}
+
+#container-title {
+    font-family : Arial;
+    font-size : 16px;
+    font-weight : 600;
+    color : $accent-color;
+}
+
+#danger-msg {
+    color : $error-color;
+    font-size : 14px;
+    font-weight : 600;
+    text-align : center;
+}
+
+
+/* SCHEDULER SETTING */
+
+#queue-setting {
+    font-size : 12px;
+
+    & QLabel[text = 'Name'] {
+        font-size : 14px;
+        font-weight : 900;
+        color : $primary-color;
+    }
+}
+
+
+/* 
+    HEADER TAB
+    INFINITE TAB
+    TOOL TAB
+*/
+
+#tab-widget {
+    background-color : $primary-color;
+}
+
+#header-tab {
+    border : none;
+}
+
+#infinite-tab {
+    background-color: transparent;
+}
+
+#tool-tab {
+    background-color: transparent;
+}
+
+
+/*  TORRENT BASE ITEM UI
+    TORRENT SCROLL
+    SCROLL ITEM 
+    PEER SCROLL ITEM */
+
+#torrent {
+
+    &-base-widget {
+        background-color : transparent;
+    }
+
+    &-scroll_area {
+        background-color : transparent;
+    }
+}
+
+
+#scroll-item {
+    background-color : $surface-color;
+
+    & QLabel {
+        font-family : Arial;
+    }
+
+    &-name {
+        color : $accent-color;
+        font-size : 14px;
+        font-weight : 600;
+        margin-top : 5px;
+        margin-bottom : 5px;
+    }
+
+    &-name[text="DHT"],
+    &-name[text="LSD"],
+    &-name[text="PeX"] {
+        color : $accent-color;
+    }
+
+    &-name[css-class="bold"] {
+        font-size : 20px;
+        font-weight : 800;
+    }
+
+    &-state {
+        font-size : 12px;
+        padding-left : 4px;
+        color : $on-surface;
+    }
+
+    &-state[css-class="bold"] {
+        font-size : 14px;
+        font-weight : 600;
+    }
+}
+
+#peer-scroll-item {
+    background-color : $surface-color;
+
+    & QLabel {
+        font-family : Arial;
+        font-size : 12px;
+        color : $on-background;
+    }
+}
+
+#client {
+    font-size : 16px;
+    font-weight : bold;
+
+    &[css-class = 'seeder'] {
+        color : $positive-color;
+    }
+    
+    &[css-class = 'leecher'] {
+        color : $negative-color;
+    }
+}
+
+#progress {
+    color : $on-surface;
+    font-size : 13px;
+}
+
+
+/* TORRENT FILE UI */
+
+#file-message {
+    font-size : 14px;
+    font-weight : bold;
+    color : $on-background;
+}
+
+#file-info {
+    color : #666;
+}
+
+
+/* CONFIRM POPUP */
+
+#popup-message {
+    font-family : Arial;
+    font-size : 14px;
+    font-weight : 600;
+}
+
+
+/* DELETE POPUP */
+
+#delete-message {
+    font-size : 16px;
+    color : $error-color;
+}
+
+#name-scroll {
+    background-color : $background-color;
+    font-size : 12px;
+}
+

@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt, pyqtSignal
 
 from UI.Base.Button.StyledButton import StyleButton
 
-from Utility.Core import ICONS
+from Utility.Core import ICONS, SELECTORS
 
 
 # Header/TitleBar of frameless dialog
@@ -29,9 +29,7 @@ class Header(QtWidgets.QWidget):
         self._title()
         self.mainLayout.addStretch()
         self._btn()
-        
-        self.prop_name = 'css-class'
-        
+
         name = 'popup-header'
         self.setObjectName(name)
 
@@ -78,7 +76,7 @@ class Header(QtWidgets.QWidget):
 
 
     def set_state(self, state):
-        self.setProperty(self.prop_name, state)
+        self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, state)
         self.update()
 
 

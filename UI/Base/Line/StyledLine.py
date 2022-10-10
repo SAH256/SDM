@@ -2,6 +2,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
+from Utility.Core import SELECTORS
 
 class Line(QtWidgets.QWidget):
     
@@ -10,18 +11,17 @@ class Line(QtWidgets.QWidget):
 
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
-        css_attr = 'orientation'
-        value = 'v'
+        value = SELECTORS.VALUE.VERTICAL
         w, h = 3, 30
 
         if horizontal:
-            value = 'h'
+            value = SELECTORS.VALUE.HORIZONTAL
             t = w
             h = w
             w = t
             
         self.setFixedSize(w, h)
-        self.setProperty(css_attr, value)
+        self.setProperty(SELECTORS.PROPERTY.ORIENTATION, value)
 
 
         name = 'line'

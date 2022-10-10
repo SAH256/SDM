@@ -8,6 +8,9 @@ class ComboBox(QtWidgets.QComboBox):
         self.delegate = QtWidgets.QStyledItemDelegate()
         self.setItemDelegate(self.delegate)
         
+        name = 'combo-box'
+        self.setObjectName(name)
+        
     def _reset(self):
         self.setCurrentIndex(0)
 

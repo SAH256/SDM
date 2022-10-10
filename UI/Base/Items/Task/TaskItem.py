@@ -15,13 +15,12 @@ class TaskItem(BaseItem):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
+        self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
         
         self.mainLayout.setContentsMargins(5, 5, 10, 5)
 
         self.expanded = False
 
-        self.line_width = 2
         self.normal_size = 16
         self.big_size = 32
 
@@ -29,8 +28,6 @@ class TaskItem(BaseItem):
 
         name = 'task-item'
         self.setObjectName(name)
-        
-        self.__apply_style()
 
 
     def _info(self):
@@ -77,6 +74,8 @@ class TaskItem(BaseItem):
             ('remained_time', '5m 16s', None)
         ]
 
+        name = 'simple-text'
+
         for cell in cells:
 
             if type(cell) == int:
@@ -84,7 +83,7 @@ class TaskItem(BaseItem):
             
             else:
                 temp_wid = QtWidgets.QLabel(cell[1])
-                temp_wid.setObjectName(cell[0])
+                temp_wid.setObjectName(name)
 
                 if cell[2]:
                     temp_wid.setFixedWidth(cell[2])
@@ -115,29 +114,3 @@ class TaskItem(BaseItem):
         self.progress.setVisible(self.expanded)
         self.percentage.setVisible(self.expanded)
         self.remained_time.setVisible(self.expanded)
-
-
-
-    def __apply_style(self):
-        style = '''
-        #task-item QLabel {
-            color : #455;
-        }
-
-
-        #task-name {
-            font-family : Arial;
-            font-size : 15px;
-            font-weight : 600;
-            color : #e52c2c;
-        }
-
-
-        #task-name[css-class="resume"] {
-            color : #23af27;
-        }
-
-        '''
-        
-        self.setStyleSheet(style)
-

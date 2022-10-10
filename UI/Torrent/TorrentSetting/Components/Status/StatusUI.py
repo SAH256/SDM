@@ -13,8 +13,8 @@ from UI.Torrent.TorrentSetting.Components.Base.Items import ScrollItem
 # Widget for displaying torrent status data
 class StatusOption(BasePanel):
     
-    def __init__(self):
-        super().__init__(False, True)
+    def __init__(self, parent):
+        super().__init__(parent, False, True)
 
         self.controls = {}
 
@@ -49,7 +49,7 @@ class StatusOption(BasePanel):
 
         for item in items:
 
-            wid = ScrollItem(item[1])
+            wid = ScrollItem(self, item[1])
             infoLayout.addWidget(wid, row, col)
 
             setattr(self, item[0], wid)

@@ -11,25 +11,41 @@ class TorrentUI(QtWidgets.QWidget):
         super().__init__()
 
         self.mainLayout = QtWidgets.QHBoxLayout()
+        self.mainLayout.setContentsMargins(0, 10, 0, 10)
         self.setLayout(self.mainLayout)
 
         self._status()
         self._buttons()
+        
+        name = 'torrent-box'
+        self.setObjectName(name)
 
-        self.mainLayout.setContentsMargins(0, 10, 0, 10)
 
 
     def _status(self):
-        statusLayout = QtWidgets.QHBoxLayout()
-        self.mainLayout.addLayout(statusLayout, 1)
+        layout = QtWidgets.QHBoxLayout()
+        layout.setContentsMargins(5, 0, 0, 0)
+        self.mainLayout.addLayout(layout, 1)
 
-        text = '0/0'
-        self.fileCount = QtWidgets.QLabel(text)
+        labels = [
+            (None, 'Files:'),
+            ('fileCount', '0/0'),
+            None
+        ]
 
-        statusLayout.addWidget(QtWidgets.QLabel('Files:'))
-        statusLayout.addWidget(self.fileCount)
+        name = 'torrent-info'
 
-        statusLayout.addStretch(1)
+        for item in labels:
+            if item:
+                wid = QtWidgets.QLabel(item[1])
+                wid.setObjectName(name)
+                
+                layout.addWidget(wid)
+                
+                if item[0]:
+                    setattr(self, item[0], wid)
+            else:
+                layout.addStretch(1)
 
 
     def _buttons(self):

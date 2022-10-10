@@ -25,6 +25,6 @@ resources.py
 
 #temp files
 *.prt*
-*.json
+# *.json
 
 

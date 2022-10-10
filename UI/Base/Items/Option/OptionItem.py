@@ -20,11 +20,11 @@ class OptionItem(FilterItem):
         pm = self.get_pixmap(self.path_name + icon)
         self.set_icon(pm)
         
-        self.set_select(False)
+        self.set_selected(False)
     
 
-    def set_select(self, state):
-        super().set_select(state)
+    def set_selected(self, state):
+        super().set_selected(state)
 
         self.iconPlace.setEnabled(state)
 

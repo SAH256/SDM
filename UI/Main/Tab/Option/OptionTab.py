@@ -39,7 +39,7 @@ class OptionTab(QtWidgets.QWidget):
         item = OptionItem(self, icon)
 
         if not self.selected:
-            item.set_select(True)
+            item.set_selected(True)
             self.selected = item
 
         self.mainLayout.addWidget(item)
@@ -71,9 +71,9 @@ class OptionTab(QtWidgets.QWidget):
     def __change_selection(self, item):
 
         if self.selected:
-            self.selected.set_select(False)
+            self.selected.set_selected(False)
 
-        item.set_select(True)
+        item.set_selected(True)
         self.selected = item
 
         self.item_changed.emit([item._type, item.data])

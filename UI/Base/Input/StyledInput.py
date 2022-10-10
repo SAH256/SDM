@@ -2,6 +2,7 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
+from Utility.Core import SELECTORS
 
 # Single line text input style class
 
@@ -15,23 +16,20 @@ class StyleInput(QtWidgets.QLineEdit):
         self.setAutoFillBackground(True)
         self.setClearButtonEnabled(True)
 
-        self.prop_name = 'cssClass'
-        self.class_name = 'double'
 
-
-    # set double border property
+    # set double border style property
     def set_double(self, state):
         name = ''
         if state:
-            name = self.class_name
+            name = SELECTORS.VALUE.DOUBLE
         
-        self.setProperty(self.prop_name, name)
+        self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
 
-    def setObjectName(self, name):
-        super().setObjectName(name)
 
-        self.style().polish(self)
+    def update(self):
         self.style().unpolish(self)
+        self.style().polish(self)
+        super().update()
 
     
     def _reset(self):

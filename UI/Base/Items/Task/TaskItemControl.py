@@ -3,7 +3,8 @@ from PyQt5 import QtGui, QtCore
 from Utility.Gui import iconFinder, get_transfer_str
 from Utility.Util import sizeChanger
 from Utility.Calcs import format_remain_time
-from Utility.Core import LINK_TYPE, STATUS, STATES
+from Utility.Core import LINK_TYPE, STATUS, STATES, SELECTORS
+from Utility.Structure.Setting import Interface
 
 from .TaskItem import TaskItem
 
@@ -17,7 +18,6 @@ class TaskItemControl(TaskItem):
 
         self.info = None
 
-        self.resume_prop = 'resume'
         self._expand()
 
 
@@ -29,7 +29,7 @@ class TaskItemControl(TaskItem):
             name = self.info.name
 
         if (self.info.metadata and self.info.resume) or is_magnet:
-            self.nameLabel.setProperty(self.css_prop, self.resume_prop)
+            self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, SELECTORS.VALUE.RESUME)
             self.update()
 
         self.nameLabel.setText(name)
@@ -37,6 +37,7 @@ class TaskItemControl(TaskItem):
         pixmap = self.get_pixmap(name, is_magnet)
         self.set_icon(pixmap)
 
+        na = 'N/A'
         status = ''
         remaining = ''
 
@@ -46,7 +47,7 @@ class TaskItemControl(TaskItem):
             
             status = get_transfer_str(self.info.download_speed, self.info.upload_speed, True, is_magnet)
 
-            remaining = 'N/A'
+            remaining = na
 
             if self.info.eta > -1:
                 remaining = format_remain_time(self.info.eta)
@@ -57,7 +58,6 @@ class TaskItemControl(TaskItem):
         self.status.setText(status)
         self.remained_time.setText(remaining)
 
-        na = 'N/A'
 
         total_size = na
         downloaded = sizeChanger(self.info.downloaded)
@@ -91,8 +91,8 @@ class TaskItemControl(TaskItem):
 
 
     def update(self):
-        self.style().unpolish(self.nameLabel)
-        self.style().polish(self.nameLabel)
+        self.style().unpolish(self)
+        self.style().polish(self)
         super().update()
 
 
@@ -107,17 +107,23 @@ class TaskItemControl(TaskItem):
             # rgb(200 255 210)
             # rgb(255 190 190)
 
-            error_color = QtGui.QColor(255, 190, 190)
-            select_color = QtGui.QColor(165, 222, 225)
-            build_color = QtGui.QColor(200, 255, 210)
-            down_color = QtGui.QColor(139, 212, 239, 125)
+            # error_color = QtGui.QColor(255, 190, 190)
+            # select_color = QtGui.QColor(165, 222, 225)
+            # build_color = QtGui.QColor(200, 255, 210)
+            # down_color = QtGui.QColor(139, 212, 239, 125)
+
+            error_color = QtGui.QColor(Interface.COLORS.get('ERROR'))
+            build_color = QtGui.QColor(Interface.COLORS.get('COMPLETE'))
+            down_color = QtGui.QColor(Interface.COLORS.get('PROGRESS'))
 
             p = QtGui.QPainter(self)
+            p.setRenderHint(p.RenderHint.HighQualityAntialiasing)
 
             color = down_color
 
             rect = self.rect()
             rect = QtCore.QRectF(rect)
+            rect.setX(rect.x() + 3)
 
             status = self.info.status
 

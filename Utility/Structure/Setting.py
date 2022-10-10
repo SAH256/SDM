@@ -1,4 +1,4 @@
-import os
+import os, json
 
 from PyQt5.QtCore import QDir
 from scss import Compiler
@@ -40,12 +40,14 @@ class Network:
 
 class Interface:
     CURRENT_PACKAGE = 'Default'
-    CURRENT_THEME = 'Default'
+    CURRENT_THEME = 'Light'
     CURRENT_LANG = 'English'
 
     ICON_PACKAGES = ['Default']
-    THEME_PACKAGES = ['Default']
+    THEME_PACKAGES = ['Light', 'Dark']
     LANG_PACKAGES = ['English']
+    
+    COLORS = {}
 
 
     def __init__(self):
@@ -53,6 +55,9 @@ class Interface:
         self.base_font_size = 0
         self.primary_color = None
         self.secondary_color = None
+        
+        self.__setup_colors()
+    
 
     def change_icon_path(self):
         main_path = os.path.join(SDM.PATHS.ICONS_PATH, self.CURRENT_PACKAGE)
@@ -85,10 +90,22 @@ class Interface:
         return self.LANG_PACKAGES
     
     def get_current_stylesheet(self):
-        file_name = f'{self.current_theme()}.scss'
-        file_path = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER, file_name)
-        
+        file_name = 'Default.scss'
+        file_path = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER, self.CURRENT_THEME, file_name)
+
         return Compiler().compile(file_path)
+
+
+    def __setup_colors(self):
+        file_name = 'metadata.json'
+        file_path = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER, self.CURRENT_THEME, file_name)
+        
+        data = {}
+        
+        with open(file_path) as file:
+            data = json.load(file)
+        
+        Interface.COLORS.update(data)
         
 
 

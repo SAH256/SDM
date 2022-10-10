@@ -21,11 +21,13 @@ class View(QtWidgets.QListView):
             
 
         self.setModel(self.proxy)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
         self.setSelectionMode(self.SelectionMode.ExtendedSelection)
         self.setEditTriggers(self.EditTrigger.NoEditTriggers)
         self.selectionModel().selectionChanged.connect(self.__selection_handler)
 
-        widget = TaskItemControl(None)
+        widget = TaskItemControl(self)
+        widget.setVisible(False)
         d = ItemDel(widget)
         self.setItemDelegate(d)
 
@@ -34,25 +36,18 @@ class View(QtWidgets.QListView):
         name = 'task-list'
         self.setObjectName(name)
 
-        self.__scroll()
         self.__timer()
 
 
     def add_task(self, info):
-
+    
         if self.items.get(info):
             return
 
         item = MItem(info)
         self.items[info] = item
         self.__model.appendRow(item)
-
-
-    def __scroll(self):
-        sc = QtWidgets.QScrollBar(Qt.Orientation.Vertical)
-        self.setVerticalScrollBar(sc)
         
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
 
 
     def __timer(self):

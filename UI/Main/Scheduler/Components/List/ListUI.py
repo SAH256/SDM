@@ -16,11 +16,11 @@ class ListUI(QtWidgets.QWidget):
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
         self.mainLayout = QtWidgets.QVBoxLayout()
+        self.mainLayout.setContentsMargins(5, 5, 5, 5)
         self.setLayout(self.mainLayout)
 
-        self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
-        w1, w2 = 180, 200
+        w1, w2 = 200, 220
         self.setMinimumWidth(w1)
         self.setMaximumWidth(w2)
 
@@ -28,6 +28,9 @@ class ListUI(QtWidgets.QWidget):
         self._list()
 
         self.mainLayout.addStretch(1)
+        
+        name = 'queue-list-container'
+        self.setObjectName(name)
 
 
 

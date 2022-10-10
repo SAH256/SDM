@@ -1,6 +1,7 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
+from Utility.Structure.Setting import Interface
 
 # Toolbar container for category or action items
 class ToolBar(QtWidgets.QWidget):
@@ -36,7 +37,7 @@ class ToolBar(QtWidgets.QWidget):
         e = QtWidgets.QGraphicsDropShadowEffect()
         e.setBlurRadius(7)
         e.setOffset(off_x if left else -off_x, 0)
-        e.setColor(Qt.GlobalColor.gray)
+        e.setColor(QtGui.QColor(Interface.COLORS.get('TOOLBAR-SHADOW')))
         self.setGraphicsEffect(e)
 
 

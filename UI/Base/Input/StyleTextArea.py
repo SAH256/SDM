@@ -2,6 +2,8 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
+from Utility.Core import SELECTORS
+
 # Multi line text input style class
 
 
@@ -12,18 +14,12 @@ class TextArea(QtWidgets.QTextEdit):
         super().__init__()
 
         self.setSizeAdjustPolicy(self.SizeAdjustPolicy.AdjustToContentsOnFirstShow)
+        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.setAcceptRichText(False)
         
-
         self.padding = 5
         self.min_height = 30
         self.max_height = 75
-
-        
-        self.css_selector = 'css-class'
-
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-
 
         self.textChanged.connect(self.__adjust_size)
         self.__adjust_size()
@@ -58,13 +54,13 @@ class TextArea(QtWidgets.QTextEdit):
 
     def set_prop(self, prop):
         if prop:
-            self.setProperty(self.css_selector, prop)
-            self.__update()
+            self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, prop)
+            self.update()
 
-    def __update(self):
+    def update(self):
         self.style().unpolish(self)
         self.style().polish(self)
-        self.update()
+        super().update()
         
     
     def set_text(self, text):

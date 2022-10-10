@@ -13,8 +13,8 @@ from Utility.Core import TORRENT
 # Widget for displaying torrent setting -- UI class
 class SettingUI(BasePanel):
     
-    def __init__(self):
-        super().__init__(False, True)
+    def __init__(self, parent):
+        super().__init__(parent, False, True)
         
         self.options = {}
         self.widgets = []

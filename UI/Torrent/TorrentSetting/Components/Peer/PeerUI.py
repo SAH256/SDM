@@ -9,8 +9,8 @@ from UI.Torrent.TorrentSetting.Components.Base.Items import PeerScrollItem
 # Widget for displaying torrent peer data
 class PeerOption(Scroll):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.peer_data = None
         self.paused = True

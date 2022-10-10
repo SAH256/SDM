@@ -48,6 +48,7 @@ class SavePath(QtWidgets.QWidget):
             None
         ]
 
+
         for item in data:
             if item:
                 wid = QtWidgets.QLabel(item[1])
@@ -98,4 +99,9 @@ class SavePath(QtWidgets.QWidget):
         self.browseBtn = StyleButton(ICONS.OTHER.BROWSE_1, '')
 
         btnLayout.addWidget(self.browseBtn)
+    
+    def update(self, wid):
+        self.style().unpolish(wid)
+        self.style().polish(wid)
+        super().update()
 

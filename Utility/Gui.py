@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 
 from .Core import SDM, CATEGORY, ICONS
 from .Util import sizeChanger
+from .Structure.Setting import Interface
 
 
 # find icon based on file name or types
@@ -37,7 +38,7 @@ def find_links(txt):
 
     for word in words:
         if word.startswith('http') or word.startswith('ftp') or word.startswith('udp'):
-            word = f'<a href="{word}" style = "color : #4351f3; font-style : italic;">here</a>'
+            word = f'''<a href="{word}" style = "color : {Interface.COLORS.get('LINK')};font-weight : 600; font-style : italic;">here</a>'''
 
         result.append(word)
     

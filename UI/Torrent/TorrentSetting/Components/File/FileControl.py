@@ -13,8 +13,8 @@ class FileControl(FileUI):
     
     priority_changed = QtCore.pyqtSignal(int)
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.total_size = 0
         self.total_count = 0

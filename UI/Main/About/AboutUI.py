@@ -97,6 +97,9 @@ class AboutUI(Dialog):
                 layout.addStretch()
 
 
-
+    def update(self):
+        self.style().unpolish(self)
+        self.style().polish(self)
+        super().update()
 
 

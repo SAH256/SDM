@@ -11,8 +11,8 @@ from UI.Torrent.TorrentSetting.Components.Base.Items import ScrollItem
 # Widget for displaying a torrent detail data
 class DetailOption(Scroll):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
 
         self.detail_data = None
 
@@ -48,7 +48,7 @@ class DetailOption(Scroll):
         
 
         for item in items:
-            wid = ScrollItem(item[1], '', item[2])
+            wid = ScrollItem(self, item[1], '', item[2])
 
             self.mainLayout.addWidget(wid, *item[3])
 

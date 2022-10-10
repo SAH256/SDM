@@ -118,7 +118,7 @@ class TorrentUI(Dialog):
 
         for name, item in widgets.items():
             
-            wid = item[3]()
+            wid = item[3](self)
             index = self.stackLayout.addWidget(wid)
 
             self.tab.add_item(item[1], item[2])
