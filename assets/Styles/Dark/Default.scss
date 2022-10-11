@@ -716,6 +716,24 @@ QGroupBox QLabel {
     }
 }
 
+#live-list {
+    outline : none;
+    border : none;
+    background-color: transparent;
+
+    &::item {
+        margin : 3px 5px;
+        padding : 25px 10px;
+        background-color : $surface-color;
+        border : 1px solid #212121;
+
+        &:hover {
+            background-color : #5a5a5a;
+        }
+    }
+}
+
+
 
 /* GROUP LIST */
 
@@ -875,7 +893,8 @@ QTreeView {
 /*  TORRENT BASE ITEM UI
     TORRENT SCROLL
     SCROLL ITEM 
-    PEER SCROLL ITEM */
+    PEER SCROLL ITEM 
+*/
 
 #torrent {
 
@@ -888,71 +907,78 @@ QTreeView {
     }
 }
 
+#item-id, #scroll-item-name {
+    color : $on-background;
+    font-size : 14px;
+    font-weight : 600;
+    margin-top : 5px;
+    margin-bottom : 5px;
+}
+
+#scroll-item-state,
+#item-state,
+#peer-info,
+#progress {
+    font-size : 12px;
+    padding-left : 4px;
+    color : $on-surface;
+}
+
+#progress {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#tracker-item,
+#peer-item {
+    background-color: transparent;
+}
 
 #scroll-item {
     background-color : $surface-color;
+}
 
-    & QLabel {
-        font-family : Arial;
-    }
 
-    &-name {
-        color : $on-background;
-        font-size : 14px;
-        font-weight : 600;
-        margin-top : 5px;
-        margin-bottom : 5px;
-    }
+#tracker-item {
 
-    &-name[text="DHT"],
-    &-name[text="LSD"],
-    &-name[text="PeX"] {
+    & #item-id[text="DHT"],
+    & #item-id[text="LSD"],
+    & #item-id[text="PeX"] {
         color : $accent-color;
     }
 
-    &-name[css-class="bold"] {
+    & #item-id[css-class="bold"] {
         font-size : 20px;
         font-weight : 800;
     }
 
-    &-state {
-        font-size : 12px;
-        padding-left : 4px;
-        color : #ccc;
-    }
-
-    &-state[css-class="bold"] {
+    & #item-state[css-class="bold"] {
         font-size : 14px;
         font-weight : 600;
     }
+
+    &[css-class = "tracker"] {
+        background-color: $surface-color
+    }
 }
 
-#peer-scroll-item {
-    background-color : $surface-color;
+#tracker-item,
+#scroll-item,
+#peer-item {
 
     & QLabel {
         font-family : Arial;
-        font-size : 12px;
-        color : $on-background;
     }
 }
 
 #client {
     font-size : 16px;
     font-weight : bold;
+    color : $negative-color;
 
     &[css-class = 'seeder'] {
         color : $positive-color;
     }
-    
-    &[css-class = 'leecher'] {
-        color : $negative-color;
-    }
-}
-
-#progress {
-    color : $on-surface;
-    font-size : 13px;
 }
 
 

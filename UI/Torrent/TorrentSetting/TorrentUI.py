@@ -13,7 +13,7 @@ from .Components.Status.StatusUI import StatusOption
 from .Components.Detail.DetailUI import DetailOption
 from .Components.File.FileControl import FileControl
 from .Components.Tracker.TrackerUI import TrackersOption
-from .Components.Peer.PeerUI import PeerOption
+from .Components.Peer.PeerUI import PeerView
 from .Components.Setting.SettingControl import Setting
 
 
@@ -111,7 +111,7 @@ class TorrentUI(Dialog):
             'detailOption'  : ('DETAIL_INDEX',  ICONS.TORRENT_SETTING.DETAIL,  'Detail',    DetailOption),
             'fileOption'    : ('FILE_INDEX',    ICONS.TORRENT_SETTING.FILE,    'Files',     FileControl),
             'trackerOption' : ('TRACKER_INDEX', ICONS.TORRENT_SETTING.TRACKER, 'Trackers',  TrackersOption),
-            'peerOption'    : ('PEER_INDEX',    ICONS.TORRENT_SETTING.PEER,    'Peer',      PeerOption),
+            'peerOption'    : ('PEER_INDEX',    ICONS.TORRENT_SETTING.PEER,    'Peer',      PeerView),
             'settingOption' : ('SETTING_INDEX', ICONS.TORRENT_SETTING.SETTING, 'Setting',   Setting)
         }
 

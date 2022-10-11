@@ -5,21 +5,21 @@ from PyQt5.QtCore import Qt
 
 class BaseWidget(QtWidgets.QWidget):
 
-    def __init__(self, parent, box = True, vertical = False):
+    def __init__(self, parent, grid = True, vertical = False):
         super().__init__(parent)
         
         self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
 
-        self.__layout(box, vertical)
+        self.__layout(grid, vertical)
 
         name = 'torrent-base-widget'
         self.setObjectName(name)
 
 
-    def __layout(self, box, vertical):
+    def __layout(self, grid, vertical):
         layout = None
 
-        if box:
+        if grid:
             layout = QtWidgets.QGridLayout()
         else:
             if vertical:
@@ -34,8 +34,8 @@ class BaseWidget(QtWidgets.QWidget):
 
 class BasePanel(BaseWidget):
     
-    def __init__(self, parent, box, vertical = False):
-        super().__init__(parent, box, vertical)
+    def __init__(self, parent, grid, vertical = False):
+        super().__init__(parent, grid, vertical)
 
         self.info_data = None
         self.paused = True

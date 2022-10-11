@@ -4,7 +4,7 @@ from PyQt5 import QtCore
 
 from Utility.Core import STATUS
 
-from .Util import MItem
+from UI.Base.Delegate.Items import MItem
 
 
 # Model for filtering tasks

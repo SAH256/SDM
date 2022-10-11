@@ -1,24 +1,11 @@
-
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
-from UI.Base.Items.Task.TaskItemControl import TaskItemControl
-
-
-# General view item that is using in group/task list
-class MItem(QtGui.QStandardItem):
-
-    PRIVATE_ROLE = int(Qt.ItemDataRole.UserRole) + 1
-
-    def __init__(self, info = None):
-        super().__init__()
-
-        if info:
-            self.setData(info, self.PRIVATE_ROLE)
+from .Items import MItem
 
 
 # Item delegate for task list
-class ItemDel(QtWidgets.QStyledItemDelegate):
+class ListItemDelegate(QtWidgets.QStyledItemDelegate):
 
     def __init__(self, widget, x_m = 5, y_m = 3):
         super().__init__()
@@ -46,22 +33,24 @@ class ItemDel(QtWidgets.QStyledItemDelegate):
 
         style.drawControl(QtWidgets.QStyle.ControlElement.CE_ItemViewItem, option, painter, option.widget)
 
-        state = bool(option.state & QtWidgets.QStyle.StateFlag.State_MouseOver)
-        self.WIDGET.set_hover(state)
+        if hasattr(self.WIDGET, 'set_hover'):
+            state = bool(option.state & QtWidgets.QStyle.StateFlag.State_MouseOver)
+            self.WIDGET.set_hover(state)
 
-        state = bool(option.state & QtWidgets.QStyle.StateFlag.State_Selected)
-        self.WIDGET.set_selected(state)
+        if hasattr(self.WIDGET, 'set_selected'):
+            state = bool(option.state & QtWidgets.QStyle.StateFlag.State_Selected)
+            self.WIDGET.set_selected(state)
 
 
         s = option.rect.size()
         p = option.rect.topLeft()
 
 
-        p.setX(p.x() + self.x_m - self.border)
-        p.setY(p.y() + self.y_m + self.border)
+        p.setX(p.x() + self.x_m)
+        p.setY(p.y() + self.y_m)
 
         s.setWidth(s.width() - 2 * self.x_m)
-        s.setHeight(s.height() - 2 * (self.y_m + self.border))
+        s.setHeight(s.height() - 2 * self.y_m)
 
         self.WIDGET.resize(s)
 
@@ -76,4 +65,13 @@ class ItemDel(QtWidgets.QStyledItemDelegate):
         self.WIDGET.render(painter)
 
         painter.restore()
+
+
+
+
+
+
+
+
+
 

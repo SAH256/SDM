@@ -2,9 +2,10 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtCore import Qt
 
 from UI.Base.Items.Task.TaskItemControl import TaskItemControl
+from UI.Base.Delegate.ListDelegate import ListItemDelegate
+from UI.Base.Delegate.Items import MItem
 
 from .Models import FilterModel
-from .Util import ItemDel, MItem
 
 
 # Task list view in main ui
@@ -28,7 +29,8 @@ class View(QtWidgets.QListView):
 
         widget = TaskItemControl(self)
         widget.setVisible(False)
-        d = ItemDel(widget)
+        
+        d = ListItemDelegate(widget)
         self.setItemDelegate(d)
 
         self.items = {}

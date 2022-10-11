@@ -15,8 +15,59 @@ class BaseItem(BaseWidget):
     def __init__(self, parent, shadow = False):
         super().__init__(parent, False, True)
 
+        self._labels()
+
         if shadow:
             self.__shadow()
+    
+    def _labels(self):
+        cell = [
+            ('name', 'item-id'),
+            ('state', 'item-state')
+        ]
+
+        for item in cell:
+            wid = QtWidgets.QLabel()
+            wid.setObjectName(item[1])
+
+            self.mainLayout.addWidget(wid)
+
+            setattr(self, item[0], wid)
+
+
+    def set_name(self, name):
+        self.name.setText(name)
+
+    def get_state(self):
+        return self.state.text()
+
+
+    def set_state(self, state):
+        self.state.setText(state)
+        
+    def get_name(self):
+        return self.name.text()
+    
+    def set_align(self, value):
+        self.mainLayout.setAlignment(self.name, value)
+        self.mainLayout.setAlignment(self.state, value)
+
+
+    def set_bold(self, state):
+        if not state:
+            return
+        
+        name = SELECTORS.VALUE.BOLD
+        self.name.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
+        self.state.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
+
+        self.update()
+
+    def set_tracker(self):
+        self.set_align(Qt.AlignmentFlag.AlignHCenter)
+        self.set_bold(True)
+        self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, SELECTORS.VALUE.TRACKER)
+        self.update()
     
 
     def __shadow(self):
@@ -34,8 +85,9 @@ class ScrollItem(BaseItem):
     def __init__(self, parent, first = '', second = '', copy = False, shadow = True):
         super().__init__(parent, shadow)
 
-        self._create_labels(first, second)
-
+        self.set_name(first)
+        self.set_state(second)
+        
         if copy:
             self._setup_menu()
         
@@ -43,14 +95,14 @@ class ScrollItem(BaseItem):
         self.setObjectName(name)
 
 
-    def _create_labels(self, text_1, text_2):
+    def _labels(self):
         cell = [
-            ('name', 'scroll-item-name', text_1),
-            ('state', 'scroll-item-state', text_2)
+            ('name', 'scroll-item-name'),
+            ('state', 'scroll-item-state')
         ]
 
         for item in cell:
-            wid = QtWidgets.QLabel(item[2])
+            wid = QtWidgets.QLabel()
             wid.setWordWrap(True)
             wid.setTextInteractionFlags(Qt.TextInteractionFlag.LinksAccessibleByMouse)
             wid.setOpenExternalLinks(True)
@@ -69,50 +121,8 @@ class ScrollItem(BaseItem):
         action = self.MENU.addAction(name)
         action.triggered.connect(self.__copy_handler)
 
-
     def __copy_handler(self):
         QtWidgets.QApplication.clipboard().setText(self.state.text())
-
-
-    def set_align(self, value):
-        self.mainLayout.setAlignment(self.name, value)
-        self.mainLayout.setAlignment(self.state, value)
-
-
-    def set_bold(self, state):
-        name = ''
-        if state:
-            name = SELECTORS.VALUE.BOLD
-        
-        self.name.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
-        self.state.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
-
-        
-        self.update()
-    
-    def set_tracker(self, state):
-        name = ''
-        if state:
-            name = SELECTORS.VALUE.TRACKER
-        
-        self.name.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
-        self.state.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
-        
-        self.update()
-
-    
-    def set_name(self, text):
-        self.name.setText(text)
-    
-    def set_state(self, text):
-        self.state.setText(text)
-    
-    def get_name(self):
-        return self.name.text()
-    
-    def get_state(self):
-        return self.state.text()
-
 
     def contextMenuEvent(self, ev):
         
@@ -125,20 +135,38 @@ class ScrollItem(BaseItem):
 
 
 
-# items that is using in peer section
-class PeerScrollItem(BaseItem):
-    
-    def __init__(self, parent):
-        super().__init__(parent, True)
+class TrackerItem(BaseItem):
 
-        self.widgets = {}
+    def __init__(self, parent, shadow = False):
+        super().__init__(parent, shadow)
 
-        self._info_labels()
-        self._create_monitors()
-        
-        name = 'peer-scroll-item'
+        name = 'tracker-item'
         self.setObjectName(name)
 
+
+    def set_data(self, info_data):
+        url = info_data.get(TORRENT.TRACKER.URL)
+        state = info_data.get(TORRENT.TRACKER.STATE)
+        
+        self.set_name(url)
+        self.set_state(state)
+        
+
+
+# items that is using in peer section
+class PeerItem(BaseItem):
+    
+    def __init__(self, parent):
+        self.widgets = {}
+        super().__init__(parent, False)
+
+        name = 'peer-item'
+        self.setObjectName(name)
+
+
+    def _labels(self):
+        self._info_labels()
+        self._create_monitors()
 
 
     def _info_labels(self):
@@ -168,7 +196,7 @@ class PeerScrollItem(BaseItem):
         self.mainLayout.addLayout(monLayout)
 
         text = "N/A"
-        name = 'info'
+        name = 'peer-info'
         w = 70
 
         data = [
@@ -202,15 +230,14 @@ class PeerScrollItem(BaseItem):
             for key, wid in self.widgets.items():
                 value = data.get(key)
 
-                if value :
-                    if key.count('up') or key.count('down'):
-                        value = sizeChanger(value)
-                    elif key.count('progress'):
-                        value = str(value) + ' %'
-                    else:
-                        value = str(value)
-                        
-                    wid.setText(value)
+                if key.count('up') or key.count('down'):
+                    value = sizeChanger(value)
+                elif key.count('progress'):
+                    value = str(value) + ' %'
+                else:
+                    value = str(value)
+                    
+                wid.setText(value)
 
             is_seed = data[TORRENT.PEER.SEED]
             value = SELECTORS.VALUE.SEEDER if is_seed else SELECTORS.VALUE.LEECHER
@@ -218,7 +245,13 @@ class PeerScrollItem(BaseItem):
             self.widgets[TORRENT.PEER.CLIENT].setProperty(SELECTORS.PROPERTY.CSS_CLASS, value)
             
             self.update()
+    
+    def update(self):
+        wid = self.widgets[TORRENT.PEER.CLIENT]
         
+        self.style().unpolish(wid)
+        self.style().polish(wid)
+        super().update()
 
     def _reset(self):
         for wid in self.widgets.values():

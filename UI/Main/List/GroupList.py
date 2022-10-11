@@ -7,7 +7,7 @@ from Utility.Util import sizeChanger, split_file_name
 from Utility.Gui import iconFinder, findCategory
 from Utility.Core import HTTP
 
-from .Util import MItem
+from UI.Base.Delegate.Items import MItem
 
 
 # Group dialog files list view

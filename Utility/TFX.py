@@ -262,14 +262,17 @@ def create_trackers_data(trackers):
     
     for tracker in trackers:
 
+        url = tracker[TORRENT.TRACKER.URL]
+
         temp = {
             TORRENT.TRACKER.VERIFIED : tracker[TORRENT.TRACKER.VERIFIED],
             TORRENT.TRACKER.TIER : tracker[TORRENT.TRACKER.TIER],
             TORRENT.TRACKER.SOURCE : tracker[TORRENT.TRACKER.SOURCE],
-            TORRENT.TRACKER.STATE : TORRENT.TRACKER_STATE.NO_CONNECTION
+            TORRENT.TRACKER.STATE : TORRENT.TRACKER_STATE.NO_CONNECTION,
+            TORRENT.TRACKER.URL : url
         }
 
-        result[tracker[TORRENT.TRACKER.URL]] = temp
+        result[url] = temp
 
     return result
 
