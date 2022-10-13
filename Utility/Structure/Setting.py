@@ -4,7 +4,10 @@ from PyQt5.QtCore import QDir
 from scss import Compiler
 import libtorrent as lt
 
-from Utility.Core import SDM, TORRENT, SETTING, CATEGORY, SECTIONS
+from Model.Saveable import Saveable
+
+
+from Utility.Core import SDM, TORRENT, SETTING, CATEGORY, SECTIONS, SAVES
 from Utility.Structure.Task.Torrent import TorrentOptions
 from Utility.Util import file_ops
 
@@ -44,7 +47,7 @@ class Interface:
     CURRENT_LANG = 'English'
 
     ICON_PACKAGES = ['Default']
-    THEME_PACKAGES = ['Light', 'Dark']
+    THEME_PACKAGES = {}
     LANG_PACKAGES = ['English']
     
     COLORS = {}
@@ -55,8 +58,12 @@ class Interface:
         self.base_font_size = 0
         self.primary_color = None
         self.secondary_color = None
-        
+
+    
+    def setup(self):
+        self.__setup_theme()
         self.__setup_colors()
+        self.change_icon_path()
     
 
     def change_icon_path(self):
@@ -80,7 +87,10 @@ class Interface:
         return self.CURRENT_THEME
     
     def theme_names(self):
-        return self.THEME_PACKAGES
+        names = list(self.THEME_PACKAGES.keys())
+        names.sort(key = lambda x : x.count('Light'), reverse = True)
+        
+        return names
 
 
     def current_lang(self):
@@ -89,16 +99,33 @@ class Interface:
     def lang_names(self):
         return self.LANG_PACKAGES
     
+    def set_theme(self, name):
+        if name in self.THEME_PACKAGES:
+            self.CURRENT_THEME = name
+            self.__setup_colors()
+
+
     def get_current_stylesheet(self):
         file_name = 'Default.scss'
-        file_path = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER, self.CURRENT_THEME, file_name)
+        theme_path = self.THEME_PACKAGES.get(self.CURRENT_THEME)
+        file_path = os.path.join(theme_path, file_name)
 
         return Compiler().compile(file_path)
 
 
+    def __setup_theme(self):
+        styles_folder = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER)
+        sass_file = 'Default.scss'
+
+        for entry in os.scandir(styles_folder):
+            if entry.is_dir() and sass_file in os.listdir(entry.path):
+                self.THEME_PACKAGES[entry.name] = entry.path
+        
+
     def __setup_colors(self):
         file_name = 'metadata.json'
-        file_path = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER, self.CURRENT_THEME, file_name)
+        theme_path = self.THEME_PACKAGES.get(self.CURRENT_THEME)
+        file_path = os.path.join(theme_path, file_name)
         
         data = {}
         
@@ -106,7 +133,19 @@ class Interface:
             data = json.load(file)
         
         Interface.COLORS.update(data)
-        
+
+
+    def get_save_data(self):
+        return {
+            SAVES.SLOTS.LANG : self.CURRENT_LANG,
+            SAVES.SLOTS.THEME : self.CURRENT_THEME,
+            SAVES.SLOTS.ICON_PACK : self.CURRENT_PACKAGE,
+        }
+    
+    def set_save_data(self, save_data):
+        self.CURRENT_LANG = save_data.get(SAVES.SLOTS.LANG)
+        self.CURRENT_THEME = save_data.get(SAVES.SLOTS.THEME)
+        self.CURRENT_PACKAGE = save_data.get(SAVES.SLOTS.ICON_PACK)
 
 
 
@@ -163,7 +202,7 @@ class Plugins:
     pass
 
 
-class Setting:
+class Setting(Saveable):
 
     def __init__(self):
         self.network = Network()
@@ -171,13 +210,17 @@ class Setting:
         self.dir_path = DirPath()
         self.torrent = Torrent()
         self.plugin = Plugins()
+        
+        self.__setting_name = 'setting.json'
 
         self.__setup()
 
 
 
     def __setup(self):
-        self.interface.change_icon_path()
+        self.__restore_settings()
+
+        self.interface.setup()
 
 
 
@@ -211,7 +254,31 @@ class Setting:
         return self.plugin
 
 
+    def save_setting(self):
+        setting_path = os.path.join(SDM.PATHS.APP_PATH, self.__setting_name)
+        
+        setting_data = {}
+        
+        for name, setting in {**self.get_client_setting(), **self.get_view_setting()}.items():
+            if hasattr(setting, 'get_save_data'):
+                setting_data[name] = setting.get_save_data()
+        
+        self._store_data(setting_path, setting_data)
+        
 
+
+    def __restore_settings(self):
+        setting_path = os.path.join(SDM.PATHS.APP_PATH, self.__setting_name)
+
+        save_data = self._retrieve_data(setting_path)
+        
+        for name, setting in {**self.get_client_setting(), **self.get_view_setting()}.items():
+            setting_data = save_data.get(name)
+            
+            if setting_data:
+                setting.set_save_data(setting_data)
+            
+        
 
 
 

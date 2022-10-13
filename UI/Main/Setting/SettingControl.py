@@ -11,6 +11,7 @@ class Setting(SettingUI):
         super().__init__(parent)
 
         self.setting_pack = setting_pack
+        self.need_exit = False
 
         self.__connect_slots()
         self.__setup()
@@ -31,9 +32,17 @@ class Setting(SettingUI):
 
 
     def __apply_handler(self):
+        need_exit = False
+        
         for wid in self.options.values():
             if hasattr(wid, 'apply_changes'):
-                wid.apply_changes()
+                result = wid.apply_changes()
+                
+                need_exit = need_exit or result
+        
+        self.need_exit = need_exit
                 
 
-
+    def exec(self):
+        super().exec()
+        return self.need_exit

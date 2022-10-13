@@ -18,9 +18,6 @@ class InterfaceUI(QtWidgets.QWidget):
         self._combo()
         self.mainLayout.addStretch()
 
-        self.data = None
-
-    
 
     def _combo(self):
         layout = QtWidgets.QFormLayout()
@@ -37,26 +34,3 @@ class InterfaceUI(QtWidgets.QWidget):
 
             layout.addRow(item[1], wid)
             setattr(self, item[0], wid)
-    
-
-
-
-    def set_data(self, data):
-        self.interface_data = data
-
-        self.__setup()
-
-
-    def __setup(self):
-        self.iconCombo.addItems(self.interface_data.asset_pack_names())
-        self.iconCombo.setCurrentText(self.interface_data.current_icon_pack())
-
-        self.themeCombo.addItems(self.interface_data.theme_names())
-        self.themeCombo.setCurrentText(self.interface_data.current_theme())
-
-        self.langCombo.addItems(self.interface_data.lang_names())
-        self.langCombo.setCurrentText(self.interface_data.current_lang())
-
-
-
-

@@ -1,8 +1,4 @@
 {
-    
-    "TITLEBAR-SHADOW" : "#444",
-    "HEADER-SHADOW" : "#aaa",
-    "TOOLBAR-SHADOW" : "#aaa",
     "CONTAINER-SHADOW" : "#c0c0c0",
     "ITEM-NORMAL-SHADOW" : "#ccc",
     "ITEM-HOVER-SHADOW" : "#999",

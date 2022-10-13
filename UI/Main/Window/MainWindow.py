@@ -31,7 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.client = client
         self.setting = setting
 
-        self.__user_exit = False
+        self.__system_exit = False
 
         w, h = 800, 600
         self.resize(w, h)
@@ -195,7 +195,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 ('New Torrent', self.__open_magnet),
                 ('Batch Download', self.__open_batch),
                 None,
-                ('Exit', self.close)
+                ('Exit', self.__close_handler)
             ],
 
             'Downloads' : [
@@ -237,7 +237,7 @@ class MainWindow(QtWidgets.QMainWindow):
                 turn_off(*data[1:])
 
             if data[0]:
-                self.__user_exit = True
+                self.__system_exit = False
                 self.close()
 
 
@@ -467,7 +467,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __setting_handler(self):
         d = SettingDialog(self, self.setting)
-        d.exec()
+        need_exit = d.exec()
+
+        if need_exit:
+            self.__system_exit = True
+            self.close()
 
 
     def __open_about(self):
@@ -500,18 +504,16 @@ class MainWindow(QtWidgets.QMainWindow):
         return url_type(url), url
 
 
-    # def __close_handler(self, system = True):
-    #     if not system:
-    #         self.user_exited.emit()
-
-    #     self.close()
-
+    def __close_handler(self):
+        self.__system_exit = False
+        self.close()
 
     def closeEvent(self, ev):
-        self.client.stop_session()
+        if not self.__system_exit:
+            self.user_exited.emit()
 
-        self.user_exited.emit()
+        self.__system_exit = False
 
-        super().closeEvent(ev)
+        return super().closeEvent(ev)
 
 

@@ -2,8 +2,6 @@
 from PyQt5 import QtWidgets , QtGui
 from PyQt5.QtCore import Qt
 
-from Utility.Structure.Setting import Interface
-
 from .Header import Header
 from .Body import Body
 
@@ -79,7 +77,7 @@ class FrameLessUI(Dialog):
         e = QtWidgets.QGraphicsDropShadowEffect()
         e.setBlurRadius(10)
         e.setOffset(0, 0)
-        e.setColor(QtGui.QColor(Interface.COLORS.get('TITLEBAR-SHADOW')))
+        e.setColor(QtGui.QColor('#444'))
         self.setGraphicsEffect(e)
 
 

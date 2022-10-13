@@ -48,7 +48,7 @@ class MainUI(QtWidgets.QWidget):
 
     def _content(self):
         self.conLayout = QtWidgets.QBoxLayout(Dir.LeftToRight)
-        self.conLayout.setContentsMargins(2, 5, 2, 5)
+        self.conLayout.setContentsMargins(1, 5, 1, 5)
         self.mainLayout.addLayout(self.conLayout)
 
         self.__left_bar()
@@ -93,7 +93,7 @@ class MainUI(QtWidgets.QWidget):
         rightLayout = QtWidgets.QVBoxLayout()
         self.conLayout.addLayout(rightLayout)
 
-        self.btnBar = ToolBar(self, False)
+        self.btnBar = ToolBar(self)
         rightLayout.addWidget(self.btnBar)
 
         self.btnBar.add_space(1)

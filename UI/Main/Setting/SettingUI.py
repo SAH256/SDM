@@ -7,7 +7,7 @@ from UI.Main.Tab.Option.InfiniteControl import InfiniteControl
 
 from Utility.Core import SELECTORS, ICONS
 
-from .Components.Interface.InterfaceUI import InterfaceUI
+from .Components.Interface.InterfaceControl import Interface
 from .Components.Network.NetworkUI import NetworkUI
 from .Components.Path.PathControl import Path
 from .Components.Torrent.TorrentUI import TorrentUI
@@ -90,7 +90,7 @@ class SettingUI(Dialog):
     def __add_tabs(self):
     
         widgets = {
-            'interfaceOption'  : ('INTER_INDEX',   ICONS.SETTING.INTERFACE,  'Interface', InterfaceUI),
+            'interfaceOption'  : ('INTER_INDEX',   ICONS.SETTING.INTERFACE,  'Interface', Interface),
             'networkOption'    : ('NETWORK_INDEX', ICONS.SETTING.NETWORK,  'Network',   NetworkUI),
             'pathOption'       : ('PATH_INDEX',    ICONS.SETTING.PATH,    'Path',      Path),
             'torrentOption'    : ('TORRENT_INDEX', ICONS.SETTING.TORRENT, 'Torrent',   TorrentUI),

@@ -101,16 +101,6 @@ class TaskItemControl(TaskItem):
         
         if self.info and not self.selected and not self.hover:
 
-            # rgb(165 222 255)
-            # rgb(139 212 239)
-            # rgb(161 230 255)
-            # rgb(200 255 210)
-            # rgb(255 190 190)
-
-            # error_color = QtGui.QColor(255, 190, 190)
-            # select_color = QtGui.QColor(165, 222, 225)
-            # build_color = QtGui.QColor(200, 255, 210)
-            # down_color = QtGui.QColor(139, 212, 239, 125)
 
             error_color = QtGui.QColor(Interface.COLORS.get('ERROR'))
             build_color = QtGui.QColor(Interface.COLORS.get('COMPLETE'))

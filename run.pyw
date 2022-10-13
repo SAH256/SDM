@@ -77,16 +77,20 @@ class Application(QApplication):
     def exec(self):
         while not self.__user_exit:
             # change Interface options
-            
+
             self.__check_style()
 
             self.ui.show()
             super().exec()
+            time.sleep(1)
 
-            time.sleep(2)
             self.client.save_state()
+            self.setting.save_setting()
+
+        self.client.stop_session()
+        time.sleep(2)
         
-        return 1
+        return 0
 
 
 

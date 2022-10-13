@@ -212,12 +212,11 @@ class DUPLICATE:
 
 
 class SETTING:
-    NETWORK = 0
-    INTERFACE = 1
-    PATH = 2
-    LOCALIZATION = 3
-    TORRENT = 4
-    PLUGINS = 5
+    NETWORK = 'network'
+    INTERFACE = 'interface'
+    PATH = 'path'
+    TORRENT = 'torrent'
+    PLUGINS = 'plugins'
 
 
 class QUEUE:
@@ -696,6 +695,9 @@ class SAVES:
         PROCESS = 'process'
         SETTING = 'setting'
         OPTIONS = 'options'
+        LANG = 'language'
+        THEME = 'theme'
+        ICON_PACK = 'icon_pack'
 
 
 
