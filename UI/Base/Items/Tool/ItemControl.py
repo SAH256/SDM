@@ -25,3 +25,6 @@ class ToolItemControl(ToolItem) :
 
         if ev.button() == Qt.MouseButton.LeftButton:
             self.action.triggered.emit()
+    
+    def _refresh(self):
+        self._toggle_icon()

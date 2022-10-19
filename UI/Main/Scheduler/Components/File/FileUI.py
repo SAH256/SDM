@@ -37,7 +37,7 @@ class FileUI(QtWidgets.QWidget):
         buttons = [
             ('upBtn', ICONS.OTHER.MOVE_UP),
             ('downBtn', ICONS.OTHER.MOVE_DOWN),
-            ('delBtn', ICONS.OTHER.TRASH_2),
+            ('delBtn', ICONS.OTHER.TRASH),
             None
         ]
 

@@ -112,3 +112,6 @@ class HeaderControl(HeaderTab):
                 self.remove_item(item.get_name())
 
 
+    def _refresh(self):
+        for item in self.items:
+            item._refresh()

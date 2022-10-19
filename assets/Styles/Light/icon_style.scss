@@ -1,0 +1,31 @@
+/* 
+    Dark StyleSheet
+    Author : SAH256
+*/
+
+@import "vars";
+
+
+path, circle,
+rect, ellipse,
+polygon {
+    fill : url(#color-1);
+    stroke : none;
+}
+
+line, polyline {
+    stroke : url(#color-1);
+    fill : none;
+}
+
+.negative_path {
+    fill : $negative-color;
+}
+
+.positive_path {
+    fill : $positive-color;
+}
+
+
+
+

@@ -14,10 +14,10 @@ class CartItem(FilterItem):
         super().__init__(parent)
 
         self._name(name)
+        self.__icon_name = icon
+        self.__icon_size = 20
 
-        pm = self.get_pixmap(self.path_name + icon)
-        self.set_icon(pm)
-        
+        self.__change_icon()
 
         txt = 'cart-item'
         self.setObjectName(txt)
@@ -32,25 +32,11 @@ class CartItem(FilterItem):
         self.name = QtWidgets.QLabel(name)
         self.name.setObjectName(txt)
 
-            
         layout.addWidget(self.name)
+            
 
     def get_name(self):
         return self.name.text()
-
-    def get_pixmap(self, key):
-        super().get_pixmap()
-
-        size = 18
-        pixmap = self.cache.find(key)
-        
-        if not pixmap:
-
-            icon = QtGui.QIcon(key)
-            pixmap = icon.pixmap(size, size)
-            self.cache.insert(key, pixmap)
-        
-        return pixmap
 
 
     def update(self):
@@ -59,12 +45,13 @@ class CartItem(FilterItem):
         super().update()
 
 
+    def __change_icon(self):
+        pm = self.get_pixmap(self.__icon_name, self.__icon_size)
+        self.set_icon(pm)
 
 
-
-
-
-
+    def _refresh(self):
+        self.__change_icon()
 
 
 

@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QListView, QScrollBar
 from PyQt5.QtCore import Qt, pyqtSignal
 
 from Utility.Core import ICONS
-
+from Utility.Gui import get_icon
 
 
 class Item(QtGui.QStandardItem):
@@ -33,8 +33,8 @@ class List(QListView):
 
         self.setContentsMargins(0, 0, 0, 0)
 
-        self.ONE_TIME = QtGui.QIcon(ICONS.OTHER.ONE_TIME)
-        self.PERIODIC = QtGui.QIcon(ICONS.OTHER.PERIODIC)
+        self.ONE_TIME = get_icon(ICONS.OTHER.ONE_TIME)
+        self.PERIODIC = get_icon(ICONS.OTHER.PERIODIC)
 
         self.setEditTriggers(self.EditTrigger.NoEditTriggers)
         self.setAcceptDrops(True)

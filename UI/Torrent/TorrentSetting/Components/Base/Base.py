@@ -1,7 +1,7 @@
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
-
+from Utility.Gui import get_icon
 
 class BaseWidget(QtWidgets.QWidget):
 
@@ -100,7 +100,7 @@ class Scroll(QtWidgets.QScrollArea):
 def create_icon_label(icon_name, size = 15):
     
     temp = QtWidgets.QLabel()
-    temp.setPixmap(QtGui.QIcon(icon_name).pixmap(size, size))
+    temp.setPixmap(get_icon(icon_name).pixmap(size, size))
 
     return temp
 

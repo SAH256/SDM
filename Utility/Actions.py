@@ -101,6 +101,7 @@ def check_essential_folders():
     paths.append(SDM.PATHS.APP_PATH)
     paths.append(SDM.PATHS.TEMP_PATH)
     paths.append(SDM.PATHS.STASH_PATH)
+    paths.append(SDM.PATHS.CACHE_PATH)
 
 
     for path in paths:

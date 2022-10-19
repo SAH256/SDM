@@ -168,3 +168,8 @@ class UIControl(MainUI):
     def __send_request(self, _id, action):
         self.requested.emit(_id, action)
 
+
+    def _refresh(self):
+        self.categoryTab._refresh()
+        self.headerTab._refresh()
+        self.actionTab._refresh()

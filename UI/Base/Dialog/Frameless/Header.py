@@ -1,10 +1,10 @@
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt, pyqtSignal
 
 from UI.Base.Button.StyledButton import StyleButton
 
 from Utility.Core import ICONS, SELECTORS
-
+from Utility.Gui import get_icon
 
 # Header/TitleBar of frameless dialog
 
@@ -62,7 +62,7 @@ class Header(QtWidgets.QWidget):
 
             wid = QtWidgets.QLabel()
             wid.setContentsMargins(5, 0, 0, 0)
-            wid.setPixmap(QtGui.QIcon(item[1]).pixmap(size, size))
+            wid.setPixmap(get_icon(item[1]).pixmap(size, size))
         
             layout.addWidget(wid)
             setattr(self, item[0], wid)

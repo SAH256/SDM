@@ -24,56 +24,64 @@ class RoundItem(ToolItem):
 
         name = 'round-item'
         self.setObjectName(name)
+        
+        self._normal = '-normal.png'
+        self._hover = '-hover.png'
 
-        self._toggle_icon()
+        self._check_icon_state()
         self._effect()
-        
-        
+
 
     def set_select(self, state):
         super().set_selected(state)
 
         name = ''
-        r = 10
         if state:
-            r = 0
             name = SELECTORS.VALUE.SELECTED
 
         self.setProperty(SELECTORS.PROPERTY.CSS_CLASS, name)
-        self.graphicsEffect().setBlurRadius(r)
-        self._toggle_icon()
-        self.setFocus()
+        self._check_icon_state()
         self.update()
+
 
 
     def _effect(self):
         e = QtWidgets.QGraphicsDropShadowEffect()
-        e.setColor(QtGui.QColor(Interface.COLORS.get('ITEM-NORMAL-SHADOW')))
         e.setBlurRadius(10)
         e.setOffset(0, 0)
         self.setGraphicsEffect(e)
+        self.__change_shadow()
 
     def enterEvent(self, ev):
-        self.entered = True
-        self.graphicsEffect().setColor(QtGui.QColor(Interface.COLORS.get('ITEM-HOVER-SHADOW')))
-        self._toggle_icon()
+        super().enterEvent(ev)
+        self.__change_shadow(False)
+
 
     def leaveEvent(self, ev):
-        self.entered = False
-        self.graphicsEffect().setColor(QtGui.QColor(Interface.COLORS.get('ITEM-NORMAL-SHADOW')))
-        self._toggle_icon()
+        super().leaveEvent(ev)
+        self.__change_shadow()
 
 
-    def _toggle_icon(self):
-        name = self.path_name + self.base_icon
-
-        if self.selected or self.entered:
-            name += self._hover
+    def _check_icon_state(self):
+        if self.is_selected():
+            self._toggle_icon(False)
         else:
-            name += self._normal
-        
-        pixmap = self.get_pixmap(name)
-        self.set_icon(pixmap)
+            self._toggle_icon(not self.entered)
+
+
+    def _refresh(self):
+        self.__change_shadow()
+
+
+    def __change_shadow(self, normal = True):
+        color_code = Interface.COLORS.get('ITEM-HOVER-SHADOW')
+
+        if normal:
+            color_code = Interface.COLORS.get('ITEM-NORMAL-SHADOW')
+
+        color = QtGui.QColor(color_code)
+
+        self.graphicsEffect().setColor(color)
 
 
     def update(self):

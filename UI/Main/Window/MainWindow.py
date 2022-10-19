@@ -467,12 +467,20 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def __setting_handler(self):
         d = SettingDialog(self, self.setting)
+        d.style_changed.connect(self.__style_handler)
+
         need_exit = d.exec()
 
         if need_exit:
             self.__system_exit = True
             self.close()
 
+
+    def __style_handler(self):
+        style = self.setting.get_interface().get_current_stylesheet()
+        self.setStyleSheet(style)
+        self.central_widget._refresh()
+        
 
     def __open_about(self):
         d = About(self)

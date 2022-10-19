@@ -1,11 +1,13 @@
-from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtCore import Qt
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import Qt, pyqtSignal
 
 from .SettingUI import SettingUI
 
 
 # App Setting dialog -- UI class
 class Setting(SettingUI):
+    
+    style_changed = pyqtSignal()
 
     def __init__(self, parent, setting_pack):
         super().__init__(parent)
@@ -21,6 +23,8 @@ class Setting(SettingUI):
         self.closeBtn.clicked.connect(self.close)
         self.applyBtn.clicked.connect(self.__apply_handler)
         self.tab.item_changed.connect(self.__stack_handler)
+        
+        self.interfaceOption.style_changed.connect(self.__style_handler)
     
     def __setup(self):
         self.interfaceOption.set_data(self.setting_pack.get_interface())
@@ -41,7 +45,12 @@ class Setting(SettingUI):
                 need_exit = need_exit or result
         
         self.need_exit = need_exit
-                
+
+
+    def __style_handler(self):
+        self.style_changed.emit()
+        self.tab._refresh()
+
 
     def exec(self):
         super().exec()

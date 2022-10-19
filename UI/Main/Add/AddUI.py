@@ -85,11 +85,12 @@ class AddUI(Dialog):
         layout = QtWidgets.QHBoxLayout()
         self.headLayout.addLayout(layout)
 
-        path = ICONS.ANIMATION.RHOMBUS
-        size = 25
+        path = ICONS.ANIMATION.LOADING
+        width = 60
+        height = 40
         is_loading = True
 
-        self.loading = AnimLabel(path, size, is_loading)
+        self.loading = AnimLabel(path, width, height, is_loading)
         self.loading.setVisible(False)
 
         layout.addWidget(self.loading)

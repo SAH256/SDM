@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QDialog
-from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
+from Utility.Gui import get_icon
 
 # Base Dialog class for all UI dialogs
 
@@ -18,7 +18,7 @@ class Dialog(QDialog):
         self.setWindowFlags(flags)
 
         if icon_name:
-            self.setWindowIcon(QIcon(icon_name))
+            self.setWindowIcon(get_icon(icon_name))
 
 
 

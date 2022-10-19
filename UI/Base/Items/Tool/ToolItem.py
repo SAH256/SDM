@@ -12,9 +12,11 @@ class ToolItem(BaseItem):
         super().__init__(parent)
 
         self.base_icon = icon_name
+        self.__enabled = True
 
-        self._normal = '-normal.png'
-        self._hover = '-hover.png'
+        self._normal = '-normal.svg'
+        self._hover = '-hover.svg'
+        self._disabled = '-disabled.svg'
         self._size = 32
 
         layout = self.mainLayout.itemAt(0)
@@ -26,73 +28,48 @@ class ToolItem(BaseItem):
 
 
     def _toggle_icon(self, normal = True):
-        name = self.path_name + self.base_icon
+        name = self.base_icon
 
-        if normal:
+        if not self.__enabled:
+            name += self._disabled
+        elif normal:
             name += self._normal
         else:
             name += self._hover
         
-        pixmap = self.get_pixmap(name)
+        pixmap = self.get_pixmap(name, self._size)
 
         if pixmap:
             self.set_icon(pixmap)
-    
-
-    def get_pixmap(self, key):
-        super().get_pixmap()
-
-        pixmap = self.cache.find(key)
-
-        if not pixmap:
-            icon = QtGui.QIcon(key)
-            if not icon.isNull():
-                pixmap = icon.pixmap(self._size, self._size)
-                self.cache.insert(key, pixmap)
-        
-        return pixmap
 
 
     def setDisabled(self, s):
-        super().setDisabled(s)
-
-        d = 1
-
-        if s:
-            d = 0.4
-            
-        self._toggle_icon(s)
-        # self.set_opacity(d)
-
-    def setEnabled(self, s):
-        super().setEnabled(s)
-
-        d = 0.4
-        if s:
-            d = 1
-
-        if self.entered:
+        
+        if self.__enabled != (not s):
+            self.__enabled = not s
             self._toggle_icon(not s)
 
-        # self.set_opacity(d)
 
-    # def set_opacity(self, value):
-    #     self.iconPlace.graphicsEffect().setOpacity(value)
+    def setEnabled(self, s):
+
+        if self.__enabled != s:
+            self.__enabled = s
+            self._toggle_icon(s)
+
 
     def enterEvent(self, ev):
         super().enterEvent(ev)
+        self._check_icon_state()
 
-        self.entered = True
 
-        if self.isEnabled():
-            self._toggle_icon(False)
-        
     def leaveEvent(self, ev):
         super().leaveEvent(ev)
+        self._check_icon_state()
             
-        self.entered = False
 
-        if self.isEnabled():
-            self._toggle_icon()
 
+    def _check_icon_state(self):
+        
+        if self.__enabled:
+            self._toggle_icon(not self.entered)
 

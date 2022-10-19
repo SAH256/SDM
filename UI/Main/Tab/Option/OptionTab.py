@@ -13,8 +13,6 @@ class OptionTab(QtWidgets.QWidget):
         super().__init__(parent)
 
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground, True)
-        # self.setAttribute(Qt.WidgetAttribute.WA_StyledBackground, True)
-        
 
         self.mainLayout = QtWidgets.QBoxLayout(direction)
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
@@ -78,4 +76,8 @@ class OptionTab(QtWidgets.QWidget):
 
         self.item_changed.emit([item._type, item.data])
 
+
+    def _refresh(self):
+        for item in self.items:
+            item._refresh()
 

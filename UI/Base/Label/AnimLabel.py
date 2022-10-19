@@ -1,8 +1,8 @@
 
 from PyQt5.QtWidgets import QLabel
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtGui import QMovie
 
+from Utility.Gui import get_icon
 
 # Label container for playing gif
 
@@ -10,24 +10,27 @@ from PyQt5.QtGui import QMovie
 
 class AnimLabel(QLabel):
     
-    def __init__(self, file_path, size = 35, loading = False):
+    def __init__(self, file_path, width = 35, height = None, loading = False):
         super().__init__()
 
         self.loading = loading
         self.checkpoint_index = 0
+        
+        if not height:
+            height = width
 
-        self.__setup(file_path, size)
+        self.__setup(file_path, width, height)
     
 
 
-    def __setup(self, file_path, size):
+    def __setup(self, file_path, width, height):
 
-        self.__movie = QMovie(file_path)
+        self.__movie = get_icon(file_path, gif = True)
 
         self.__movie.setBackgroundColor(Qt.GlobalColor.transparent)
         self.__movie.setPaused(True)
         self.__movie.setCacheMode(self.__movie.CacheMode.CacheNone)
-        self.__movie.setScaledSize(QSize(size, size))
+        self.__movie.setScaledSize(QSize(width, height))
         self.__movie.jumpToNextFrame()
 
         self.setMovie(self.__movie)

@@ -1,6 +1,5 @@
 
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
 from UI.Base.Dialog.BaseDialog import Dialog
@@ -12,6 +11,7 @@ from UI.Main.List.GroupList import View
 from UI.Main.Boxes.SliderPane.PaneControl import PaneControl
 
 from Utility.Core import ICONS, SELECTORS
+from Utility.Gui import get_icon
 
 from .Component.Save.SaveControl import SaveControl
 
@@ -76,7 +76,7 @@ class GroupUI(Dialog):
         size = 12
 
         label = QtWidgets.QLabel()
-        label.setPixmap(QIcon(icon_name).pixmap(size, size))
+        label.setPixmap(get_icon(icon_name).pixmap(size, size))
         label.setToolTip(text)
 
         layout.addWidget(label)

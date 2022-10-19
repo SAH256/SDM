@@ -1,8 +1,9 @@
 
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 
 from Utility.Core import SELECTORS
+from Utility.Gui import get_icon
 
 # Base Button class for modifying its style and behaviour
 
@@ -17,7 +18,7 @@ class StyleButton(QtWidgets.QPushButton):
         self.setCursor(Qt.CursorShape.PointingHandCursor)
 
         if icon:
-            self.setIcon(QtGui.QIcon(icon))
+            self.setIcon(get_icon(icon))
 
 
 

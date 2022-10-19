@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QFileIconProvider
 from PyQt5.QtCore import QFileInfo
-from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import QIcon, QMovie
 
 from .Core import SDM, CATEGORY, ICONS
 from .Util import sizeChanger
@@ -12,7 +12,7 @@ def iconFinder(file_name, is_magnet = False, is_folder = False):
     icon = None
 
     if is_magnet:
-        icon = QIcon(ICONS.TASK.TORRENT)
+        icon = get_icon(ICONS.TASK.TORRENT)
     else:
 
         if file_name:
@@ -24,9 +24,19 @@ def iconFinder(file_name, is_magnet = False, is_folder = False):
                 info = QFileInfo(file_name)
                 icon = provider.icon(info)
         else:
-            icon = QIcon(ICONS.TASK.UNKNOWN)
+            icon = get_icon(ICONS.TASK.UNKNOWN)
 
     return icon
+
+
+def get_icon(name, gif = False):
+    name = SDM.PATHS.ICON_FOLDER + name
+    
+    if gif:
+        return QMovie(name)
+
+    return QIcon(name)
+
 
 # find link in text and change text to html with <a> tags
 def find_links(txt):

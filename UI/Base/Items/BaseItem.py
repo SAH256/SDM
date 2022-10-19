@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
-from Utility.Gui import iconFinder
+from Utility.Gui import get_icon
 from Utility.Core import SELECTORS
 
 # Base class of all GUI Items that is using.
@@ -24,7 +24,7 @@ class BaseItem(QtWidgets.QWidget):
 
         self.path_name = 'Icons'
         self.selected = False
-        self.hovered = False
+        self.entered = False
 
 
     def _icon(self):
@@ -32,11 +32,11 @@ class BaseItem(QtWidgets.QWidget):
         layout.setContentsMargins(5, 5, 10, 5)
         self.mainLayout.addLayout(layout)
 
-        name = 'lkm.lskjdlkjl'
-        icon = iconFinder(name)
+        # name = 'lkm.lskjdlkjl'
+        # icon = iconFinder(name)
 
         self.iconPlace = QtWidgets.QLabel(self)
-        self.iconPlace.setPixmap(icon.pixmap(32, 32))
+        # self.iconPlace.setPixmap(icon.pixmap(32, 32))
         layout.addWidget(self.iconPlace)
 
 
@@ -45,20 +45,41 @@ class BaseItem(QtWidgets.QWidget):
         self.iconPlace.setPixmap(pixmap)
 
 
-    def get_pixmap(self):
-        pass
+    def get_pixmap(self, key, size = 32):
+        pixmap = self.cache.find(key)
+
+        if not pixmap:
+            icon = get_icon(key)
+            if not icon.isNull():
+                pixmap = icon.pixmap(size, size)
+                self.cache.insert(key, pixmap)
+
+        return pixmap
 
     def set_selected(self, s):
         self.selected = s
 
     def set_hover(self, s):
         self.hover = s
+    
+    def _refresh(self):
+        pass
+
+    def is_selected(self):
+        return self.selected
 
     def update(self):
         self.style().unpolish(self)
         self.style().polish(self)
         super().update()
 
+    def enterEvent(self, ev):
+        super().enterEvent(ev)
+        self.entered = True
+
+    def leaveEvent(self, ev):
+        super().leaveEvent(ev)
+        self.entered = False
 
 # Filter class for category and status items
 class FilterItem(BaseItem):

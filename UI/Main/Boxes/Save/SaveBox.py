@@ -1,11 +1,11 @@
 
-from PyQt5 import QtWidgets, QtGui
+from PyQt5 import QtWidgets
 
 from UI.Base.Input.StyledInput import StyleInput
 from UI.Base.Button.StyledButton import StyleButton
 
 from Utility.Core import ICONS
-
+from Utility.Gui import get_icon
 
 # Save path selector widget -- UI class
 class SavePath(QtWidgets.QWidget):
@@ -78,7 +78,7 @@ class SavePath(QtWidgets.QWidget):
         s = 20
 
         self.history = QtWidgets.QLabel()
-        self.history.setPixmap(QtGui.QIcon(ico).pixmap(s, s))
+        self.history.setPixmap(get_icon(ico).pixmap(s, s))
 
         historyLayout.addWidget(self.history)
 

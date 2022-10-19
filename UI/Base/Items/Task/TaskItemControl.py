@@ -73,7 +73,6 @@ class TaskItemControl(TaskItem):
 
 
     def get_pixmap(self, name, is_magnet):
-        super().get_pixmap()
         
         key = 'magnet'
 

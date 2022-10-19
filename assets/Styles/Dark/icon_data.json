@@ -1,0 +1,35 @@
+{
+    "Actions" : {
+        "normal" : [[100, "#ddd"]],
+        "disabled" : [[100, "#606060"]],
+        "hover" : [
+            [0, "#00f2fe"],
+            [100, "#4facfe"]
+        ]
+    },
+
+    "Header" : {
+        "" : [
+            [0, "#00f2fe"],
+            [100, "#4facfe"]
+        ]
+    },
+
+    "Category" : {
+        "" : [
+            [0, "#00f2fe"],
+            [100, "#4facfe"]
+        ]
+    },
+
+    "Other" : {
+        "" : [[100, "#ccc"]]
+    },
+
+    "Animation" : null,
+    "Dialogs" : null,
+    "Files" : null,
+    "Scheduler" : null,
+    "Setting" : null,
+    "TorrentSetting" : null
+}

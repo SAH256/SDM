@@ -1,6 +1,7 @@
-import os, json
+import os, json, shutil as sh
 
 from PyQt5.QtCore import QDir
+from PyQt5.QtGui import QPixmapCache
 from scss import Compiler
 import libtorrent as lt
 
@@ -9,6 +10,7 @@ from Model.Saveable import Saveable
 
 from Utility.Core import SDM, TORRENT, SETTING, CATEGORY, SECTIONS, SAVES
 from Utility.Structure.Task.Torrent import TorrentOptions
+from Utility.Engine.Graphic import apply_style
 from Utility.Util import file_ops
 
 # Setting is incomplete yet and does not used in Model completely
@@ -63,16 +65,17 @@ class Interface:
     def setup(self):
         self.__setup_theme()
         self.__setup_colors()
+        self.__setup_icons()
         self.change_icon_path()
     
 
     def change_icon_path(self):
         main_path = os.path.join(SDM.PATHS.ICONS_PATH, self.CURRENT_PACKAGE)
-        paths = [main_path]
-
-        for name in SECTIONS.NAMES:
-            temp_path = os.path.join(main_path, name)
-            paths.append(temp_path)
+        paths = [
+            main_path,
+            SDM.PATHS.CACHE_PATH,
+            os.path.join(main_path, 'Const')
+        ]
                 
         QDir.setSearchPaths(SDM.PATHS.ICON_FOLDER, paths)
 
@@ -85,6 +88,9 @@ class Interface:
     
     def current_theme(self):
         return self.CURRENT_THEME
+    
+    def current_theme_path(self):
+        return self.THEME_PACKAGES.get(self.CURRENT_THEME)
     
     def theme_names(self):
         names = list(self.THEME_PACKAGES.keys())
@@ -102,13 +108,16 @@ class Interface:
     def set_theme(self, name):
         if name in self.THEME_PACKAGES:
             self.CURRENT_THEME = name
+
+            QPixmapCache().clear()
+
             self.__setup_colors()
+            self.__setup_icons()
 
 
     def get_current_stylesheet(self):
         file_name = 'Default.scss'
-        theme_path = self.THEME_PACKAGES.get(self.CURRENT_THEME)
-        file_path = os.path.join(theme_path, file_name)
+        file_path = os.path.join(self.current_theme_path(), file_name)
 
         return Compiler().compile(file_path)
 
@@ -124,8 +133,7 @@ class Interface:
 
     def __setup_colors(self):
         file_name = 'metadata.json'
-        theme_path = self.THEME_PACKAGES.get(self.CURRENT_THEME)
-        file_path = os.path.join(theme_path, file_name)
+        file_path = os.path.join(self.current_theme_path(), file_name)
         
         data = {}
         
@@ -133,6 +141,35 @@ class Interface:
             data = json.load(file)
         
         Interface.COLORS.update(data)
+
+
+    def __setup_icons(self):
+        name = 'icon_data.json'
+        style_name = 'icon_style.scss'
+
+        data_path = os.path.join(self.current_theme_path(), name)
+        style_path = os.path.join(self.current_theme_path(), style_name)
+
+        if not os.path.exists(data_path):
+            return
+
+        style = Compiler().compile(style_path)
+
+        out_path = SDM.PATHS.CACHE_PATH
+        icon_data = None
+        
+        with open(data_path) as file:
+            icon_data = json.load(file)
+
+
+        for folder in icon_data:
+            src_path = os.path.join(SDM.PATHS.ICONS_PATH, self.CURRENT_PACKAGE, folder)
+            color_data = icon_data[folder]
+            
+            if color_data:
+                apply_style(src_path, out_path, style, color_data)
+            else:
+                sh.copytree(src_path, out_path, dirs_exist_ok=True)
 
 
     def get_save_data(self):

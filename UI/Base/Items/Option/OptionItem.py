@@ -13,12 +13,12 @@ class OptionItem(FilterItem):
 
         self.min_size = 32
         self.big_size = 36
+        self.__icon_name = icon
 
         name = 'option-item'
         self.setObjectName(name)
 
-        pm = self.get_pixmap(self.path_name + icon)
-        self.set_icon(pm)
+        self.__change_icon()
         
         self.set_selected(False)
     
@@ -43,16 +43,13 @@ class OptionItem(FilterItem):
         self.iconPlace.setEnabled(False)
 
 
-    def get_pixmap(self, key):
-        super().get_pixmap()
-
-        icon = QtGui.QIcon(key)
-        pixmap = icon.pixmap(self.min_size, self.min_size)
-        self.cache.insert(key, pixmap)
-
-        return pixmap
-
-
+    def __change_icon(self):
+        pm = self.get_pixmap(self.__icon_name, self.min_size)
+        self.set_icon(pm)
+    
+    
+    def _refresh(self):
+        self.__change_icon()
 
 
 

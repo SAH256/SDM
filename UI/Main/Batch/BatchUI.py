@@ -1,6 +1,5 @@
 
 from PyQt5 import QtWidgets
-from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 
 from UI.Base.Dialog.BaseDialog import Dialog
@@ -11,6 +10,7 @@ from UI.Base.CheckBox.StyledCheckBox import CheckBox
 from UI.Main.Boxes.Auth.AuthControl import AuthControl
 
 from Utility.Core import ICONS
+from Utility.Gui import get_icon
 
 from .Components.Control.UIControl import UIControl
 
@@ -77,7 +77,7 @@ class BatchUI(Dialog):
         label = QtWidgets.QLabel()
         label.setObjectName(name)
 
-        label.setPixmap(QIcon(icon_name).pixmap(s, s))
+        label.setPixmap(get_icon(icon_name).pixmap(s, s))
         label.setToolTip(text)
 
         layout.addWidget(label)

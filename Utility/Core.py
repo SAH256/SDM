@@ -285,6 +285,7 @@ class SDM:
         MAIN_FOLDER = 'Downloads'
         TEMP_FOLDER = 'Downloaded'
         STASH_FOLDER = 'Stash'
+        CACHE_FOLDER = 'Cache'
         SAVE_DATA_NAME = 'app_data.json'
 
         ASSETS_FOLDER = 'assets'
@@ -298,11 +299,13 @@ class SDM:
 
         TEMP_PATH = os.path.join(APP_PATH, TEMP_FOLDER)
         STASH_PATH = os.path.join(APP_PATH, STASH_FOLDER)
+        CACHE_PATH = os.path.join(APP_PATH, CACHE_FOLDER)
         PLUGINS_PATH = os.path.join(APP_PATH, PLUGINS_FOLDER)
 
         SAVE_DATA_PATH = os.path.join(APP_PATH, SAVE_DATA_NAME)
 
         ICONS_PATH = os.path.join(ASSETS_FOLDER, ICON_FOLDER)
+        
 
 
     EXTENSIONS = {
@@ -356,24 +359,24 @@ class ICONS:
         TORRENT_SETTING = ':torrent_setting'
 
     class CATEGORY:
-        ALL_DOWN = ':All_Download.png'
-        COMPRESSED = ':Compressed.png'
-        PROGRAM = ':Program.png'
-        AUDIO = ':Audio.png'
-        IMAGE = ':Image.png'
-        VIDEO = ':Video.png'
-        DOCUMENT = ':Document.png'
-        TORRENT = ':Torrent.png'
-        GENERAL = ':General.png'
+        ALL_DOWN = ':All_Download.svg'
+        COMPRESSED = ':Compressed.svg'
+        PROGRAM = ':Program.svg'
+        AUDIO = ':Audio.svg'
+        IMAGE = ':Image.svg'
+        VIDEO = ':Video.svg'
+        DOCUMENT = ':Document.svg'
+        TORRENT = ':Torrent.svg'
+        GENERAL = ':General.svg'
 
 
     class HEADER:
-        ALL = ':All.png'
-        DOWNLOADING = ':Downloading.png'
-        FINISHED = ':Finished.png'
-        UNFINISHED = ':Unfinished.png'
-        ERROR = ':Error.png'
-        QUEUE = ':Queue.png'
+        ALL = ':All.svg'
+        DOWNLOADING = ':Downloading.svg'
+        FINISHED = ':Finished.svg'
+        UNFINISHED = ':Unfinished.svg'
+        ERROR = ':Error.svg'
+        QUEUE = ':Queue.svg'
 
 
     class SCHEDULER:
@@ -402,53 +405,47 @@ class ICONS:
 
     # if app use default icon for task
     class TASK:
-
-        TORRENT = SDM.PATHS.ICON_FOLDER + ':Torrent_File.png'
-        UNKNOWN = SDM.PATHS.ICON_FOLDER + ':Unknown_File.png'
+        TORRENT = ':Torrent_File.png'
+        UNKNOWN = ':Unknown_File.png'
 
     
     class ANIMATION:
-        DOT_TABLE = SDM.PATHS.ICON_FOLDER + ':dot_table.gif'
-        RHOMBUS = SDM.PATHS.ICON_FOLDER + ':rhombus.gif'
-        SETTING = SDM.PATHS.ICON_FOLDER + ':setting.gif'
+        DOT_TABLE = ':dot_table.gif'
+        LOADING = ':loading.gif'
+        SETTING = ':setting.gif'
 
 
     class DIALOGS:
-        ADD = SDM.PATHS.ICON_FOLDER + ':Add.png'
-        BATCH = SDM.PATHS.ICON_FOLDER + ':Batch.png'
-        GROUP = SDM.PATHS.ICON_FOLDER + ':Group.png'
-        MAGNET = SDM.PATHS.ICON_FOLDER + ':Magnet.png'
-        SETTINGS = SDM.PATHS.ICON_FOLDER + ':Settings.png'
-        TIMER = SDM.PATHS.ICON_FOLDER + ':Timer.png'
-        ABOUT = SDM.PATHS.ICON_FOLDER + ':About.png'
-        
-        
-
-
+        ADD = ':Add.png'
+        BATCH = ':Batch.png'
+        GROUP = ':Group.png'
+        MAGNET = ':Magnet.png'
+        SETTINGS = ':Settings.png'
+        TIMER = ':Timer.png'
+        ABOUT = ':About.png'
 
     class OTHER:
-        ADD_1 = SDM.PATHS.ICON_FOLDER + ':add_1.png'
-        ADD_2 = SDM.PATHS.ICON_FOLDER + ':add_2.svg'
-        SUB = SDM.PATHS.ICON_FOLDER + ':Sub.svg'
-        CALENDAR = SDM.PATHS.ICON_FOLDER + ':calendar.png'
-        DOWN_ARROW = SDM.PATHS.ICON_FOLDER + ':Down-Arrow.svg'
-        UP_ARROW = SDM.PATHS.ICON_FOLDER + ':Up-Arrow.svg'
-        MOVE_DOWN = SDM.PATHS.ICON_FOLDER + ':move-down.png'
-        MOVE_UP = SDM.PATHS.ICON_FOLDER + ':move-up.png'
-        ONE_TIME = SDM.PATHS.ICON_FOLDER + ':one_time.png'
-        PERIODIC = SDM.PATHS.ICON_FOLDER + ':periodic.png'
-        TOTAL_DOWN = SDM.PATHS.ICON_FOLDER + ':t_down.svg'
-        TOTAL_UP = SDM.PATHS.ICON_FOLDER + ':t_up.svg'
-        TICK = SDM.PATHS.ICON_FOLDER + ':tick.svg'
-        TRASH_1 = SDM.PATHS.ICON_FOLDER + ':trash_1.png'
-        TRASH_2 = SDM.PATHS.ICON_FOLDER + ':trash_2.png'
-        BROWSE_1 = SDM.PATHS.ICON_FOLDER + ':Browse_1.png'
-        BROWSE_2 = SDM.PATHS.ICON_FOLDER + ':Browse_2.png'
-        CATEGORY = SDM.PATHS.ICON_FOLDER + ':Category.png'
-        FOLDER_1 = SDM.PATHS.ICON_FOLDER + ':Folder_1.png'
-        INFO = SDM.PATHS.ICON_FOLDER + ':Info.png'
-        CLOSE_WHITE = SDM.PATHS.ICON_FOLDER + ':close_white.png'
-        GITHUB = SDM.PATHS.ICON_FOLDER + ':github.png'
+        ADD_1 = ':add_1.svg'
+        ADD_2 = ':add_2.svg'
+        SUB = ':Sub.svg'
+        CALENDAR = ':calendar.svg'
+        DOWN_ARROW = ':Down-Arrow.svg'
+        UP_ARROW = ':Up-Arrow.svg'
+        MOVE_DOWN = ':move-down.svg'
+        MOVE_UP = ':move-up.svg'
+        ONE_TIME = ':one_time.png'
+        PERIODIC = ':periodic.png'
+        TOTAL_DOWN = ':t_down.svg'
+        TOTAL_UP = ':t_up.svg'
+        TICK = ':tick.svg'
+        TRASH = ':trash.svg'
+        BROWSE_1 = ':Browse_1.svg'
+        BROWSE_2 = ':Browse_2.svg'
+        CATEGORY = ':Category.svg'
+        FOLDER_1 = ':Folder_1.svg'
+        INFO = ':Info.svg'
+        CLOSE_WHITE = ':Close.svg'
+        GITHUB = ':github.svg'
 
 
 

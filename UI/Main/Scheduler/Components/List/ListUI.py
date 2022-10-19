@@ -51,7 +51,7 @@ class ListUI(QtWidgets.QWidget):
         buttons = [
             None,
             ('addBtn', ICONS.OTHER.ADD_1),
-            ('removeBtn', ICONS.OTHER.TRASH_2)
+            ('removeBtn', ICONS.OTHER.TRASH)
         ]
 
         s = 25

@@ -1,9 +1,12 @@
 
+from PyQt5.QtCore import pyqtSignal
 
 from .InterfaceUI import InterfaceUI
 
 
 class Interface(InterfaceUI):
+    
+    style_changed = pyqtSignal()
     
     def __init__(self):
         super().__init__()
@@ -34,6 +37,6 @@ class Interface(InterfaceUI):
         
         if self.interface_data.current_theme() != new_theme:
             self.interface_data.set_theme(new_theme)
-            need_exit = True
+            self.style_changed.emit()
         
         return need_exit

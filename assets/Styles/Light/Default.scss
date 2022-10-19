@@ -46,12 +46,12 @@ QPushButton {
     }
 
     &:menu-indicator {
-        width : 10px;
+        width : 8px;
         height : 100%;
         subcontrol-position : right center;
         subcontrol-origin : padding;
 
-        image : url("assets/Icons/Default/Other/arrow_down_white.png");
+        image : url("assets/Icons/Default/Const/arrow-down-dark.svg");
         padding : 2px 5px 2px 0px;
     }
 
@@ -74,6 +74,10 @@ QPushButton {
             background-color : #118be9;
             border : none;
             color : #444;
+        }
+
+        &:menu-indicator {
+            image : url("assets/Icons/Default/Const/arrow-down-light.svg");
         }
     }
 
@@ -142,7 +146,7 @@ QCheckBox {
 
         &::checked {
             background-color : $accent-color;
-            image : url(assets/Icons/Default/Other/tick.svg);
+            image : url(assets/Icons/Default/Const/tick-light.svg);
         }
 
         &::disabled {
@@ -169,6 +173,11 @@ QCheckBox {
         border-bottom : 2px solid $accent-color;
     }
 
+    &:disabled {
+        background-color : #c4c4c4;
+        color : #555;
+    }
+
     &::drop-down {
         width : 25px;
         height : 25px;
@@ -179,13 +188,9 @@ QCheckBox {
     }
 
     &::down-arrow {
-        image : url(assets/Icons/Default/Other/arrow-closed.png);
+        image : url(assets/Icons/Default/Const/sort-light.svg);
         width : 10px;
         height : 10px;
-    }
-
-    &::down-arrow:on {
-        image : url(assets/Icons/Default/Other/arrow-open.png);
     }
 
     & QAbstractItemView {
