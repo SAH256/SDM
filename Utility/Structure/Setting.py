@@ -117,23 +117,25 @@ class Interface:
 
     def get_current_stylesheet(self):
         file_name = 'Default.scss'
-        file_path = os.path.join(self.current_theme_path(), file_name)
+        file_path = os.path.join(self.current_theme_path(), SDM.PATHS.STYLES_FOLDER, file_name)
 
         return Compiler().compile(file_path)
 
 
     def __setup_theme(self):
-        styles_folder = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.STYLES_FOLDER)
+        styles_folder = os.path.join(SDM.PATHS.ASSETS_FOLDER, SDM.PATHS.THEME_FOLDER)
         sass_file = 'Default.scss'
 
         for entry in os.scandir(styles_folder):
-            if entry.is_dir() and sass_file in os.listdir(entry.path):
+            style_path = os.path.join(entry.path, SDM.PATHS.STYLES_FOLDER, sass_file)
+
+            if entry.is_dir() and os.path.exists(style_path):
                 self.THEME_PACKAGES[entry.name] = entry.path
         
 
     def __setup_colors(self):
         file_name = 'metadata.json'
-        file_path = os.path.join(self.current_theme_path(), file_name)
+        file_path = os.path.join(self.current_theme_path(), SDM.PATHS.METADATA_FOLDER, file_name)
         
         data = {}
         
@@ -144,11 +146,11 @@ class Interface:
 
 
     def __setup_icons(self):
-        name = 'icon_data.json'
+        data_name = 'icon_data.json'
         style_name = 'icon_style.scss'
 
-        data_path = os.path.join(self.current_theme_path(), name)
-        style_path = os.path.join(self.current_theme_path(), style_name)
+        data_path = os.path.join(self.current_theme_path(), SDM.PATHS.METADATA_FOLDER, data_name)
+        style_path = os.path.join(self.current_theme_path(), SDM.PATHS.STYLES_FOLDER, style_name)
 
         if not os.path.exists(data_path):
             return

@@ -195,11 +195,11 @@ QCheckBox {
 
     & QAbstractItemView {
         border : none;
-        background-color : #212121;
+        background-color : #181818;
         outline : none;
 
         &::item {
-            padding : 3px 5px;
+            padding : 5px;
             color : #ddd;
 
             &:hover,

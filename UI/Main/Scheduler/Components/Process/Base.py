@@ -3,6 +3,7 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
 from Utility.Structure.Setting import Interface
+from Utility.Core import COLOR_ROLE
 
 # Base widget for containing process sub sections
 class Base(QtWidgets.QWidget):
@@ -24,7 +25,7 @@ class Base(QtWidgets.QWidget):
 
     def _add_shadow(self):
         e = QtWidgets.QGraphicsDropShadowEffect()
-        e.setColor(QtGui.QColor(Interface.COLORS.get('CONTAINER-SHADOW')))
+        e.setColor(QtGui.QColor(Interface.COLORS.get(COLOR_ROLE.CONTAINER_SHADOW)))
         e.setOffset(0, 0)
         e.setBlurRadius(10)
 

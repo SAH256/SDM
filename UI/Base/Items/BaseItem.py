@@ -22,7 +22,6 @@ class BaseItem(QtWidgets.QWidget):
 
         self._icon()
 
-        self.path_name = 'Icons'
         self.selected = False
         self.entered = False
 
@@ -32,13 +31,8 @@ class BaseItem(QtWidgets.QWidget):
         layout.setContentsMargins(5, 5, 10, 5)
         self.mainLayout.addLayout(layout)
 
-        # name = 'lkm.lskjdlkjl'
-        # icon = iconFinder(name)
-
         self.iconPlace = QtWidgets.QLabel(self)
-        # self.iconPlace.setPixmap(icon.pixmap(32, 32))
         layout.addWidget(self.iconPlace)
-
 
 
     def set_icon(self, pixmap):

@@ -24,7 +24,7 @@ class ToolItem(BaseItem):
 
         name = 'tool-item'
         self.setObjectName(name)
-        
+
 
 
     def _toggle_icon(self, normal = True):
@@ -36,7 +36,7 @@ class ToolItem(BaseItem):
             name += self._normal
         else:
             name += self._hover
-        
+
         pixmap = self.get_pixmap(name, self._size)
 
         if pixmap:
@@ -44,7 +44,7 @@ class ToolItem(BaseItem):
 
 
     def setDisabled(self, s):
-        
+
         if self.__enabled != (not s):
             self.__enabled = not s
             self._toggle_icon(not s)
@@ -65,11 +65,9 @@ class ToolItem(BaseItem):
     def leaveEvent(self, ev):
         super().leaveEvent(ev)
         self._check_icon_state()
-            
 
 
     def _check_icon_state(self):
-        
         if self.__enabled:
             self._toggle_icon(not self.entered)
 

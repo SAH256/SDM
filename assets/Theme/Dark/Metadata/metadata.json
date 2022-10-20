@@ -1,0 +1,9 @@
+{
+    "container-shadow" : "#222",
+    "item-normal-shadow" : "#121212",
+    "item-hover-shadow" : "#555",
+    "progress" : "#5a5a5a",
+    "error" : "#ad1e1e",
+    "complete" : "#6a6a6a",
+    "link" : "#30f8ff"
+}

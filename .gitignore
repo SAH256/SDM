@@ -12,6 +12,9 @@ resources.py
 # **/Deps
 # Deps/
 
+build/
+dist/
+
 
 # library files
 *.dll

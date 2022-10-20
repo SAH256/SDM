@@ -12,27 +12,24 @@ class OptionItem(FilterItem):
         super().__init__(parent)
 
         self.min_size = 32
-        self.big_size = 36
         self.__icon_name = icon
 
+        self.set_selected(False)
+        self.__change_icon()
+    
         name = 'option-item'
         self.setObjectName(name)
 
-        self.__change_icon()
-        
-        self.set_selected(False)
-    
 
     def set_selected(self, state):
         super().set_selected(state)
-
         self.iconPlace.setEnabled(state)
 
 
     def enterEvent(self, ev):
         super().enterEvent(ev)
-        
         self.iconPlace.setEnabled(True)
+        
 
     def leaveEvent(self, ev):
         super().leaveEvent(ev)
@@ -50,19 +47,3 @@ class OptionItem(FilterItem):
     
     def _refresh(self):
         self.__change_icon()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

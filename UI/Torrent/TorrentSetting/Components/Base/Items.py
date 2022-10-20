@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
-from Utility.Core import TORRENT, ICONS, SELECTORS
+from Utility.Core import TORRENT, ICONS, SELECTORS, COLOR_ROLE
 from Utility.Util import sizeChanger
 from Utility.Structure.Setting import Interface
 
@@ -74,7 +74,7 @@ class BaseItem(BaseWidget):
         shadow = QtWidgets.QGraphicsDropShadowEffect()
         shadow.setBlurRadius(10)
         shadow.setOffset(0, 0)
-        shadow.setColor(QtGui.QColor(Interface.COLORS.get('CONTAINER-SHADOW')))
+        shadow.setColor(QtGui.QColor(Interface.COLORS.get(COLOR_ROLE.CONTAINER_SHADOW)))
             
         self.setGraphicsEffect(shadow)
 

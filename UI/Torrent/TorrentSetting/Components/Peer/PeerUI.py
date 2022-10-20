@@ -44,8 +44,7 @@ class PeerView(BasePanel):
     def __timer(self):
         self.update_timer = QTimer()
         self.update_timer.timeout.connect(self.__update_peers)
-        self.update_timer.start(100)
-        self.update_timer.setInterval(1000)
+        self.update_timer.start(500)
 
 
     def __update_peers(self):

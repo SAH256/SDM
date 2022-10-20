@@ -218,6 +218,15 @@ class SETTING:
     TORRENT = 'torrent'
     PLUGINS = 'plugins'
 
+class COLOR_ROLE:
+    CONTAINER_SHADOW = 'container-shadow'
+    ITEM_HOVER_SHADOW = 'item-hover-shadow'
+    ITEM_NORMAL_SHADOW = 'item-normal-shadow'
+    PROGRESS = 'progress'
+    ERROR = 'error'
+    COMPLETE = 'complete'
+    LINK = 'link'
+
 
 class QUEUE:
 
@@ -290,7 +299,10 @@ class SDM:
 
         ASSETS_FOLDER = 'assets'
         ICON_FOLDER = 'Icons'
+        THEME_FOLDER = 'Theme'
         STYLES_FOLDER = 'Styles'
+        METADATA_FOLDER = 'Metadata'
+        
         DEPS_FOLDER = "Deps"
         PLUGINS_FOLDER = 'Plugins'
 

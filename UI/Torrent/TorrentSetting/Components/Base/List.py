@@ -62,7 +62,7 @@ class ListItemView(QtWidgets.QListView):
         self.timer.setSingleShot(False)
         self.timer.timeout.connect(self.__update)
 
-        self.timer.start(1000)
+        self.timer.start(500)
 
 
     def __update(self):

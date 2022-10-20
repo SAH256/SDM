@@ -3,7 +3,7 @@ from PyQt5 import QtGui, QtCore
 from Utility.Gui import iconFinder, get_transfer_str
 from Utility.Util import sizeChanger
 from Utility.Calcs import format_remain_time
-from Utility.Core import LINK_TYPE, STATUS, STATES, SELECTORS
+from Utility.Core import LINK_TYPE, STATUS, STATES, SELECTORS, COLOR_ROLE
 from Utility.Structure.Setting import Interface
 
 from .TaskItem import TaskItem
@@ -101,9 +101,9 @@ class TaskItemControl(TaskItem):
         if self.info and not self.selected and not self.hover:
 
 
-            error_color = QtGui.QColor(Interface.COLORS.get('ERROR'))
-            build_color = QtGui.QColor(Interface.COLORS.get('COMPLETE'))
-            down_color = QtGui.QColor(Interface.COLORS.get('PROGRESS'))
+            error_color = QtGui.QColor(Interface.COLORS.get(COLOR_ROLE.ERROR))
+            build_color = QtGui.QColor(Interface.COLORS.get(COLOR_ROLE.COMPLETE))
+            down_color = QtGui.QColor(Interface.COLORS.get(COLOR_ROLE.PROGRESS))
 
             p = QtGui.QPainter(self)
             p.setRenderHint(p.RenderHint.HighQualityAntialiasing)

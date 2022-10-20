@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QFileIconProvider
 from PyQt5.QtCore import QFileInfo
 from PyQt5.QtGui import QIcon, QMovie
 
-from .Core import SDM, CATEGORY, ICONS
+from .Core import SDM, CATEGORY, ICONS, COLOR_ROLE
 from .Util import sizeChanger
 from .Structure.Setting import Interface
 
@@ -48,7 +48,7 @@ def find_links(txt):
 
     for word in words:
         if word.startswith('http') or word.startswith('ftp') or word.startswith('udp'):
-            word = f'''<a href="{word}" style = "color : {Interface.COLORS.get('LINK')};font-weight : 600; font-style : italic;">here</a>'''
+            word = f'''<a href="{word}" style = "color : {Interface.COLORS.get(COLOR_ROLE.LINK)};font-weight : 600; font-style : italic;">here</a>'''
 
         result.append(word)
     

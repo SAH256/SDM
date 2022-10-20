@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 
 from Utility.Structure.Setting import Interface
-from Utility.Core import SELECTORS
+from Utility.Core import SELECTORS, COLOR_ROLE
 
 from ..BaseItem import BaseItem
 from .ToolItem import ToolItem
@@ -16,20 +16,18 @@ class RoundItem(ToolItem):
 
     def __init__(self, parent, icon_name):
         super().__init__(parent, icon_name)
-
-        self.entered = False
-
+        
         w = 58
         self.setFixedSize(w, w)
 
-        name = 'round-item'
-        self.setObjectName(name)
-        
         self._normal = '-normal.png'
         self._hover = '-hover.png'
 
         self._check_icon_state()
         self._effect()
+
+        name = 'round-item'
+        self.setObjectName(name)
 
 
     def set_select(self, state):
@@ -74,10 +72,10 @@ class RoundItem(ToolItem):
 
 
     def __change_shadow(self, normal = True):
-        color_code = Interface.COLORS.get('ITEM-HOVER-SHADOW')
+        color_code = Interface.COLORS.get(COLOR_ROLE.ITEM_HOVER_SHADOW)
 
         if normal:
-            color_code = Interface.COLORS.get('ITEM-NORMAL-SHADOW')
+            color_code = Interface.COLORS.get(COLOR_ROLE.ITEM_NORMAL_SHADOW)
 
         color = QtGui.QColor(color_code)
 
