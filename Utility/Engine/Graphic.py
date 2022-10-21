@@ -1,50 +1,7 @@
-
 import os, shutil as sh
+
 from lxml import etree
 
-SRC_PATH = 'src'
-OUT_PATH = 'output'
-
-
-# STYLESHEET = '''
-#         path, circle,
-#         rect, ellipse,
-#         polygon {
-#             fill : url(#color-1);
-#         }
-
-#         line, polyline {
-#             stroke : url(#color-1);
-#         }
-
-#         .negative_path {
-#             fill : #ff5613;
-#         }
-
-#         .positive_path {
-#             fill : #0078d8;
-#         }
-# '''
-
-
-# DATA = {
-#     "Action" : {
-#         'normal' : [(100, '#212121')],
-#         'hover' : [
-#             (0, '#00f2fe'),
-#             (100, '#4facfe')
-#             ]
-#         },
-
-#     "Files": None,
-
-#     # "Files" : {
-#     #     'normal' : [(100, '#212121')],
-#     #     'disabled' : [
-#     #         (100, '#888')
-#     #         ]
-#     #     },
-# }
 
 
 def create_element(tag_name, parent = None, index = 0):
@@ -56,9 +13,6 @@ def create_element(tag_name, parent = None, index = 0):
     if element == None:
         element = etree.Element(tag_name)
         element.tail = '\n\n\t'
-
-        # if parent != None:
-        #     parent.insert(index, element)
     
     return element
 
