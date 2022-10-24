@@ -11,7 +11,7 @@ class Saveable:
             js.dump(data, file)
     
     def _retrieve_data(self, file_name):
-        data = []
+        data = {}
 
         if os.path.exists(file_name):
             with open(file_name) as file:

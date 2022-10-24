@@ -40,9 +40,9 @@ class Application(QApplication):
 
 
     def setup(self):
+        self.__perform_checks()
         self.__setup_model()
         self.__setup_ui()
-        self.__perform_checks()
     
 
     def __setup_model(self):

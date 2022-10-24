@@ -311,6 +311,9 @@ class Setting(Saveable):
 
         save_data = self._retrieve_data(setting_path)
         
+        if not save_data:
+            return
+        
         for name, setting in {**self.get_client_setting(), **self.get_view_setting()}.items():
             setting_data = save_data.get(name)
             
