@@ -40,7 +40,7 @@ The only thing that is missed, is your supports and cooperations. The project is
 You can get a compressed file of compiled executable of project. It only works with ***MS Windows 10 64bit*** for now But, in future we will build for other OSs and architectures.
 extract it and in the extracted folder run **SDM.exe**. 
 
-[Download for AMD64](https://drive.google.com/file/d/1lqQHIy5FOguR1Pov9-kZD3rSl8E2SDqt/view?usp=drivesdk)
+[Download for AMD64](https://drive.google.com/file/d/1WIuVFOYax78-orBxqH4vwfNi17a8EXCZ/view?usp=sharing)
 
 
 
