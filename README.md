@@ -37,10 +37,10 @@ The only thing that is missed, is your supports and cooperations. The project is
 
 ## Downloads
 
-You can get a compressed file of compiled executable of project. It only works with ***MS Windows 10 64bit*** for now But, in future we will build for other OSs and architectures.
-extract it and in the extracted folder run **SDM.exe**. 
+You can get a compressed executable file of project. It needs ***MS Windows 7 64bit or higher*** to run. In future I will build for other OSs and architectures as well.
+extract it and in the extracted folder run **SDM.exe**.
 
-[Download for AMD64](https://drive.google.com/file/d/1WIuVFOYax78-orBxqH4vwfNi17a8EXCZ/view?usp=sharing)
+[Download for AMD64](https://drive.google.com/file/d/1aBIqrTIkXCtaK8wqia6BZa00dlNf2JaD/view?usp=drivesdk)
 
 
 

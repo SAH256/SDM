@@ -282,7 +282,7 @@ class SDM:
     class INFO:
         VERSION = (0, 0, 1)
         VERSION_STR = '.'.join([str(x) for x in VERSION])
-        OPENSSL_VERSION = '3.0.0'
+        OPENSSL_VERSION = '3.0.7'
         PYQT_VERSION = Qt.PYQT_VERSION_STR
         LIBTORRENT_VERSION = lt.__version__
         HTTPX_VERSION = hx.__version__
@@ -358,6 +358,7 @@ class SDM:
 class ICONS:
 
     LOGO = SDM.PATHS.ICON_FOLDER + ':logo.png'
+    MAIN_ICON = SDM.PATHS.ICON_FOLDER + ':icon.png'
 
     class ACTION:
         ADD = ':add'

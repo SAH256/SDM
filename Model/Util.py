@@ -42,12 +42,16 @@ async def get_url_data(url, start, length):
 
     data = b''
 
-    async with hx.AsyncClient(timeout = 30, follow_redirects = True) as client:
+    try:
+        async with hx.AsyncClient(timeout = 30, follow_redirects = True) as client:
 
-        res = await client.get(url, headers = header, timeout = 30)
+            res = await client.get(url, headers = header, timeout = 30)
 
-        data = res.read()
-    
+            data = res.read()
+
+    except Exception as e:
+        data = None
+
     return data
 
 
@@ -86,7 +90,9 @@ async def compare_file_url(url, file_name, url_start, file_size):
         url_data = await task_1
         file_data = await task_2
 
-        
+        if url_data == None:
+            return
+
         result = result and (url_data == file_data)
 
     return result

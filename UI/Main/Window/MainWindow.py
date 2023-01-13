@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QPoint, pyqtSignal
 
 from UI.Main.Add.AddControl import AddLink
@@ -35,6 +36,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         w, h = 800, 600
         self.resize(w, h)
+        self.setWindowIcon(QIcon(ICONS.MAIN_ICON))
         
         title = 'Simple Download Manager'
         self.setWindowTitle(title)

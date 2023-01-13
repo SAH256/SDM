@@ -203,7 +203,11 @@ class Segment:
         
             is_same = await compare_file_url(self.url, self.file_path, self.start, self.downloaded)
 
-            if not is_same:
+            if is_same == None:
+                self.set_pause(True)
+                self.set_status(STATUS.CONNECT_ERROR)
+
+            elif not is_same:
                 self.downloaded = 0
                 with open(self.file_path, 'w') as _:
                     pass
@@ -233,7 +237,7 @@ class Segment:
                     await asyncio.sleep(0.08)
                     count = 0
 
-    
+
     # make conditional header for get request
     def __make_header(self):
         
